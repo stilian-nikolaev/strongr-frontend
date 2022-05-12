@@ -1,10 +1,21 @@
 import React from 'react'
+import axios from 'axios'
+import { Card, Text } from '@mantine/core'
 
 export default function UsersPage() {
-    const workouts = fetch('http://localhost:5000')
-        .then(res=> console.log(res))
+  // let jsx;
+  // axios.get('http://localhost:5000/api/workouts')
+  //   .then(response => {
+  //     response.data.forEach(workout => {
+  //       jsx += <Card>
+  //         <Text>{workout.title}</Text>
+  //         </Card>
+  //     })
+  //   })
+  //   .catch(err => console.log(err))
+
 
   return (
-    <div>UsersPage</div>
+    <Text>Hello</Text>
   )
 }
