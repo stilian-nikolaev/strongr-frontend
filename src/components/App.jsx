@@ -3,7 +3,7 @@ import Layout from './layout/Layout';
 
 function App() {
   return (
-    <MantineProvider theme={{ fontFamily: 'Tahoma', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
+    <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
       <Layout>
         <Center style={{height: '82vh'}}>
           <Text sx={{ fontSize: 20 }}>Gym app helps you create your personalised workout and meal plans.</Text>
