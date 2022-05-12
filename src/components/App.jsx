@@ -1,13 +1,13 @@
 import { Center, MantineProvider, Text } from '@mantine/core';
 import Layout from './layout/Layout';
+import GuestPage from './pages/GuestPage';
+import UsersPage from './pages/UsersPage';
 
 function App() {
   return (
     <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
       <Layout>
-        <Center style={{height: '82vh'}}>
-          <Text sx={{ fontSize: 20 }}>Gym app helps you create your personalised workout and meal plans.</Text>
-        </Center>
+        <UsersPage/>
       </Layout>
     </MantineProvider>
   );
