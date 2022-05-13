@@ -1,7 +1,6 @@
 import { Center, MantineProvider, Text } from '@mantine/core';
-import Layout from './layout/Layout';
-import GuestPage from './pages/GuestPage';
-import UsersPage from './pages/UsersPage';
+import Layout from './users/layout/Layout';
+import UsersPage from './users/UsersPage';
 import {QueryClientProvider, QueryClient} from 'react-query'
 
 function App() {
