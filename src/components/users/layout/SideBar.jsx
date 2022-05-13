@@ -5,8 +5,8 @@ import Menu from './Menu'
 
 export default function SideBar() {
     return (
-        <Navbar p="xs" width={{ base: '15vw' }} mt={'2vh'}>
-            <Navbar.Section sx={{ display: 'flex' }} ml={10}>
+        <Navbar p="xs" width={{ base: '15vw' }}>
+            <Navbar.Section sx={{ display: 'flex' }} ml={10} mt={'2vh'}>
                 <Image src={avatar} width={'4.5vw'} radius={50} />
                 <Center>
                     <Text sx={theme => ({ marginLeft: '1vw', fontWeight: 'bold', fontSize: '1vw' })}>Stilian Nikolaev</Text>
