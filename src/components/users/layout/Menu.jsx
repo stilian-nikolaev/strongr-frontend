@@ -23,7 +23,7 @@ export default function Menu() {
     return (
         <Stack>
             {items.map(x => (
-                <Text sx={{
+                <Text key={x.label} sx={{
                     width: '5vw',
                     color: x.selected ? 'grey' : 'black',
                     fontSize: x.selected ? '1.1vw' : '1vw',
