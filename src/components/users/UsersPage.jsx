@@ -20,7 +20,7 @@ export default function UsersPage() {
   return <>
     {selectedWorkoutId
       ?
-      <Workout onBackClick={onBackClick}/>
+      <Workout selectedWorkoutId={selectedWorkoutId} onBackClick={onBackClick}/>
       :
       <Grid onWorkoutClick={onWorkoutClick} />
     }
