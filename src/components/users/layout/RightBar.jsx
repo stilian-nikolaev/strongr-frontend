@@ -11,7 +11,8 @@ export default function RightBar() {
                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                         }}/>
                 </Container>
-                <Text sx={{ marginTop: 10, fontSize: 18, fontWeight:'bold' }}>Stilian Nikolaev</Text>
+                <Text sx={{ marginTop: 15, fontSize: 18, fontWeight:'bold', textAlign:'center' }}>Stilian Nikolaev</Text>
+                <Text sx={{ marginTop: 5, fontSize: 15, textAlign:'center', color:'grey'}}>Gym lover</Text>
             </Container>
         </Aside>
     )
