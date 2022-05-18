@@ -88,11 +88,7 @@ export default function Workout({ onBackClick, selectedWorkoutId }) {
                 </SimpleGrid>
 
             </Container>
-            <ActionIcon onClick={onBackClick} radius={50} sx={{
-                border: '1px solid black', backgroundColor: 'pink', '&:hover': {
-                    backgroundColor: '#F9BDC5'
-                }
-            }}>
+            <ActionIcon onClick={onBackClick} radius={50}>
                 <MdClose size={30} />
             </ActionIcon>
         </Container>

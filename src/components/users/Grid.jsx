@@ -32,11 +32,7 @@ export default function Grid({ onWorkoutClick }) {
 
                 )}
             </SimpleGrid>
-            <ActionIcon radius={50} sx={{
-                border: '1px solid black', backgroundColor: 'pink', '&:hover': {
-                    backgroundColor: '#F9BDC5'
-                }
-            }}>
+            <ActionIcon radius={50} >
                 <MdAdd size={30} />
             </ActionIcon>
         </Container>
