@@ -10,9 +10,8 @@ async function fetchWorkouts() {
 }
 
 
-export default function Grid({onWorkoutClick}) {
+export default function Grid({ onWorkoutClick }) {
     const { data, status } = useQuery('workouts', fetchWorkouts);
-
     if (status === 'loading') {
         return <p>Loading...</p>
     }
@@ -27,8 +26,8 @@ export default function Grid({onWorkoutClick}) {
                 {data.map(x =>
                     <Card key={x._id} onClick={() => onWorkoutClick(x._id)} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">
                         <Text  >{x.title}</Text>
-                        <Text>Exercises: 8</Text>
-                        <Text>Sets: 16</Text>
+                        <Text>Exercises: {x.exercises.length}</Text>
+                        <Text>Sets: {x.exercises.reduce((x, acc) => x + acc.sets, 0)}</Text>
                     </Card>
 
                 )}
@@ -38,7 +37,7 @@ export default function Grid({onWorkoutClick}) {
                     backgroundColor: '#F9BDC5'
                 }
             }}>
-                <MdAdd size={30}/>
+                <MdAdd size={30} />
             </ActionIcon>
         </Container>
     )
