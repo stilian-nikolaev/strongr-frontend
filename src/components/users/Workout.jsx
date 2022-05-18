@@ -23,7 +23,7 @@ export default function Workout({ onBackClick, selectedWorkoutId }) {
             display: 'flex',
             justifyContent: 'space-between',
             width: '60vw',
-            marginTop: 20,
+            marginTop: 10,
             padding: 0,
         }}>
             <Container sx={{ width: '60vw', padding: 0 }}>

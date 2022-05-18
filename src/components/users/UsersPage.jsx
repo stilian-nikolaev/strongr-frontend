@@ -17,14 +17,9 @@ export default function UsersPage() {
     setSelectedWorkoutId(id);
   }
 
-  return <>
-    {selectedWorkoutId
+  return selectedWorkoutId
       ?
       <Workout selectedWorkoutId={selectedWorkoutId} onBackClick={onBackClick}/>
       :
       <Grid onWorkoutClick={onWorkoutClick} />
-    }
-
-  </>
-
 }

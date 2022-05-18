@@ -21,7 +21,7 @@ export default function Grid({ onWorkoutClick }) {
         return <p>Error :(</p>
     }
     return (
-        <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20 }}>
+        <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding:0 }}>
             <SimpleGrid cols={3}>
                 {data.map(x =>
                     <Card key={x._id} onClick={() => onWorkoutClick(x._id)} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">
