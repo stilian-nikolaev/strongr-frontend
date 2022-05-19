@@ -3,6 +3,8 @@ import axios from 'axios';
 import React from 'react'
 import { MdAdd } from 'react-icons/md'
 import { useQuery } from 'react-query';
+import ErrorScreen from '../common/ErrorScreen';
+import LoadingScreen from '../common/LoadingScreen';
 
 async function fetchWorkouts() {
     const res = await axios.get('http://localhost:5000/workouts');
@@ -12,21 +14,13 @@ async function fetchWorkouts() {
 
 export default function Grid({ onWorkoutClick }) {
     const { data, status } = useQuery('workouts', fetchWorkouts);
+    
     if (status === 'loading') {
-        return <Center sx={{ height: '82vh' }}>
-            <Loader color="dark" variant="dots" />
-        </Center>
+        return <LoadingScreen/>
     }
 
-
     if (status === 'error') {
-        return <Center sx={{ height: '82vh' }}>
-            <Box>
-                <Text>Could not connect to the server.</Text>
-                <Text> Our cat has probably messed up our computers again.</Text>
-                <Text> Please excuse us for the inconvenience </Text>
-            </Box>
-        </Center>
+        return <ErrorScreen/>
     }
     return (
         <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>

@@ -4,6 +4,8 @@ import axios from 'axios';
 import React from 'react'
 import { MdClose, MdMoreHoriz } from 'react-icons/md'
 import { useQuery } from 'react-query';
+import ErrorScreen from '../common/ErrorScreen';
+import LoadingScreen from '../common/LoadingScreen';
 import WorkoutCard from './WorkoutCard';
 
 async function fetchWorkout(id) {
@@ -14,14 +16,13 @@ async function fetchWorkout(id) {
 export default function Workout({ onBackClick, selectedWorkoutId }) {
     const { data, status } = useQuery(`workout/${selectedWorkoutId}`, () => fetchWorkout(selectedWorkoutId));
     if (status === 'loading') {
-        return <Center sx={{ height: '82vh' }}>
-            <Loader color="dark" variant="dots" />
-        </Center>
+        return <LoadingScreen/>;
     }
 
     if (status === 'error') {
-        return <p>Error :(</p>
+        return <ErrorScreen/>;
     }
+
     return (
         <Container sx={{
             display: 'flex',
@@ -41,10 +42,6 @@ export default function Workout({ onBackClick, selectedWorkoutId }) {
                     <Text sx={{ fontSize: '2rem' }}>Pull day</Text>
                 </Box>
                 <SimpleGrid spacing="md" cols={4} sx={{ marginTop: '30px' }}>
-                    <WorkoutCard />
-                    <WorkoutCard />
-                    <WorkoutCard />
-                    <WorkoutCard />
                 </SimpleGrid>
 
             </Box>
