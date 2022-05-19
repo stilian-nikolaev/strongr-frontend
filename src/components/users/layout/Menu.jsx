@@ -4,13 +4,14 @@ import settingsIcon from '../../../images/settings.png';
 import foodIcon from '../../../images/food.png';
 import React from 'react'
 import { MdBorderBottom } from 'react-icons/md';
+import { BsDot} from 'react-icons/bs'
 
 export default function Menu() {
 
     const items = [
         {
             label: 'Workouts',
-            selected: true
+            selected: true,
         },
         {
             label: 'Meals',
@@ -23,22 +24,30 @@ export default function Menu() {
 
     return (
         <Stack>
-            {items.map(x => (
-
+            {items.map(x => (<Box sx={{display: 'flex'}}>
+                {x.selected ? <BsDot size={20}/> : ''}
                 <Text key={x.label} sx={{
                     fontSize: '1vw',
                     color: x.selected ? 'black' : '#5b5b5b',
+                    marginLeft: x.selected ? 0 : 20,
                     paddingBottom: 5,
-                    paddingLeft: 10,
+                    paddingLeft: 5,
                     width: '7vw',
-                    borderBottom: x.selected ? '1px solid black' : '',
-                    '&::after': {
-                        color: 'red'
+                    backgroundImage: 'linear-gradient(black, black)',
+                    backgroundSize: '0% 2px',
+                    backgroundRepeat: 'no-repeat',
+                    transition: 'background-size 0.3s',
+                    backgroundPosition: '0 calc(100%)',
+                    '&:hover': {
+                        backgroundSize: '100% 2px',
+                        cursor: 'pointer'
                     }
                 }}>
                     {x.label}
                 </Text>
-            ))}
-        </Stack>
+            </Box>
+            ))
+            }
+        </Stack >
     )
 }
