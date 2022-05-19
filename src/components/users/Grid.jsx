@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Center, Container, Loader, SimpleGrid, Text } from '@mantine/core'
+import { ActionIcon, Box, Card, Center, Container, Loader, SimpleGrid, Text } from '@mantine/core'
 import axios from 'axios';
 import React from 'react'
 import { MdAdd } from 'react-icons/md'
@@ -13,14 +13,20 @@ async function fetchWorkouts() {
 export default function Grid({ onWorkoutClick }) {
     const { data, status } = useQuery('workouts', fetchWorkouts);
     if (status === 'loading') {
-        return <Center sx={{height: '82vh'}}>
+        return <Center sx={{ height: '82vh' }}>
             <Loader color="dark" variant="dots" />
         </Center>
     }
 
 
     if (status === 'error') {
-        return <p>Error :(</p>
+        return <Center sx={{ height: '82vh' }}>
+            <Box>
+                <Text>Could not connect to the server.</Text>
+                <Text> Our cat has probably messed up our computers again.</Text>
+                <Text> Please excuse us for the inconvenience </Text>
+            </Box>
+        </Center>
     }
     return (
         <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>
