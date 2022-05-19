@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Container, SimpleGrid, Text } from '@mantine/core'
+import { ActionIcon, Card, Center, Container, Loader, SimpleGrid, Text } from '@mantine/core'
 import axios from 'axios';
 import React from 'react'
 import { MdAdd } from 'react-icons/md'
@@ -13,7 +13,9 @@ async function fetchWorkouts() {
 export default function Grid({ onWorkoutClick }) {
     const { data, status } = useQuery('workouts', fetchWorkouts);
     if (status === 'loading') {
-        return <p>Loading...</p>
+        return <Center sx={{height: '82vh'}}>
+            <Loader color="dark" variant="dots" />
+        </Center>
     }
 
 
@@ -21,7 +23,7 @@ export default function Grid({ onWorkoutClick }) {
         return <p>Error :(</p>
     }
     return (
-        <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding:0 }}>
+        <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>
             <SimpleGrid cols={3}>
                 {data.map(x =>
                     <Card key={x._id} onClick={() => onWorkoutClick(x._id)} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">

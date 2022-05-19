@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Center, Box, List, Paper, SimpleGrid, Stack, Text, Container } from '@mantine/core'
+import { ActionIcon, Card, Center, Box, List, Paper, SimpleGrid, Stack, Text, Container, Loader } from '@mantine/core'
 import { useHover } from '@mantine/hooks';
 import axios from 'axios';
 import React from 'react'
@@ -14,7 +14,9 @@ async function fetchWorkout(id) {
 export default function Workout({ onBackClick, selectedWorkoutId }) {
     const { data, status } = useQuery(`workout/${selectedWorkoutId}`, () => fetchWorkout(selectedWorkoutId));
     if (status === 'loading') {
-        return <p>Loading...</p>
+        return <Center sx={{ height: '82vh' }}>
+            <Loader color="dark" variant="dots" />
+        </Center>
     }
 
     if (status === 'error') {
@@ -39,10 +41,10 @@ export default function Workout({ onBackClick, selectedWorkoutId }) {
                     <Text sx={{ fontSize: '2rem' }}>Pull day</Text>
                 </Box>
                 <SimpleGrid spacing="md" cols={4} sx={{ marginTop: '30px' }}>
-                    <WorkoutCard/>                    
-                    <WorkoutCard/>                    
-                    <WorkoutCard/>                    
-                    <WorkoutCard/>                    
+                    <WorkoutCard />
+                    <WorkoutCard />
+                    <WorkoutCard />
+                    <WorkoutCard />
                 </SimpleGrid>
 
             </Box>

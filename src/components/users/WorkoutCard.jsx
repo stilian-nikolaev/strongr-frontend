@@ -10,6 +10,7 @@ export default function WorkoutCard() {
         borderRadius: '10px',
         border: '2px solid grey',
         '&:hover': {
+            cursor:'default',
             '& .more': {
                 display: 'block'
             }
