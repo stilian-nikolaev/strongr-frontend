@@ -39,7 +39,7 @@ export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
                     margin: 0,
                     borderBottom: '2px solid black',
                 }}>
-                    <Text sx={{ fontSize: '2rem' }}>Pull day</Text>
+                    <Text sx={{ fontSize: '2rem' }}>{data.title}</Text>
                 </Box>
                 <SimpleGrid spacing="md" cols={4} sx={{ marginTop: '30px' }}>
                     {data.exercises.map(x=> <ExerciseCard exercise={x}/>)}
