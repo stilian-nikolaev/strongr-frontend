@@ -5,8 +5,8 @@ import Menu from './Menu'
 
 export default function SideBar() {
     return (
-        <Navbar px="1vw" py="2vh" width={{ base: '15vw' }}>
-            <Navbar.Section sx={{ display: 'flex', marginTop: 15, '&:hover': { cursor: 'pointer' } }}>
+        <Navbar  width={{ base: '15vw' }}>
+            <Navbar.Section sx={{ display: 'flex', marginLeft:15, marginTop: 20, '&:hover': { cursor: 'pointer' } }}>
                 <Avatar src={logo} alt="logo" size="4.4vw" radius={50} sx={{
                     marginLeft: '5px',
                     border: '2px solid black'
@@ -18,7 +18,7 @@ export default function SideBar() {
                     alignSelf: 'center'
                 })}>Strongr</Text>
             </Navbar.Section>
-            <Navbar.Section grow mt="10vh" ml="sm">
+            <Navbar.Section grow mt="10vh" ml={20}>
                 <Menu />
             </Navbar.Section>
         </Navbar>

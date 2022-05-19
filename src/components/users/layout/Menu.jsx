@@ -1,15 +1,16 @@
-import { Image, List, ListItem, Stack, Text } from '@mantine/core'
+import { Box, Image, List, ListItem, Stack, Text } from '@mantine/core'
 import dumbbellIcon from '../../../images/dumbbell.png';
 import settingsIcon from '../../../images/settings.png';
 import foodIcon from '../../../images/food.png';
 import React from 'react'
+import { MdBorderBottom } from 'react-icons/md';
 
 export default function Menu() {
 
     const items = [
         {
             label: 'Workouts',
-            selected: true,
+            selected: true
         },
         {
             label: 'Meals',
@@ -23,15 +24,16 @@ export default function Menu() {
     return (
         <Stack>
             {items.map(x => (
+
                 <Text key={x.label} sx={{
-                    width: '5vw',
-                    color: x.selected ? 'grey' : 'black',
-                    fontSize: x.selected ? '1.1vw' : '1vw',
-                    borderBottom: x.selected ? '2px solid black': '',
-                    marginTop: '0.5vh',
-                    marginLeft: '0.5vw',
-                    '&:hover': {
-                        cursor: 'pointer'
+                    fontSize: '1vw',
+                    color: x.selected ? 'black' : '#5b5b5b',
+                    paddingBottom: 5,
+                    paddingLeft: 10,
+                    width: '7vw',
+                    borderBottom: x.selected ? '1px solid black' : '',
+                    '&::after': {
+                        color: 'red'
                     }
                 }}>
                     {x.label}
