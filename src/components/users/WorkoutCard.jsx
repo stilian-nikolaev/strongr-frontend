@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function WorkoutCard() {
   return (
-    <Card sx={{
+    <Card shadow="lg" sx={{
         backgroundColor: 'pink',
         borderRadius: '10px',
         border: '2px solid grey',
