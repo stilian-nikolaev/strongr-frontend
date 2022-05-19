@@ -2,7 +2,7 @@ import { Aside, Avatar, Center, Container, Text } from '@mantine/core'
 import React from 'react'
 import avatar from '../../../images/avatar.jpg'
 
-export default function RightBar() {
+export default function SideBar() {
     return (
         <Aside width={{ base: '20vw' }} sx={{ alignItems: 'center' }}>
             <Container sx={{ padding: 0, marginTop: 50 }}>
