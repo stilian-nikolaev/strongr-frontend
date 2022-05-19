@@ -6,14 +6,14 @@ import { MdClose, MdMoreHoriz } from 'react-icons/md'
 import { useQuery } from 'react-query';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
-import WorkoutCard from './WorkoutCard';
+import ExerciseCard from './ExerciseCard';
 
 async function fetchWorkout(id) {
     const res = await axios.get(`http://localhost:5000/workouts/${id}`);
     return res.data;
 }
 
-export default function Workout({ onBackClick, selectedWorkoutId }) {
+export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
     const { data, status } = useQuery(`workout/${selectedWorkoutId}`, () => fetchWorkout(selectedWorkoutId));
     if (status === 'loading') {
         return <LoadingScreen/>;
@@ -42,6 +42,7 @@ export default function Workout({ onBackClick, selectedWorkoutId }) {
                     <Text sx={{ fontSize: '2rem' }}>Pull day</Text>
                 </Box>
                 <SimpleGrid spacing="md" cols={4} sx={{ marginTop: '30px' }}>
+                    {data.exercises.map(x=> <ExerciseCard exercise={x}/>)}
                 </SimpleGrid>
 
             </Box>

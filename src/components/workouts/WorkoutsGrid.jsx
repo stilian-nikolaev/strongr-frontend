@@ -12,7 +12,7 @@ async function fetchWorkouts() {
 }
 
 
-export default function Grid({ onWorkoutClick }) {
+export default function WorkoutsGrid({ onWorkoutClick }) {
     const { data, status } = useQuery('workouts', fetchWorkouts);
     
     if (status === 'loading') {

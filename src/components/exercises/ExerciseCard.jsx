@@ -1,9 +1,8 @@
-import { MdClose, MdMoreHoriz } from 'react-icons/md'
 import { RiMoreFill } from 'react-icons/ri';
 import { Box, Card, Text } from '@mantine/core'
 import React from 'react'
 
-export default function WorkoutCard() {
+export default function ExerciseCard() {
   return (
     <Card shadow="lg" sx={{
         backgroundColor: 'pink',
