@@ -24,9 +24,9 @@ export default function Menu() {
 
     return (
         <Stack>
-            {items.map(x => (<Box sx={{display: 'flex'}}>
+            {items.map(x => (<Box key={x.label} sx={{display: 'flex'}}>
                 {x.selected ? <BsDot size={20}/> : ''}
-                <Text key={x.label} sx={{
+                <Text sx={{
                     fontSize: '1vw',
                     color: x.selected ? 'black' : '#5b5b5b',
                     marginLeft: x.selected ? 0 : 20,
