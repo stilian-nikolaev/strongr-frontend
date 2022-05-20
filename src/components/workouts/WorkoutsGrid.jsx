@@ -14,14 +14,16 @@ async function fetchWorkouts() {
 
 export default function WorkoutsGrid({ onWorkoutClick }) {
     const { data, status } = useQuery('workouts', fetchWorkouts);
-    
+
     if (status === 'loading') {
-        return <LoadingScreen/>
+        return <LoadingScreen />
     }
 
     if (status === 'error') {
-        return <ErrorScreen/>
+        return <ErrorScreen />
     }
+
+
     return (
         <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>
             <SimpleGrid cols={3}>
@@ -29,9 +31,8 @@ export default function WorkoutsGrid({ onWorkoutClick }) {
                     <Card key={x._id} onClick={() => onWorkoutClick(x._id)} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">
                         <Text  >{x.title}</Text>
                         <Text>Exercises: {x.exercises.length}</Text>
-                        <Text>Sets: {x.exercises.reduce((x, acc) => x + acc.sets, 0)}</Text>
+                        <Text>Sets: {x.exercises.reduce((x, acc) => x + acc.sets.length, 0)}</Text>
                     </Card>
-
                 )}
             </SimpleGrid>
             <ActionIcon radius={50} >
