@@ -9,7 +9,7 @@ import LoadingScreen from '../common/LoadingScreen';
 import ExerciseCard from './ExerciseCard';
 
 
-export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
+export default function ExercisesGrid({ setView, selectedWorkoutId }) {
     const { data, status } = useWorkout(selectedWorkoutId);
 
     if (status === 'loading') {
@@ -49,7 +49,7 @@ export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
                 </SimpleGrid>
 
             </Box>
-            <ActionIcon onClick={onBackClick} radius={50}>
+            <ActionIcon onClick={() => setView('workouts')} radius={50}>
                 <MdClose size={30} />
             </ActionIcon>
         </Container>

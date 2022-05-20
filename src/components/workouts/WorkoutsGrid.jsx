@@ -5,7 +5,7 @@ import { useWorkouts } from '../../hooks/workouts';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
 
-export default function WorkoutsGrid({ onWorkoutClick }) {
+export default function WorkoutsGrid({ onWorkoutClick, setView }) {
     const { data, status } = useWorkouts();
 
     if (status === 'loading') {
@@ -20,14 +20,17 @@ export default function WorkoutsGrid({ onWorkoutClick }) {
         <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>
             <SimpleGrid cols={3}>
                 {data.map(x =>
-                    <Card key={x._id} onClick={() => onWorkoutClick(x._id)} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">
+                    <Card key={x._id} onClick={() => {
+                        onWorkoutClick(x._id);
+                        setView('exercises')
+                    }} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">
                         <Text>{x.title}</Text>
                         <Text>Exercises: {x.exercises.length}</Text>
                         <Text>Sets: {x.exercises.reduce((x, acc) => x + acc.sets.length, 0)}</Text>
                     </Card>
                 )}
             </SimpleGrid>
-            <ActionIcon radius={50} >
+            <ActionIcon radius={50} onClick={() => setView('workout-form')} >
                 <MdAdd size={30} />
             </ActionIcon>
         </Container>
