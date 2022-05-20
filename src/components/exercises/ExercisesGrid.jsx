@@ -16,11 +16,11 @@ async function fetchWorkout(id) {
 export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
     const { data, status } = useQuery(`workout/${selectedWorkoutId}`, () => fetchWorkout(selectedWorkoutId));
     if (status === 'loading') {
-        return <LoadingScreen/>;
+        return <LoadingScreen />;
     }
 
     if (status === 'error') {
-        return <ErrorScreen/>;
+        return <ErrorScreen />;
     }
 
     return (
@@ -42,7 +42,13 @@ export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
                     <Text sx={{ fontSize: '2rem' }}>{data.title}</Text>
                 </Box>
                 <SimpleGrid spacing="md" cols={4} sx={{ marginTop: '30px' }}>
-                    {data.exercises.map(x=> <ExerciseCard exercise={x}/>)}
+                    
+                    {
+                    data.exercises.length != 0
+                        ?
+                        data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
+                        :
+                        <Text>There are currently no exercises in this workout.</Text>}
                 </SimpleGrid>
 
             </Box>
