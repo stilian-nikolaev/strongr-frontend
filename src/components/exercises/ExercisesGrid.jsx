@@ -3,18 +3,15 @@ import { useHover } from '@mantine/hooks';
 import axios from 'axios';
 import React from 'react'
 import { MdClose, MdMoreHoriz } from 'react-icons/md'
-import { useQuery } from 'react-query';
+import { useWorkout } from '../../hooks/workouts';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
 import ExerciseCard from './ExerciseCard';
 
-async function fetchWorkout(id) {
-    const res = await axios.get(`http://localhost:5000/workouts/${id}`);
-    return res.data;
-}
 
 export default function ExercisesGrid({ onBackClick, selectedWorkoutId }) {
-    const { data, status } = useQuery(`workout/${selectedWorkoutId}`, () => fetchWorkout(selectedWorkoutId));
+    const { data, status } = useWorkout(selectedWorkoutId);
+
     if (status === 'loading') {
         return <LoadingScreen />;
     }
