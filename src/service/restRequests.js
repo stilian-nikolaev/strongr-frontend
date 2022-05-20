@@ -15,3 +15,8 @@ export async function createWorkout(data) {
     const res = await apiClient.post(endpoints.workouts.all.url, data);
     return res.data;
 }
+
+export async function createExercise(workoutId, data) {
+    const res = await apiClient.post(endpoints.exercises.all(workoutId).url, data);
+    return res.data;
+}

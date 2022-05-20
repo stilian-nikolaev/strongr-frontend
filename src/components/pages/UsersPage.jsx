@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ExerciseForm from '../exercises/ExerciseForm';
 import ExerciseGrid from '../exercises/ExercisesGrid'
 import WorkoutsForm from '../workouts/WorkoutsForm';
 import WorkoutsGrid from '../workouts/WorkoutsGrid'
@@ -22,6 +23,8 @@ export default function UsersPage() {
       return <ExerciseGrid setView={setView} selectedWorkoutId={selectedWorkoutId} onBackClick={onBackClick} />
     case 'workout-form':
       return <WorkoutsForm setView={setView} />
+    case 'exercise-form':
+      return <ExerciseForm setView={setView} selectedWorkoutId={selectedWorkoutId} />
     default:
       return <WorkoutsGrid onWorkoutClick={onWorkoutClick} />
       break;
