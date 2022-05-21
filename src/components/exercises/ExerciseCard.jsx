@@ -39,7 +39,7 @@ export default function ExerciseCard({ exercise }) {
                         </Box >
                     }
                     size="xs"
-                    gutter={-25}
+                    gutter={-8}
                 >
                     <Menu.Item onClick={onAddSetClick}>
                         Add set
