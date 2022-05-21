@@ -15,7 +15,7 @@ export default function ExerciseForm({ setView, selectedWorkoutId }) {
         onError: () => console.log('error posting exercise'),
         onSuccess: (res) => {
             console.log(res);
-            setView('workouts')
+            setView('exercises')
         }
     })
 
