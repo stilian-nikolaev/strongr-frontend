@@ -1,46 +1,57 @@
-import { Box, Modal, Text } from '@mantine/core'
+import { Box, Modal, Text, UnstyledButton } from '@mantine/core'
 import React from 'react'
 import GenericForm from '../common/form/GenericForm'
 import Select from '../common/form/Select'
 import TextField from '../common/form/TextField'
+import { MdDone } from 'react-icons/md'
 
 export default function AddSetForm() {
+
+    function onSubmit(data) {
+        console.log(data);
+    }
+
     return (
-        <GenericForm initialValues={{ amount: 10, unit: 'reps', weight: 20 }}>
-        <Box sx={{ display: 'flex' }}>
-            <TextField
-                variant="unstyled"
-                size="md"
-                aria-label="amount"
-                name="amount"
-                type="number"
-                min={0}
-                max={99}
-                sx={{ width: '1.6vw',  borderBottom: '1px solid black', height: '5.2vh'  }}
-            />
-            <Select
-                variant="unstyled"
-                rightSection={<></>}
-                rightSectionWidth="0"
-                size="md"
-                ml={4}
-                aria-label="unit"
-                sx={{ width: '2.6vw',  borderBottom: '1px solid black', height: '5.2vh'  }}
-                name="unit"
-                data={['reps', 'sec', 'min']}
-            />
-            <Text ml={4} sx={{ alignSelf: 'center', marginTop: '1.4vh' }}>with</Text>
-            <TextField
-                variant="unstyled"
-                size="md"
-                aria-label="weight"
-                ml={4} name="weight"
-                type="number"
-                min={0}
-                max={999}
-                sx={{ width: '2.4vw', borderBottom: '1px solid black', height: '5.2vh' }} />
-            <Text sx={{ alignSelf: 'center', marginTop: '1.4vh'}}>kg</Text>
-        </Box>
-    </GenericForm>
+        <GenericForm onSubmit={onSubmit} initialValues={{ amount: 10, unit: 'reps', weight: 20 }}>
+            <Box sx={{ display: 'flex', marginLeft: '-0.5vw' }}>
+                <TextField
+                    variant="unstyled"
+                    size="md"
+                    aria-label="amount"
+                    name="amount"
+                    type="number"
+                    min={0}
+                    max={99}
+                    sx={{ width: '1.7vw', borderBottom: '1px solid black', height: 32 }}
+                />
+                <Select
+                    variant="unstyled"
+                    rightSection={<></>}
+                    rightSectionWidth="0"
+                    size="md"
+                    ml={4}
+                    aria-label="unit"
+                    sx={{ width: '2.6vw', borderBottom: '1px solid black', height: 32 }}
+                    name="unit"
+                    data={['reps', 'sec', 'min']}
+                />
+                <Text ml={4} sx={{ alignSelf: 'center', marginTop: 9 }}>with</Text>
+                <TextField
+                    variant="unstyled"
+                    size="md"
+                    aria-label="weight"
+                    ml={2} name="weight"
+                    type="number"
+                    min={0}
+                    max={999}
+                    sx={{ width: '2.4vw', borderBottom: '1px solid black', height: 32 }} />
+                <Text sx={{ alignSelf: 'center', marginTop: 9 }}>kg</Text>
+                <UnstyledButton type="submit" ml={4} sx={{alignSelf: 'center', height: 1, marginTop: -10, '&:hover': {
+                    cursor: 'pointer'
+                }}}>
+                    <MdDone size={15} type="submit" />
+                </UnstyledButton>
+            </Box>
+        </GenericForm>
     )
 }
