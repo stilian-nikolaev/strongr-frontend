@@ -1,15 +1,18 @@
 import { RiMoreFill } from 'react-icons/ri';
-import { Box, Card, Menu, Text } from '@mantine/core'
-import React, { forwardRef } from 'react'
+import { Box, Card, Menu, Text, TextInput } from '@mantine/core'
+import React, { forwardRef, useState } from 'react'
+import AddSetForm from './AddSetForm';
 
 export default function ExerciseCard({ exercise }) {
-    
-    function onAddSetClick(e) {
 
+    const [addingSet, setAddingSet] = useState(false);
+
+    function onAddSetClick(e) {
+        setAddingSet(true);
     }
 
     function onEditClick(e) {
-        
+
     }
 
     function onDeleteClick(e) {
@@ -60,7 +63,9 @@ export default function ExerciseCard({ exercise }) {
                         {x.amount} reps {x.weight > 0 ? `with ${x.weight} kg` : 'bodyweight'}
                     </Text>)
                 :
-                <Text>No sets yet.</Text>}
+                addingSet == false ?
+                    <Text>No sets yet.</Text> : null}
+            {addingSet ? <AddSetForm /> : null}
         </Card>
     )
 }
