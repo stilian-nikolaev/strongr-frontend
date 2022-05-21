@@ -34,7 +34,7 @@ export default function ExerciseCard({ exercise }) {
                 </Text>
                 <Menu
                     control={
-                        <Box className="more" sx={{ display: 'none', '&:hover': { cursor: 'pointer' } }} >
+                        <Box className="more" sx={{ height: '1vh', display: 'none', '&:hover': { cursor: 'pointer' } }} >
                             <RiMoreFill size="1.5vw" />
                         </Box >
                     }
