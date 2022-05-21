@@ -44,7 +44,7 @@ export default function ExerciseForm({ setView, selectedWorkoutId }) {
                     <Button mt="lg" type="submit">Submit</Button>
                 </GenericForm>
             </Box>
-            <ActionIcon onClick={() => setView('workouts')} radius={50}>
+            <ActionIcon onClick={() => setView('exercises')} radius={50}>
                 <MdClose size={30} />
             </ActionIcon>
         </Container>
