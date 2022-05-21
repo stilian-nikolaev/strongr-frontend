@@ -20,3 +20,8 @@ export async function createExercise(workoutId, data) {
     const res = await apiClient.post(endpoints.exercises.all(workoutId).url, data);
     return res.data;
 }
+
+export async function createSet(workoutId, exerciseId, data) {
+    const res = await apiClient.post(endpoints.sets.all([workoutId, exerciseId]).url, data);
+    return res.data;
+}

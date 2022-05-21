@@ -48,7 +48,7 @@ export default function ExercisesGrid({ setView, selectedWorkoutId }) {
                 {
                     data.exercises.length != 0
                         ?
-                        data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
+                        data.exercises.map(x => <ExerciseCard selectedWorkoutId={selectedWorkoutId} key={x._id} exercise={x} />)
                         :
                         <Text>There are currently no exercises in this workout.</Text>}
             </SimpleGrid>

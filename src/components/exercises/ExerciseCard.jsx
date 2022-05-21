@@ -3,8 +3,7 @@ import { Box, Card, Menu, Text, TextInput } from '@mantine/core'
 import React, { forwardRef, useState } from 'react'
 import AddSetForm from './AddSetForm';
 
-export default function ExerciseCard({ exercise }) {
-
+export default function ExerciseCard({ exercise, selectedWorkoutId }) {
     const [addingSet, setAddingSet] = useState(false);
 
     function onAddSetClick(e) {
@@ -65,7 +64,7 @@ export default function ExerciseCard({ exercise }) {
                 :
                 addingSet == false ?
                     <Text>No sets yet.</Text> : null}
-            {addingSet ? <AddSetForm /> : null}
+            {addingSet ? <AddSetForm setAddingSet={setAddingSet} selectedWorkoutId={selectedWorkoutId} exerciseId={exercise._id} /> : null}
         </Card>
     )
 }

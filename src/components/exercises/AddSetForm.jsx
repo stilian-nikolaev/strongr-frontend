@@ -4,16 +4,33 @@ import GenericForm from '../common/form/GenericForm'
 import Select from '../common/form/Select'
 import TextField from '../common/form/TextField'
 import { MdDone } from 'react-icons/md'
+import { useMutation, useQueryClient } from 'react-query'
+import { useCreateSet } from '../../hooks/sets'
+import { endpoints } from '../../service/apiEndpoints'
 
-export default function AddSetForm() {
+export default function AddSetForm({ exerciseId, selectedWorkoutId, setAddingSet}) {
+
+    const queryClient = useQueryClient()
+
+    const mutation = useMutation({
+        mutationFn: data => useCreateSet(selectedWorkoutId, exerciseId, data),
+        onError: () => console.log('error posting set'),
+        onSuccess: (res) => {
+            console.log(res);
+            queryClient.invalidateQueries(endpoints.workouts.one(selectedWorkoutId))
+            setAddingSet(false)
+            //or invalidate queries
+        }
+    })
 
     function onSubmit(data) {
         console.log(data);
+        mutation.mutate(data)
     }
 
     return (
         <GenericForm onSubmit={onSubmit} initialValues={{ amount: 10, unit: 'reps', weight: 20 }}>
-            <Box sx={{ display: 'flex', marginLeft: '-0.5vw' }}>
+            <Box sx={{ display: 'flex', marginLeft: '-0.3vw', marginTop: -10 }}>
                 <TextField
                     variant="unstyled"
                     size="md"
@@ -46,9 +63,11 @@ export default function AddSetForm() {
                     max={999}
                     sx={{ width: '2.4vw', borderBottom: '1px solid black', height: 32 }} />
                 <Text sx={{ alignSelf: 'center', marginTop: 9 }}>kg</Text>
-                <UnstyledButton type="submit" ml={4} sx={{alignSelf: 'center', height: 1, marginTop: -10, '&:hover': {
-                    cursor: 'pointer'
-                }}}>
+                <UnstyledButton type="submit" ml={4} sx={{
+                    alignSelf: 'center', height: 1, marginTop: -10, '&:hover': {
+                        cursor: 'pointer'
+                    }
+                }}>
                     <MdDone size={15} type="submit" />
                 </UnstyledButton>
             </Box>
