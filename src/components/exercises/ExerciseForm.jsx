@@ -5,7 +5,6 @@ import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
 import { useMutation } from 'react-query';
 import { useCreateExercise } from '../../hooks/exercises';
-import Select from '../common/form/Select';
 
 
 export default function ExerciseForm({ setView, selectedWorkoutId }) {
@@ -36,11 +35,9 @@ export default function ExerciseForm({ setView, selectedWorkoutId }) {
                 <GenericForm
                     initialValues={{
                         title: '',
-                        unit: 'reps',
                     }}
                     onSubmit={onSubmit}>
                     <TextField mt="xl" name="title" type="text" label="Exercise title" required />
-                    <Select mt="xl" name="unit" label="Unit measurement" data={['reps', 'seconds', 'kilometers']} />
                     <Button mt="lg" type="submit">Submit</Button>
                 </GenericForm>
             </Box>
