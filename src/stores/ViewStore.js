@@ -1,6 +1,6 @@
 import { makeObservable, observable, action } from "mobx"
 
-class ViewStore {
+class ViewStoreImpl {
     view = 'workouts'
 
     constructor() {
@@ -10,7 +10,9 @@ class ViewStore {
         })
     }
 
-    setView(value) {
+    setView = value => {
         this.view = value
     }
 }
+
+export const ViewStore = new ViewStoreImpl();

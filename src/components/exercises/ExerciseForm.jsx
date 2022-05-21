@@ -5,9 +5,11 @@ import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
 import { useMutation } from 'react-query';
 import { useCreateExercise } from '../../hooks/exercises';
+import { ViewStore } from '../../stores/ViewStore';
 
 
-export default function ExerciseForm({ setView, selectedWorkoutId }) {
+export default function ExerciseForm({  selectedWorkoutId }) {
+    const { setView } = ViewStore;
 
     const mutation = useMutation({
         mutationFn: data => useCreateExercise(selectedWorkoutId, data),
@@ -21,6 +23,10 @@ export default function ExerciseForm({ setView, selectedWorkoutId }) {
     function onSubmit(data) {
         console.log(data);
         mutation.mutate(data)
+    }
+
+    function onClose() {
+        setView('exercises')
     }
 
     return (
@@ -41,7 +47,7 @@ export default function ExerciseForm({ setView, selectedWorkoutId }) {
                     <Button mt="lg" type="submit">Submit</Button>
                 </GenericForm>
             </Box>
-            <ActionIcon onClick={() => setView('exercises')} radius={50}>
+            <ActionIcon onClick={onClose} radius={50}>
                 <MdClose size={30} />
             </ActionIcon>
         </Container>

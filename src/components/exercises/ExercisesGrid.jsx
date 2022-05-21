@@ -1,16 +1,25 @@
 import { ActionIcon, Card, Center, Box, List, Paper, SimpleGrid, Stack, Text, Container, Loader, Button } from '@mantine/core'
-import { useHover } from '@mantine/hooks';
-import axios from 'axios';
+import { observer } from 'mobx-react';
 import React from 'react'
 import { MdClose, MdMoreHoriz } from 'react-icons/md'
 import { useWorkout } from '../../hooks/workouts';
+import { ViewStore } from '../../stores/ViewStore';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
 import ExerciseCard from './ExerciseCard';
 
 
-export default function ExercisesGrid({ setView, selectedWorkoutId }) {
+export default function ExercisesGrid({ selectedWorkoutId }) {
     const { data, status } = useWorkout(selectedWorkoutId);
+    const { setView } = ViewStore;
+
+    function onAddExerciseClick() {
+        setView('exercise-form');
+    }
+
+    function onClose() {
+        setView('workouts')
+    }
 
     if (status === 'loading') {
         return <LoadingScreen />;
@@ -38,8 +47,8 @@ export default function ExercisesGrid({ setView, selectedWorkoutId }) {
                     <Text sx={{ fontSize: '2rem' }}>{data.title}</Text>
                 </Box>
                 <Box sx={{ display: 'flex' }}>
-                    <Button onClick={() => setView('exercise-form')} color="dark" size="xs" mr="md">Add exercise</Button>
-                    <ActionIcon onClick={() => setView('workouts')} radius={50}>
+                    <Button onClick={onAddExerciseClick} color="dark" size="xs" mr="md">Add exercise</Button>
+                    <ActionIcon onClick={onClose} radius={50}>
                         <MdClose size={30} />
                     </ActionIcon>
                 </Box>

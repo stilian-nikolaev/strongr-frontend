@@ -1,12 +1,14 @@
+import { observer } from 'mobx-react';
 import React, { useState } from 'react'
+import { ViewStore } from '../../stores/ViewStore';
 import ExerciseForm from '../exercises/ExerciseForm';
 import ExerciseGrid from '../exercises/ExercisesGrid'
 import WorkoutsForm from '../workouts/WorkoutsForm';
 import WorkoutsGrid from '../workouts/WorkoutsGrid'
 
-export default function UsersPage() {
+export default observer(function UsersPage() {
   const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
-  const [view, setView] = useState('workouts');
+  const { view } = ViewStore
 
   function onBackClick() {
     setSelectedWorkoutId(null);
@@ -18,15 +20,15 @@ export default function UsersPage() {
 
   switch (view) {
     case 'workouts':
-      return <WorkoutsGrid setView={setView} onWorkoutClick={onWorkoutClick} />
+      return <WorkoutsGrid onWorkoutClick={onWorkoutClick} />
     case 'exercises':
-      return <ExerciseGrid setView={setView} selectedWorkoutId={selectedWorkoutId} onBackClick={onBackClick} />
+      return <ExerciseGrid  selectedWorkoutId={selectedWorkoutId} onBackClick={onBackClick} />
     case 'workout-form':
-      return <WorkoutsForm setView={setView} />
+      return <WorkoutsForm  />
     case 'exercise-form':
-      return <ExerciseForm setView={setView} selectedWorkoutId={selectedWorkoutId} />
+      return <ExerciseForm selectedWorkoutId={selectedWorkoutId} />
     default:
       return <WorkoutsGrid onWorkoutClick={onWorkoutClick} />
       break;
   }
-}
+})
