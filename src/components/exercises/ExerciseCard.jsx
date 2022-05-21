@@ -7,7 +7,7 @@ export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
 
     function onAddSetClick(e) {
-        setAddingSet(true);
+        setAddingSet(!addingSet);
     }
 
     function onEditClick(e) {
@@ -44,7 +44,7 @@ export default function ExerciseCard({ exercise }) {
                     gutter={-8}
                 >
                     <Menu.Item onClick={onAddSetClick}>
-                        Add set
+                        {addingSet ? 'Cancel' : 'Add set'}
                     </Menu.Item>
                     <Menu.Item onClick={onEditClick}>
                         Edit
