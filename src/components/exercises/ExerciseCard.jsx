@@ -17,7 +17,7 @@ export default function ExerciseCard({ exercise }) {
             }
         }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Text sx={{ borderBottom: '1px solid black', width: '10.5vw', marginBottom: '5px' }}>
+                <Text sx={{ borderBottom: '1px solid black', width: '10vw', marginBottom: '5px' }}>
                     {exercise.title}
                 </Text>
                 <Box className="more" sx={{ height: '1vh', padding: 0, display: 'none', '&:hover': { cursor: 'pointer' } }}>
