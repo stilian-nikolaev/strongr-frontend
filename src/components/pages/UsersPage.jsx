@@ -7,28 +7,19 @@ import WorkoutsForm from '../workouts/WorkoutsForm';
 import WorkoutsGrid from '../workouts/WorkoutsGrid'
 
 export default observer(function UsersPage() {
-  const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
   const { view } = ViewStore
-
-  function onBackClick() {
-    setSelectedWorkoutId(null);
-  }
-
-  function onWorkoutClick(id) {
-    setSelectedWorkoutId(id);
-  }
 
   switch (view) {
     case 'workouts':
-      return <WorkoutsGrid onWorkoutClick={onWorkoutClick} />
+      return <WorkoutsGrid />
     case 'exercises':
-      return <ExerciseGrid  selectedWorkoutId={selectedWorkoutId} onBackClick={onBackClick} />
+      return <ExerciseGrid />
     case 'workout-form':
       return <WorkoutsForm  />
     case 'exercise-form':
-      return <ExerciseForm selectedWorkoutId={selectedWorkoutId} />
+      return <ExerciseForm  />
     default:
-      return <WorkoutsGrid onWorkoutClick={onWorkoutClick} />
+      return <WorkoutsGrid />
       break;
   }
 })

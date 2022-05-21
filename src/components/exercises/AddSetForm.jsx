@@ -7,19 +7,20 @@ import { MdDone } from 'react-icons/md'
 import { useMutation, useQueryClient } from 'react-query'
 import { useCreateSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
+import { WorkoutStore } from '../../stores/WorkoutStore'
 
-export default function AddSetForm({ exerciseId, selectedWorkoutId, setAddingSet}) {
+export default function AddSetForm({ exerciseId, setAddingSet}) {
+    const {workoutId} = WorkoutStore;
 
     const queryClient = useQueryClient()
 
     const mutation = useMutation({
-        mutationFn: data => useCreateSet(selectedWorkoutId, exerciseId, data),
+        mutationFn: data => useCreateSet(workoutId, exerciseId, data),
         onError: () => console.log('error posting set'),
         onSuccess: (res) => {
             console.log(res);
-            queryClient.invalidateQueries(endpoints.workouts.one(selectedWorkoutId))
+            queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
             setAddingSet(false)
-            //or invalidate queries
         }
     })
 

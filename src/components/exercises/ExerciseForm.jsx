@@ -6,13 +6,15 @@ import GenericForm from '../common/form/GenericForm';
 import { useMutation } from 'react-query';
 import { useCreateExercise } from '../../hooks/exercises';
 import { ViewStore } from '../../stores/ViewStore';
+import { WorkoutStore } from '../../stores/WorkoutStore';
 
 
-export default function ExerciseForm({  selectedWorkoutId }) {
+export default function ExerciseForm() {
+    const {workoutId} = WorkoutStore;
     const { setView } = ViewStore;
 
     const mutation = useMutation({
-        mutationFn: data => useCreateExercise(selectedWorkoutId, data),
+        mutationFn: data => useCreateExercise(workoutId, data),
         onError: () => console.log('error posting exercise'),
         onSuccess: (res) => {
             console.log(res);

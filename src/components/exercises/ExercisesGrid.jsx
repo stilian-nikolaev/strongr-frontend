@@ -4,14 +4,16 @@ import React from 'react'
 import { MdClose, MdMoreHoriz } from 'react-icons/md'
 import { useWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
+import { WorkoutStore } from '../../stores/WorkoutStore';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
 import ExerciseCard from './ExerciseCard';
 
 
-export default function ExercisesGrid({ selectedWorkoutId }) {
-    const { data, status } = useWorkout(selectedWorkoutId);
+export default observer(function ExercisesGrid() {
+    const {workoutId} = WorkoutStore;
     const { setView } = ViewStore;
+    const { data, status } = useWorkout(workoutId);
 
     function onAddExerciseClick() {
         setView('exercise-form');
@@ -30,7 +32,7 @@ export default function ExercisesGrid({ selectedWorkoutId }) {
     }
 
     return (
-        <Container sx={{padding: 0}}>
+        <Container sx={{ padding: 0 }}>
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -57,10 +59,10 @@ export default function ExercisesGrid({ selectedWorkoutId }) {
                 {
                     data.exercises.length != 0
                         ?
-                        data.exercises.map(x => <ExerciseCard selectedWorkoutId={selectedWorkoutId} key={x._id} exercise={x} />)
+                        data.exercises.map(x => <ExerciseCard  key={x._id} exercise={x} />)
                         :
                         <Text>There are currently no exercises in this workout.</Text>}
             </SimpleGrid>
         </Container>
     )
-}
+})
