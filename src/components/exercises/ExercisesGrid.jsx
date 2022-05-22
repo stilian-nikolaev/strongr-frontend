@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react';
-import { ActionIcon, Box, SimpleGrid, Text, Container, Button, Menu } from '@mantine/core'
+import { ActionIcon, Box, SimpleGrid, Text, Container, Button, Menu, UnstyledButton } from '@mantine/core'
 import { MdClose } from 'react-icons/md'
+import { HiPlus } from 'react-icons/hi'
 
 import ExerciseCard from './ExerciseCard';
 import ErrorScreen from '../common/ErrorScreen';
@@ -14,12 +15,14 @@ import { RiMoreFill } from 'react-icons/ri';
 import EditTitleForm from './EditTitleForm';
 import { useMutation } from 'react-query';
 import ExerciseForm from './ExerciseForm';
+import { useHover } from '@mantine/hooks';
 
 
 export default observer(function ExercisesGrid() {
     const { workoutId } = WorkoutStore;
     const { setView, editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
     const { data, status } = useWorkout(workoutId);
+    const { isOverButton, ref } = useHover()
 
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteWorkout(workoutId),
@@ -105,17 +108,46 @@ export default observer(function ExercisesGrid() {
                     </Menu>
 
                 </Box>
-                <Box sx={{ display: 'flex' }}>
-                    <Button
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <UnstyledButton
                         onClick={onAddExerciseClick}
-                        color="dark"
-                        size="md"
-                        sx={{ width: '10vw' }}
-                        mr="md">
-                        <Text sx={{ fontSize: '1vw' }}>
+                        mr="md"
+                        sx={{
+                            backgroundColor: 'black',
+                            borderRadius: '50%',
+                            width: '3vw',
+                            height: '3vw',
+                            display: 'grid',
+                            placeItems: 'center',
+                            transition: 'all .15s ease-in-out',
+                            '&:hover': {
+                                borderRadius: 10,
+                                width: '10vw',
+                                '& .plus': {
+                                    display: 'none',
+                                },
+                                '& .text': {
+                                    color: 'white',
+                                    fontSize: '1vw',
+                                    visibility: 'visible',
+                                }
+                            }
+                        }}>
+                        <Box sx={{ marginBottom: '-1.5vw'}}>
+                            <HiPlus className="plus" color="white" size={'1.5vw'} />
+                        </Box>
+                        <Text
+                            className="text"
+                            sx={{
+                                color: 'black',
+                                fontSize: '0vw',
+                                visibility: 'hidden',
+                                marginTop: '-1.5vw',
+                                transition: 'all .15s'
+                            }}>
                             {addingExercise ? 'Cancel' : 'Add exercise'}
                         </Text>
-                    </Button>
+                    </UnstyledButton>
                     <CloseButton onClose={onClose} />
                 </Box>
             </Box>
