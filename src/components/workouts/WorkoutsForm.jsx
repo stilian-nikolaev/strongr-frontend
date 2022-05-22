@@ -7,7 +7,7 @@ import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
 import { useCreateWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
-import CloseButton from '../common/CloseButton';
+import BackButton from '../common/BackButton';
 
 
 export default function WorkoutsForm() {
@@ -48,7 +48,7 @@ export default function WorkoutsForm() {
                     <Button mt="lg" type="submit">Submit</Button>
                 </GenericForm>
             </Box>
-            <CloseButton onClose={onClose} />
+            <BackButton handler={onClose} />
         </Container>
     )
 }
