@@ -25,3 +25,9 @@ export async function createSet(workoutId, exerciseId, data) {
     const res = await apiClient.post(endpoints.sets.all([workoutId, exerciseId]).url, data);
     return res.data;
 }
+
+export async function deleteExercise(workoutId, exerciseId) {
+    const res = await apiClient.delete(endpoints.exercises.one([workoutId, exerciseId]).url);
+    return res.data;
+}
+

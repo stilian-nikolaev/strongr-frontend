@@ -3,9 +3,23 @@ import { Box, Card, Menu, Text } from '@mantine/core'
 import { RiMoreFill } from 'react-icons/ri';
 
 import AddSetForm from './AddSetForm';
+import { useMutation, useQueryClient } from 'react-query';
+import { WorkoutStore } from '../../stores/WorkoutStore';
+import { useDeleteExercise } from '../../hooks/exercises';
+import { endpoints } from '../../service/apiEndpoints';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
+    const {workoutId} = WorkoutStore;
+    const queryClient = useQueryClient();
+
+    const deleteMutation = useMutation({
+        mutationFn: () => useDeleteExercise(workoutId, exercise._id),
+        onError: () => console.log('error deleting exercise'),
+        onSuccess: () => {
+            queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
+        }
+    })
 
     function onAddSetClick() {
         setAddingSet(!addingSet);
@@ -16,7 +30,8 @@ export default function ExerciseCard({ exercise }) {
     }
 
     function onDeleteClick() {
-        console.log('delete');
+        deleteMutation.mutate()
+
     }
 
     return (
