@@ -1,6 +1,6 @@
 import React from 'react'
-import { NumberInput} from '@mantine/core';
 import { useField } from 'formik'
+import { NumberInput } from '@mantine/core';
 
 export default function NumberField({ name, ...props }) {
   const [field] = useField(name);

@@ -1,12 +1,13 @@
 import React from 'react'
-import { Avatar, Center, Image, List, ListItem, MenuItem, Navbar, Text, ThemeIcon } from '@mantine/core'
-import logo from '../../../images/logo.jpg'
+import { Avatar, Navbar, Text } from '@mantine/core'
+
 import Menu from './Menu'
+import logo from '../../../images/logo.jpg'
 
 export default function NavigationBar() {
     return (
-        <Navbar  width={{ base: '15vw' }}>
-            <Navbar.Section sx={{ display: 'flex', marginLeft:15, marginTop: 20, '&:hover': { cursor: 'pointer' } }}>
+        <Navbar width={{ base: '15vw' }}>
+            <Navbar.Section sx={{ display: 'flex', marginLeft: 15, marginTop: 20, '&:hover': { cursor: 'pointer' } }}>
                 <Avatar src={logo} alt="logo" size="4.4vw" radius={50} sx={{
                     marginLeft: '5px',
                     border: '2px solid black'

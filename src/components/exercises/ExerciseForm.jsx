@@ -1,16 +1,17 @@
-import { ActionIcon, Box, Button, Center, Container, TextInput } from '@mantine/core';
-import React, { useState } from 'react'
+import React from 'react'
+import { useMutation } from 'react-query';
+import { ActionIcon, Box, Button, Container } from '@mantine/core';
 import { MdClose } from 'react-icons/md';
+
 import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
-import { useMutation } from 'react-query';
 import { useCreateExercise } from '../../hooks/exercises';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 
 
 export default function ExerciseForm() {
-    const {workoutId} = WorkoutStore;
+    const { workoutId } = WorkoutStore;
     const { setView } = ViewStore;
 
     const mutation = useMutation({

@@ -1,6 +1,6 @@
-import { Box, Image, List, ListItem, Stack, Text } from '@mantine/core'
 import React from 'react'
-import { BsDot} from 'react-icons/bs'
+import { Box, Stack, Text } from '@mantine/core'
+import { BsDot } from 'react-icons/bs'
 
 export default function Menu() {
 
@@ -20,8 +20,8 @@ export default function Menu() {
 
     return (
         <Stack>
-            {items.map(x => (<Box key={x.label} sx={{display: 'flex'}}>
-                {x.selected ? <BsDot size={20}/> : ''}
+            {items.map(x => (<Box key={x.label} sx={{ display: 'flex' }}>
+                {x.selected ? <BsDot size={20} /> : ''}
                 <Text sx={{
                     fontSize: '1vw',
                     color: x.selected ? 'black' : '#5b5b5b',

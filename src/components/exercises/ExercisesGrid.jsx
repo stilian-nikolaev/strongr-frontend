@@ -1,17 +1,18 @@
-import { ActionIcon, Card, Center, Box, List, Paper, SimpleGrid, Stack, Text, Container, Loader, Button } from '@mantine/core'
-import { observer } from 'mobx-react';
 import React from 'react'
-import { MdClose, MdMoreHoriz } from 'react-icons/md'
+import { observer } from 'mobx-react';
+import { ActionIcon, Box, SimpleGrid, Text, Container, Button } from '@mantine/core'
+import { MdClose } from 'react-icons/md'
+
+import ExerciseCard from './ExerciseCard';
+import ErrorScreen from '../common/ErrorScreen';
+import LoadingScreen from '../common/LoadingScreen';
 import { useWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
-import ErrorScreen from '../common/ErrorScreen';
-import LoadingScreen from '../common/LoadingScreen';
-import ExerciseCard from './ExerciseCard';
 
 
 export default observer(function ExercisesGrid() {
-    const {workoutId} = WorkoutStore;
+    const { workoutId } = WorkoutStore;
     const { setView } = ViewStore;
     const { data, status } = useWorkout(workoutId);
 
@@ -59,7 +60,7 @@ export default observer(function ExercisesGrid() {
                 {
                     data.exercises.length != 0
                         ?
-                        data.exercises.map(x => <ExerciseCard  key={x._id} exercise={x} />)
+                        data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
                         :
                         <Text>There are currently no exercises in this workout.</Text>}
             </SimpleGrid>

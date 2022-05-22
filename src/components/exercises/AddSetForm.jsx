@@ -1,16 +1,17 @@
-import { Box, Modal, Text, UnstyledButton } from '@mantine/core'
 import React from 'react'
+import { useMutation, useQueryClient } from 'react-query'
+import { Box, Text, UnstyledButton } from '@mantine/core'
+import { MdDone } from 'react-icons/md'
+
 import GenericForm from '../common/form/GenericForm'
 import Select from '../common/form/Select'
 import TextField from '../common/form/TextField'
-import { MdDone } from 'react-icons/md'
-import { useMutation, useQueryClient } from 'react-query'
 import { useCreateSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 
-export default function AddSetForm({ exerciseId, setAddingSet}) {
-    const {workoutId} = WorkoutStore;
+export default function AddSetForm({ exerciseId, setAddingSet }) {
+    const { workoutId } = WorkoutStore;
 
     const queryClient = useQueryClient()
 

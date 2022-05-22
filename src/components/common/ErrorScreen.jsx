@@ -1,5 +1,5 @@
-import { Box, Center, Text } from '@mantine/core'
 import React from 'react'
+import { Box, Center, Text } from '@mantine/core'
 
 export default function ErrorScreen() {
     return (

@@ -36,7 +36,13 @@ export default function ExerciseCard({ exercise }) {
                 </Text>
                 <Menu
                     control={
-                        <Box className="more" sx={{ height: '1vh', display: 'none', '&:hover': { cursor: 'pointer' } }} >
+                        <Box className="more" sx={{
+                            height: '1vh',
+                            display: 'none',
+                            '&:hover': {
+                                cursor: 'pointer'
+                            }
+                        }} >
                             <RiMoreFill size="1.5vw" />
                         </Box >
                     }
@@ -55,15 +61,13 @@ export default function ExerciseCard({ exercise }) {
                 </Menu>
 
             </Box>
-            {exercise.sets.length != 0
-                ?
-                exercise.sets.map(x =>
-                    <Text key={x._id}>
-                        {x.amount} reps {x.weight > 0 ? `with ${x.weight} kg` : 'bodyweight'}
-                    </Text>)
+            {exercise.sets.length != 0 ? exercise.sets.map(x =>
+                <Text key={x._id}>
+                    {x.amount} reps {x.weight > 0 ? `with ${x.weight} kg` : 'bodyweight'}
+                </Text>)
                 :
-                addingSet == false ?
-                    <Text>No sets yet.</Text> : null}
+                addingSet == false ? <Text>No sets yet.</Text> : null}
+
             {addingSet ? <AddSetForm setAddingSet={setAddingSet} exerciseId={exercise._id} /> : null}
         </Card>
     )

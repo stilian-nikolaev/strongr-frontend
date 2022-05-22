@@ -1,5 +1,5 @@
-import { Button, Header, Image, Text } from '@mantine/core'
 import React from 'react'
+import { Button, Header, Image, Text } from '@mantine/core'
 import logo from '../../images/logo.jpg'
 
 

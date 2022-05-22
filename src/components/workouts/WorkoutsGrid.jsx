@@ -1,17 +1,17 @@
-import { ActionIcon, Box, Card, Center, Container, Loader, SimpleGrid, Text } from '@mantine/core'
 import React from 'react'
-import { observer } from 'mobx-react'
+import { ActionIcon, Card, Container, SimpleGrid, Text } from '@mantine/core'
 import { MdAdd } from 'react-icons/md'
+
+import LoadingScreen from '../common/LoadingScreen';
+import ErrorScreen from '../common/ErrorScreen';
 import { useWorkouts } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
-import ErrorScreen from '../common/ErrorScreen';
-import LoadingScreen from '../common/LoadingScreen';
 
 export default function WorkoutsGrid() {
     const { data, status } = useWorkouts();
     const { setView } = ViewStore;
-    const {setWorkoutId} = WorkoutStore;
+    const { setWorkoutId } = WorkoutStore;
 
     function addWorkoutClickHandler() {
         setView('workout-form')
