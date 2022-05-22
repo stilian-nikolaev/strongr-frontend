@@ -3,6 +3,7 @@ import { makeObservable, observable, action } from "mobx"
 class ViewStoreImpl {
     view = 'workouts'
     editingTitle = false
+    addingExercise = false
 
     constructor() {
         makeObservable(this, {
@@ -10,6 +11,8 @@ class ViewStoreImpl {
             setView: action,
             editingTitle: observable,
             toggleEditingTitle: action,
+            addingExercise: observable,
+            toggleAddingExercise: action,
         })
     }
 
@@ -19,6 +22,10 @@ class ViewStoreImpl {
 
     toggleEditingTitle = () => {
         this.editingTitle = !(this.editingTitle)
+    }
+
+    toggleAddingExercise = () => {
+        this.addingExercise = !(this.addingExercise)
     }
 }
 

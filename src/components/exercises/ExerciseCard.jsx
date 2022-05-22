@@ -85,7 +85,8 @@ export default function ExerciseCard({ exercise }) {
                 </Menu>
             </Box>
             <Box>
-                {exercise.sets.length == 0 && !addingSet && <Text sx={{fontSize: '1.2vw'}}>No sets yet.</Text>}
+                {exercise.sets.length == 0 && !addingSet && 
+                <Text sx={{fontSize: '1.2vw'}}>No sets yet.</Text>}
                 {exercise.sets.map(x =>
                     <Text sx={{fontSize: '1.2vw'}} key={x._id}>
                         {x.amount} reps {x.weight > 0 ? `with ${x.weight} kg` : 'bodyweight'}

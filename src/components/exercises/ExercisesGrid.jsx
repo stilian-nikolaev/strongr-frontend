@@ -13,11 +13,12 @@ import CloseButton from '../common/CloseButton';
 import { RiMoreFill } from 'react-icons/ri';
 import EditTitleForm from './EditTitleForm';
 import { useMutation } from 'react-query';
+import ExerciseForm from './ExerciseForm';
 
 
 export default observer(function ExercisesGrid() {
     const { workoutId } = WorkoutStore;
-    const { setView, editingTitle, toggleEditingTitle } = ViewStore;
+    const { setView, editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
     const { data, status } = useWorkout(workoutId);
 
     const deleteMutation = useMutation({
@@ -30,7 +31,7 @@ export default observer(function ExercisesGrid() {
     })
 
     function onAddExerciseClick() {
-        setView('exercise-form');
+        toggleAddingExercise();
     }
 
     function onEditTitleClick() {
@@ -105,8 +106,15 @@ export default observer(function ExercisesGrid() {
 
                 </Box>
                 <Box sx={{ display: 'flex' }}>
-                    <Button onClick={onAddExerciseClick} color="dark" size="md" mr="md">
-                        <Text sx={{ fontSize: '1vw' }}>Add exercise</Text>
+                    <Button
+                        onClick={onAddExerciseClick}
+                        color="dark"
+                        size="md"
+                        sx={{ width: '10vw' }}
+                        mr="md">
+                        <Text sx={{ fontSize: '1vw' }}>
+                            {addingExercise ? 'Cancel' : 'Add exercise'}
+                        </Text>
                     </Button>
                     <CloseButton onClose={onClose} />
                 </Box>
@@ -116,7 +124,8 @@ export default observer(function ExercisesGrid() {
                     ?
                     data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
                     :
-                    <Text>There are currently no exercises in this workout.</Text>}
+                    !addingExercise && <Text>There are currently no exercises in this workout.</Text>}
+                {addingExercise && <ExerciseForm />}
             </SimpleGrid>
         </Box>
     )
