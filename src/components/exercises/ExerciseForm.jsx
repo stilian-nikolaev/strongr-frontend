@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMutation } from 'react-query';
-import { ActionIcon, Box, Button, Container } from '@mantine/core';
+import { ActionIcon, Box, Button, Card, Container, Text } from '@mantine/core';
 import { MdClose } from 'react-icons/md';
 
 import TextField from '../common/form/TextField';
@@ -33,24 +33,27 @@ export default function ExerciseForm() {
     }
 
     return (
-        <Container sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '60vw',
-            marginTop: 10,
-            padding: 0,
-        }}>
-            <Box sx={{ width: '60vw' }}>
-                <GenericForm
-                    initialValues={{
-                        title: '',
-                    }}
-                    onSubmit={onSubmit}>
-                    <TextField mt="xl" name="title" type="text" label="Exercise title" required />
-                    <Button mt="lg" type="submit">Submit</Button>
-                </GenericForm>
-            </Box>
-            <CloseButton onClose={onClose}/>
-        </Container>
+        <Card
+            shadow="lg"
+            sx={{
+                backgroundColor: 'pink',
+                borderRadius: '10px',
+                border: '2px solid grey',
+                '&:hover': {
+                    cursor: 'default',
+                    '& .more': {
+                        display: 'block'
+                    }
+                }
+            }}>
+            <Text sx={{
+                borderBottom: '1px solid black',
+                width: '10vw',
+                marginBottom: '5px',
+                fontSize: '1.2vw'
+            }}>
+                TItle
+            </Text>
+        </Card>
     )
 }

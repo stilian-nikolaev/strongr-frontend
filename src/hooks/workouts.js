@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 
 import { endpoints } from "../service/apiEndpoints";
-import { fetchWorkouts, fetchWorkout, createWorkout, editWorkout } from "../service/restRequests";
+import { fetchWorkouts, fetchWorkout, createWorkout, editWorkout, deleteWorkout } from "../service/restRequests";
 
 
 export function useWorkout(id) {
@@ -18,4 +18,8 @@ export function useCreateWorkout() {
 
 export function useEditWorkout(id, data) {
     return editWorkout(id, data);
+}
+
+export function useDeleteWorkout(id) {
+    return deleteWorkout(id);
 }

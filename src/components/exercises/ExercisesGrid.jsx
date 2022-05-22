@@ -6,18 +6,28 @@ import { MdClose } from 'react-icons/md'
 import ExerciseCard from './ExerciseCard';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
-import { useWorkout } from '../../hooks/workouts';
+import { useDeleteWorkout, useWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import CloseButton from '../common/CloseButton';
 import { RiMoreFill } from 'react-icons/ri';
 import EditTitleForm from './EditTitleForm';
+import { useMutation } from 'react-query';
 
 
 export default observer(function ExercisesGrid() {
     const { workoutId } = WorkoutStore;
     const { setView, editingTitle, toggleEditingTitle } = ViewStore;
     const { data, status } = useWorkout(workoutId);
+
+    const deleteMutation = useMutation({
+        mutationFn: () => useDeleteWorkout(workoutId),
+        onError: () => console.log('error deleting workout'),
+        onSuccess: (res) => {
+            //open comfirmation
+            setView('workouts')
+        }
+    })
 
     function onAddExerciseClick() {
         setView('exercise-form');
@@ -28,7 +38,7 @@ export default observer(function ExercisesGrid() {
     }
 
     function onDeleteWorkoutClick() {
-
+        deleteMutation.mutate();
     }
 
     function onClose() {
