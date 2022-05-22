@@ -34,7 +34,7 @@ export default function ExerciseForm() {
             sx={{
                 backgroundColor: 'pink',
                 borderRadius: '10px',
-                border: '2px solid grey',
+                border: '2px solid #353935',
                 '&:hover': {
                     cursor: 'default',
                     '& .more': {
@@ -47,7 +47,7 @@ export default function ExerciseForm() {
                     <TextField
                         variant="unstyled"
                         size="1.2vw"
-                        placeholder="Workout title"
+                        placeholder="Exercise title"
                         aria-label="title"
                         name="title"
                         sx={{
@@ -58,7 +58,7 @@ export default function ExerciseForm() {
                             fontSize: '1.2vw',
                             height: '2vw',
                             '& ::placeholder': {
-                                color: '#818589'
+                                color: '#36454F'
                             }
                         }}
                     />

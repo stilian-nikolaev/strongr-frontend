@@ -40,7 +40,7 @@ export default function ExerciseCard({ exercise }) {
             sx={{
                 backgroundColor: 'pink',
                 borderRadius: '10px',
-                border: '2px solid grey',
+                border: '2px solid #353935',
                 '&:hover': {
                     cursor: 'default',
                     '& .more': {

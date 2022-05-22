@@ -7,20 +7,17 @@ import ErrorScreen from '../common/ErrorScreen';
 import { useWorkouts } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
+import WorkoutCard from './WorkoutCard';
 
 export default function WorkoutsGrid() {
     const { data, status } = useWorkouts();
     const { setView } = ViewStore;
-    const { setWorkoutId } = WorkoutStore;
 
     function addWorkoutClickHandler() {
         setView('workout-form')
     }
 
-    function workoutClickHandler(id) {
-        setWorkoutId(id);
-        setView('exercises')
-    }
+
 
     if (status === 'loading') {
         return <LoadingScreen />
@@ -34,11 +31,7 @@ export default function WorkoutsGrid() {
         <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>
             <SimpleGrid cols={3}>
                 {data.map(x =>
-                    <Card key={x._id} onClick={() => workoutClickHandler(x._id)} px={20} sx={{ backgroundColor: 'pink' }} shadow="sm">
-                        <Text>{x.title}</Text>
-                        <Text>Exercises: {x.exercises.length}</Text>
-                        <Text>Sets: {x.exercises.reduce((x, acc) => x + acc.sets.length, 0)}</Text>
-                    </Card>
+                    <WorkoutCard key={x._id} workout={x} />
                 )}
             </SimpleGrid>
             <ActionIcon radius={50} onClick={addWorkoutClickHandler} >
