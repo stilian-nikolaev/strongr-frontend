@@ -1,74 +1,82 @@
+import React, { useState } from 'react'
+import { Box, Card, Menu, Text } from '@mantine/core'
 import { RiMoreFill } from 'react-icons/ri';
-import { Box, Card, Menu, Text, TextInput } from '@mantine/core'
-import React, { forwardRef, useState } from 'react'
+
 import AddSetForm from './AddSetForm';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
 
-    function onAddSetClick(e) {
+    function onAddSetClick() {
         setAddingSet(!addingSet);
     }
 
-    function onEditClick(e) {
+    function onEditClick() {
 
     }
 
-    function onDeleteClick(e) {
+    function onDeleteClick() {
         console.log('delete');
     }
 
     return (
-        <Card shadow="lg" sx={{
-            backgroundColor: 'pink',
-            borderRadius: '10px',
-            border: '2px solid grey',
-            '&:hover': {
-                cursor: 'default',
-                '& .more': {
-                    display: 'block'
+        <Card
+            shadow="lg"
+            sx={{
+                backgroundColor: 'pink',
+                borderRadius: '10px',
+                border: '2px solid grey',
+                '&:hover': {
+                    cursor: 'default',
+                    '& .more': {
+                        display: 'block'
+                    }
                 }
-            }
-        }}>
+            }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Text sx={{ borderBottom: '1px solid black', width: '10vw', marginBottom: '5px' }}>
+                <Text sx={{ 
+                    borderBottom: '1px solid black',
+                 width: '10vw', 
+                 marginBottom: '5px',
+                 fontSize: '1.2vw'}}>
                     {exercise.title}
                 </Text>
                 <Menu
                     control={
-                        <Box className="more" sx={{
-                            height: '1vh',
-                            display: 'none',
-                            '&:hover': {
-                                cursor: 'pointer'
-                            }
-                        }} >
+                        <Box
+                            className="more"
+                            sx={{
+                                height: '1vh',
+                                display: 'none',
+                                '&:hover': {
+                                    cursor: 'pointer'
+                                }
+                            }} >
                             <RiMoreFill size="1.5vw" />
                         </Box >
                     }
-                    size="xs"
+                    size="7vw"
                     gutter={-8}
                 >
                     <Menu.Item onClick={onAddSetClick}>
-                        {addingSet ? 'Cancel' : 'Add set'}
+                    <Text sx={{fontSize: '1vw'}}>{addingSet ? 'Cancel' : 'Add set'}</Text>
                     </Menu.Item>
                     <Menu.Item onClick={onEditClick}>
-                        Edit
+                        <Text sx={{fontSize: '1vw'}}>Edit</Text>
                     </Menu.Item>
                     <Menu.Item onClick={onDeleteClick}>
-                        Delete
+                    <Text sx={{fontSize: '1vw'}}>Delete</Text>
                     </Menu.Item>
                 </Menu>
-
             </Box>
-            {exercise.sets.length != 0 ? exercise.sets.map(x =>
-                <Text key={x._id}>
-                    {x.amount} reps {x.weight > 0 ? `with ${x.weight} kg` : 'bodyweight'}
-                </Text>)
-                :
-                addingSet == false ? <Text>No sets yet.</Text> : null}
-
-            {addingSet ? <AddSetForm setAddingSet={setAddingSet} exerciseId={exercise._id} /> : null}
+            <Box>
+                {exercise.sets.length == 0 && !addingSet && <Text sx={{fontSize: '1.2vw'}}>No sets yet.</Text>}
+                {exercise.sets.map(x =>
+                    <Text sx={{fontSize: '1.2vw'}} key={x._id}>
+                        {x.amount} reps {x.weight > 0 ? `with ${x.weight} kg` : 'bodyweight'}
+                    </Text>)}
+                {addingSet && <AddSetForm setAddingSet={setAddingSet} exerciseId={exercise._id} />}
+            </Box>
         </Card>
     )
 }

@@ -9,6 +9,7 @@ import LoadingScreen from '../common/LoadingScreen';
 import { useWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
+import CloseButton from '../common/CloseButton';
 
 
 export default observer(function ExercisesGrid() {
@@ -33,37 +34,33 @@ export default observer(function ExercisesGrid() {
     }
 
     return (
-        <Container sx={{ padding: 0 }}>
+        <Box>
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 marginTop: 10,
-                padding: 0,
             }}>
                 <Box sx={{
-                    display: 'inline-flex',
                     paddingLeft: '1vw',
                     paddingRight: '4vw',
-                    margin: 0,
                     borderBottom: '2px solid black',
                 }}>
-                    <Text sx={{ fontSize: '2rem' }}>{data.title}</Text>
+                    <Text sx={{ fontSize: '2.4vw' }}>{data.title}</Text>
                 </Box>
                 <Box sx={{ display: 'flex' }}>
-                    <Button onClick={onAddExerciseClick} color="dark" size="xs" mr="md">Add exercise</Button>
-                    <ActionIcon onClick={onClose} radius={50}>
-                        <MdClose size={30} />
-                    </ActionIcon>
+                    <Button onClick={onAddExerciseClick} color="dark" size="md"  mr="md">
+                       <Text sx={{fontSize: '1vw'}}>Add exercise</Text> 
+                    </Button>
+                    <CloseButton onClose={onClose}/>
                 </Box>
             </Box>
-            <SimpleGrid spacing="md" cols={4} sx={{ marginTop: 30 }}>
-                {
-                    data.exercises.length != 0
-                        ?
-                        data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
-                        :
-                        <Text>There are currently no exercises in this workout.</Text>}
+            <SimpleGrid spacing="1.2vw" cols={4} sx={{ marginTop: 30 }}>
+                {data.exercises.length != 0
+                    ?
+                    data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
+                    :
+                    <Text>There are currently no exercises in this workout.</Text>}
             </SimpleGrid>
-        </Container>
+        </Box>
     )
 })

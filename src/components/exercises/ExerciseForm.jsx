@@ -8,7 +8,7 @@ import GenericForm from '../common/form/GenericForm';
 import { useCreateExercise } from '../../hooks/exercises';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
-
+import CloseButton from '../common/CloseButton';
 
 export default function ExerciseForm() {
     const { workoutId } = WorkoutStore;
@@ -50,9 +50,7 @@ export default function ExerciseForm() {
                     <Button mt="lg" type="submit">Submit</Button>
                 </GenericForm>
             </Box>
-            <ActionIcon onClick={onClose} radius={50}>
-                <MdClose size={30} />
-            </ActionIcon>
+            <CloseButton onClose={onClose}/>
         </Container>
     )
 }
