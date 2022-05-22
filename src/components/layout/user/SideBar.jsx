@@ -1,5 +1,6 @@
 import React from 'react'
-import { Aside, Avatar, Container, Text } from '@mantine/core'
+import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
+import { FaRegEdit } from 'react-icons/fa'
 
 import avatar from '../../../images/avatar.jpg'
 
@@ -33,6 +34,22 @@ export default function SideBar() {
                 }}>
                     Gym lover
                 </Text>
+                <Button sx={{
+                    marginTop: '1vw',
+                    backgroundColor: 'pink',
+                    color: 'black',
+                    borderRadius: 10,
+                    width: '10vw',
+                    height: '3vw',
+                    '&:hover': {
+                        backgroundColor: '#ffccd5',
+                    }
+                }}>
+                    <Box sx={{ marginTop: '-0.2vw', marginRight: '0.3vw' }}>
+                        <FaRegEdit color="black" />
+                    </Box>
+                    <Text sx={{ fontSize: '1vw' }}>Edit Profile</Text>
+                </Button>
             </Container>
         </Aside>
     )
