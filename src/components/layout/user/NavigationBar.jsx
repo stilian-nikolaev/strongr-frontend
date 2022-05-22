@@ -19,7 +19,7 @@ export default function NavigationBar() {
                     src={logo}
                     alt="logo"
                     size="4.4vw"
-                    radius={50}
+                    radius="50%"
                     sx={{ border: '2px solid black' }} />
                 <Text sx={({
                     marginLeft: '1vw',
