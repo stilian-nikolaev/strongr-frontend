@@ -31,3 +31,7 @@ export async function deleteExercise(workoutId, exerciseId) {
     return res.data;
 }
 
+export async function editWorkout (workoutId, data) {
+    const res = await apiClient.patch(endpoints.workouts.one(workoutId).url, data);
+    return res.data;
+}
