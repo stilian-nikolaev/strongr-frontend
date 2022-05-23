@@ -1,4 +1,4 @@
-import { Card, Text } from '@mantine/core'
+import { Box, Card, Text } from '@mantine/core'
 import React from 'react'
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
@@ -22,9 +22,11 @@ export default function WorkoutCard({ workout }) {
                 borderRadius: '10px',
                 border: '2px solid #353935',
             }}>
-            <Text>{workout.title}</Text>
-            <Text>Exercises: {workout.exercises.length}</Text>
-            <Text>Sets: {workout.exercises.reduce((x, acc) => x + acc.sets.length, 0)}</Text>
+            <Text sx={{ fontSize: '1.8vw' }}>{workout.title}</Text>
+            <Box sx={{ }}>
+                <Text sx={{fontSize: '1vw'}}>Exercises: {workout.exercises.length}</Text>
+                <Text sx={{fontSize: '1vw'}}>Sets: {workout.exercises.reduce((x, acc) => x + acc.sets.length, 0)}</Text>
+            </Box>
         </Card>
     )
 }

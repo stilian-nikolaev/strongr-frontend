@@ -38,7 +38,8 @@ export default observer(function ExercisesGrid() {
         deleteMutation.mutate();
     }
 
-    function onClose() {
+    function onBackClick() {
+        addingExercise && toggleAddingExercise()
         setView('workouts')
     }
 
@@ -103,7 +104,7 @@ export default observer(function ExercisesGrid() {
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <AddExerciseButton />
-                    <BackButton handler={onClose} />
+                    <BackButton handler={onBackClick} />
                 </Box>
             </Box>
             <SimpleGrid spacing="1.2vw" cols={4} sx={{ marginTop: 30 }}>

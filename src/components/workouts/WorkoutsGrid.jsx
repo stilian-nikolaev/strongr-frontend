@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActionIcon, Card, Container, SimpleGrid, Text } from '@mantine/core'
+import { ActionIcon, Card, Container, Group, ScrollArea, SimpleGrid, Text } from '@mantine/core'
 import { MdAdd } from 'react-icons/md'
 
 import LoadingScreen from '../common/LoadingScreen';
@@ -29,11 +29,16 @@ export default function WorkoutsGrid() {
 
     return (
         <Container sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20, padding: 0 }}>
-            <SimpleGrid cols={3}>
+            <Group sx={{
+                height: '10vw',
+                minWidth: '55vw',
+                paddingBottom: 32,
+                paddingRight: 20,
+            }}>
                 {data.map(x =>
                     <WorkoutCard key={x._id} workout={x} />
                 )}
-            </SimpleGrid>
+            </Group>
             <ActionIcon radius={50} onClick={addWorkoutClickHandler} >
                 <MdAdd size={30} />
             </ActionIcon>
