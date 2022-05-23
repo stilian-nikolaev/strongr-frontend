@@ -9,6 +9,7 @@ import { ViewStore } from '../../stores/ViewStore';
 import WorkoutCard from './WorkoutCard';
 import AddExerciseButton from '../exercises/AddExerciseButton';
 import AddWorkoutButton from './AddWorkoutButton';
+import GridHeader from './GridHeader';
 
 export default function WorkoutsGrid() {
     const { data, status } = useWorkouts();
@@ -32,21 +33,7 @@ export default function WorkoutsGrid() {
         <Box sx={{
             marginTop: '1vw',
         }}>
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-} }>
-                <Box sx={{
-                    paddingRight: '2vw',
-                    paddingLeft: '1vw',
-                    borderBottom: '2px solid black',
-                }}>
-                    <Text sx={{ fontSize: '2.4vw', }}>Your Workouts</Text>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-<AddWorkoutButton/>
-                </Box>
-            </Box>
+            <GridHeader/>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20 }}>
                 <Group sx={{
                     height: '10vw',
