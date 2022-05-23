@@ -4,22 +4,27 @@ import React from 'react'
 import { RiMoreFill } from 'react-icons/ri'
 import { useMutation } from 'react-query'
 import { useDeleteWorkout } from '../../hooks/workouts'
+import { ModalStore } from '../../stores/ModalStore'
 import { ViewStore } from '../../stores/ViewStore'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 import BackButton from '../common/BackButton'
+import ConfirmationModal from '../common/ConfirmationModal'
 import AddExerciseButton from './AddExerciseButton'
 import EditTitleForm from './EditTitleForm'
 
 export default observer(function GridHeader({title}) {
     const { setView, editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
     const { workoutId } = WorkoutStore;
+    const { openModal, closeModal, setContent, setCallback } = ModalStore;
 
+    
 
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteWorkout(workoutId),
         onError: () => console.log('error deleting workout'),
         onSuccess: (res) => {
             //open comfirmation
+            closeModal();
             setView('workouts')
         }
     })
@@ -29,7 +34,9 @@ export default observer(function GridHeader({title}) {
     }
 
     function onDeleteWorkoutClick() {
-        deleteMutation.mutate();
+        setContent('Are you sure you want to delete this workout?')
+        setCallback(deleteMutation.mutate)
+        openModal();
     }
 
     function onBackClick() {

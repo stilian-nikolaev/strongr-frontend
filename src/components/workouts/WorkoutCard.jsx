@@ -21,6 +21,9 @@ export default function WorkoutCard({ workout }) {
                 backgroundColor: 'pink',
                 borderRadius: '10px',
                 border: '2px solid #353935',
+                '&:hover': {
+                    cursor: 'pointer'
+                }
             }}>
             <Text sx={{ fontSize: '1.4vw' }}>{workout.title}</Text>
             <Box sx={{ }}>

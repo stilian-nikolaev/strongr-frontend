@@ -15,6 +15,7 @@ import { useMutation } from 'react-query';
 import ExerciseForm from './ExerciseForm';
 import AddExerciseButton from './AddExerciseButton';
 import GridHeader from './GridHeader';
+import ConfirmationModal from '../common/ConfirmationModal';
 
 
 export default observer(function ExercisesGrid() {
@@ -41,6 +42,8 @@ export default observer(function ExercisesGrid() {
                     !addingExercise && <Text>There are currently no exercises in this workout.</Text>}
                 {addingExercise && <ExerciseForm />}
             </SimpleGrid>
+
+            <ConfirmationModal/>
         </Box>
     )
 })
