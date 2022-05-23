@@ -9,10 +9,12 @@ import TextField from '../common/form/TextField'
 import { useCreateSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
 import { WorkoutStore } from '../../stores/WorkoutStore'
+import { useFocusTrap } from '@mantine/hooks'
 
 export default function AddSetForm({ exerciseId, setAddingSet }) {
     const { workoutId } = WorkoutStore;
     const queryClient = useQueryClient()
+    const focusTrapRef = useFocusTrap();
 
     const mutation = useMutation({
         mutationFn: data => useCreateSet(workoutId, exerciseId, data),
@@ -31,8 +33,9 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
 
     return (
         <GenericForm onSubmit={onSubmit} initialValues={{ amount: 10, unit: 'reps', weight: 100 }}>
-            <Box sx={{ display: 'flex', alignItems: 'stretch', marginLeft: window.innerWidth < 1600 ? -3 : 0 }}>
+            <Box ref={focusTrapRef} sx={{ display: 'flex', alignItems: 'stretch', marginLeft: window.innerWidth < 1600 ? -3 : 0 }}>
                 <TextField
+                data-autofocus
                     variant="unstyled"
                     size="1.2vw"
                     aria-label="amount"

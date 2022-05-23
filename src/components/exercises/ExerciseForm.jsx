@@ -9,11 +9,13 @@ import { useCreateExercise } from '../../hooks/exercises';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import { endpoints } from '../../service/apiEndpoints';
+import { useFocusTrap } from '@mantine/hooks';
 
 export default function ExerciseForm() {
     const { workoutId } = WorkoutStore;
     const { toggleAddingExercise } = ViewStore;
     const queryClient = useQueryClient();
+    const focusTrapRef = useFocusTrap();
 
     const mutation = useMutation({
         mutationFn: data => useCreateExercise(workoutId, data),
@@ -43,8 +45,9 @@ export default function ExerciseForm() {
                 }
             }}>
             <GenericForm initialValues={{ title: '' }} onSubmit={onSubmit}>
-                <Box sx={{ display: 'flex' }}>
+                <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                     <TextField
+                        data-autofocus
                         variant="unstyled"
                         size="1.2vw"
                         placeholder="Exercise title"

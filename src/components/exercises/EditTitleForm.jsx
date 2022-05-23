@@ -10,11 +10,14 @@ import { endpoints } from '../../service/apiEndpoints'
 import { ViewStore } from '../../stores/ViewStore'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useEditWorkout } from '../../hooks/workouts'
+import { useFocusTrap } from '@mantine/hooks'
 
 export default function EditTitleForm({ title }) {
     const { toggleEditingTitle } = ViewStore;
     const { workoutId } = WorkoutStore;
     const queryClient = useQueryClient();
+    const focusTrapRef = useFocusTrap();
+
 
     const mutation = useMutation({
         mutationFn: data => useEditWorkout(workoutId, data),
@@ -31,8 +34,9 @@ export default function EditTitleForm({ title }) {
 
     return (
         <GenericForm onSubmit={onSubmit} initialValues={{ title }}>
-            <Box sx={{ display: 'flex' }}>
+            <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                 <TextField
+                data-autofocus
                     variant="unstyled"
                     aria-label="title"
                     size="inherit"
