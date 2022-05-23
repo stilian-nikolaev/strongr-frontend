@@ -7,10 +7,12 @@ import { useMutation, useQueryClient } from 'react-query';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import { useDeleteExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
+import { ModalStore } from '../../stores/ModalStore';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
-    const {workoutId} = WorkoutStore;
+    const { openModal, closeModal, setContent, setCallback } = ModalStore;
+    const { workoutId } = WorkoutStore;
     const queryClient = useQueryClient();
 
     const deleteMutation = useMutation({
@@ -18,6 +20,7 @@ export default function ExerciseCard({ exercise }) {
         onError: () => console.log('error deleting exercise'),
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
+            closeModal();
         }
     })
 
@@ -30,8 +33,9 @@ export default function ExerciseCard({ exercise }) {
     }
 
     function onDeleteClick() {
-        deleteMutation.mutate()
-
+        setContent('Are you sure you want to delete this exercise?')
+        setCallback(deleteMutation.mutate)
+        openModal();
     }
 
     return (

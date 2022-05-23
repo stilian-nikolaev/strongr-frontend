@@ -62,7 +62,7 @@ export default function ExerciseForm() {
                             fontSize: '1.2vw',
                             height: '2vw',
                             '& ::placeholder': {
-                                color: '#36454F'
+                                color: '#808080 !important'
                             }
                         }}
                     />
@@ -80,7 +80,6 @@ export default function ExerciseForm() {
                     </UnstyledButton>
                 </Box>
             </GenericForm>
-           
             <Text sx={{ fontSize: '1.2vw', marginLeft: '0.4vw', }}>No sets yet.</Text>
         </Card>
     )

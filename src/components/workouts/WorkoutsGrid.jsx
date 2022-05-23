@@ -15,12 +15,6 @@ export default function WorkoutsGrid() {
     const { data, status } = useWorkouts();
     const { setView } = ViewStore;
 
-    function addWorkoutClickHandler() {
-        setView('workout-form')
-    }
-
-
-
     if (status === 'loading') {
         return <LoadingScreen />
     }
