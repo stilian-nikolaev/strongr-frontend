@@ -6,7 +6,6 @@ import LoadingScreen from '../common/LoadingScreen';
 import ErrorScreen from '../common/ErrorScreen';
 import { useWorkouts } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
-import { WorkoutStore } from '../../stores/WorkoutStore';
 import WorkoutCard from './WorkoutCard';
 
 export default function WorkoutsGrid() {
@@ -34,7 +33,7 @@ export default function WorkoutsGrid() {
                 paddingLeft: '1vw',
                 borderBottom: '2px solid black',
             }}>
-                <Text sx={{ fontSize: '2.4vw' }}>Your Workouts</Text>
+                <Text sx={{ fontSize: '2.4vw', }}>Your Workouts</Text>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20 }}>
                 <Group sx={{

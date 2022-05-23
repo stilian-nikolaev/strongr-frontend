@@ -40,7 +40,13 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
                     type="number"
                     min={0}
                     max={99}
-                    sx={{ width: '1.6vw', marginTop: window.innerWidth < 1600 ? '0' : '0.2vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
+                    sx={{
+                        width: '1.6vw',
+                        marginTop: window.innerWidth <= 1600 ? '0' : '0.2vw',
+                        borderBottom: '1px solid black',
+                        height: '1.4vw',
+                        minHeight: 24
+                    }}
                 />
                 <Select
                     variant="unstyled"
@@ -48,9 +54,16 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
                     rightSectionWidth="0"
                     size="1.2vw"
                     aria-label="unit"
-                    sx={{marginLeft: '0.3vw',  marginTop: window.innerWidth < 1600 ? '0' : '0.2vw', width: '2.9vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
                     name="unit"
                     data={['reps', 'sec', 'min']}
+                    sx={{
+                        marginLeft: '0.3vw',
+                        marginTop: window.innerWidth <= 1600 ? '0' : '0.2vw',
+                        width: '2.9vw',
+                        borderBottom: '1px solid black',
+                        height: '1.4vw',
+                        minHeight: 24
+                    }}
                 />
                 <Text ml={4} sx={{ fontSize: '1.2vw' }}>with</Text>
                 <TextField
@@ -61,7 +74,7 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
                     type="number"
                     min={0}
                     max={999}
-                    sx={{ marginLeft: '0.2vw', marginTop: window.innerWidth < 1600 ? 0 : '0.2vw', width: '2.4vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
+                    sx={{ marginLeft: '0.2vw', marginTop: window.innerWidth <= 1600 ? 0 : '0.2vw', width: '2.4vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
                 />
                 <Text sx={{ marginLeft: '0.1vw', fontSize: '1.2vw' }}>kg</Text>
                 <UnstyledButton
