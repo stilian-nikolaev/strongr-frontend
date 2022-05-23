@@ -24,8 +24,8 @@ export default function WorkoutCard({ workout }) {
             }}>
             <Text sx={{ fontSize: '1.8vw' }}>{workout.title}</Text>
             <Box sx={{ }}>
-                <Text sx={{fontSize: '1vw'}}>Exercises: {workout.exercises.length}</Text>
-                <Text sx={{fontSize: '1vw'}}>Sets: {workout.exercises.reduce((x, acc) => x + acc.sets.length, 0)}</Text>
+                <Text sx={{fontSize: '1vw'}}>Exercises: {workout.exercises?.length}</Text>
+                <Text sx={{fontSize: '1vw'}}>Sets: {workout.exercises?.reduce((x, acc) => x + acc.sets?.length, 0)}</Text>
             </Box>
         </Card>
     )

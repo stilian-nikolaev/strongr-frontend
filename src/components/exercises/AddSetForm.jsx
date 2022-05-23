@@ -47,9 +47,8 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
                     rightSection={<></>}
                     rightSectionWidth="0"
                     size="1.2vw"
-                    ml={4}
                     aria-label="unit"
-                    sx={{ marginTop: window.innerWidth < 1600 ? '0' : '0.2vw', width: '2.9vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
+                    sx={{marginLeft: '0.3vw',  marginTop: window.innerWidth < 1600 ? '0' : '0.2vw', width: '2.9vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
                     name="unit"
                     data={['reps', 'sec', 'min']}
                 />
@@ -58,17 +57,17 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
                     variant="unstyled"
                     size="1.2vw"
                     aria-label="weight"
-                    ml={2} name="weight"
+                    name="weight"
                     type="number"
                     min={0}
                     max={999}
-                    sx={{ marginTop: window.innerWidth < 1600 ? 0 : '0.2vw', width: '2.4vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
+                    sx={{ marginLeft: '0.2vw', marginTop: window.innerWidth < 1600 ? 0 : '0.2vw', width: '2.4vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
                 />
-                <Text sx={{ fontSize: '1.2vw' }}>kg</Text>
+                <Text sx={{ marginLeft: '0.1vw', fontSize: '1.2vw' }}>kg</Text>
                 <UnstyledButton
                     type="submit"
                     sx={{
-                        marginRight: '-0.5vw',
+                        marginLeft: '0.3vw',
                         alignSelf: 'center',
                         height: 1,
                         marginTop: '-1.1vw',
