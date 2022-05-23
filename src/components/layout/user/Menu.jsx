@@ -21,12 +21,12 @@ export default function Menu() {
     return (
         <Stack>
             {items.map(x => (
-                <Box key={x.label} sx={{ display: 'flex' }}>
+                <Box key={x.label} sx={{ display: 'flex', marginBottom: '0.3vw'}}>
                     {x.selected ? <BsDot size="1.4vw" /> : null}
                     <Text sx={{
                         fontSize: '1.1vw',
                         color: x.selected ? 'black' : '#5b5b5b',
-                        marginLeft: x.selected ? 0 : 20,
+                        marginLeft: x.selected ? 0 : '1vw',
                         paddingBottom: 5,
                         paddingLeft: 5,
                         width: '7vw',
