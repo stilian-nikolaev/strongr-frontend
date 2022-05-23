@@ -54,6 +54,7 @@ export default function ExerciseForm() {
                         aria-label="title"
                         name="title"
                         sx={{
+                            paddingLeft: '0.4vw',
                             borderBottom: '1px solid black',
                             width: '10vw',
                             marginLeft: '-0.15vw',
@@ -79,7 +80,8 @@ export default function ExerciseForm() {
                     </UnstyledButton>
                 </Box>
             </GenericForm>
-            <Text sx={{ fontSize: '1.2vw' }}>No sets yet.</Text>
+           
+            <Text sx={{ fontSize: '1.2vw', marginLeft: '0.4vw', }}>No sets yet.</Text>
         </Card>
     )
 }
