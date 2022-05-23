@@ -22,10 +22,10 @@ export default function WorkoutCard({ workout }) {
                 borderRadius: '10px',
                 border: '2px solid #353935',
             }}>
-            <Text sx={{ fontSize: '1.8vw' }}>{workout.title}</Text>
+            <Text sx={{ fontSize: '1.4vw' }}>{workout.title}</Text>
             <Box sx={{ }}>
-                <Text sx={{fontSize: '1vw'}}>Exercises: {workout.exercises?.length}</Text>
-                <Text sx={{fontSize: '1vw'}}>Sets: {workout.exercises?.reduce((x, acc) => x + acc.sets?.length, 0)}</Text>
+                <Text sx={{fontSize: '0.8vw'}}>Exercises: {workout.exercises?.length}</Text>
+                <Text sx={{fontSize: '0.8vw'}}>Sets: {workout.exercises?.reduce((x, acc) => x + acc.sets?.length, 0)}</Text>
             </Box>
         </Card>
     )

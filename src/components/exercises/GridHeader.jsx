@@ -42,7 +42,7 @@ export default observer(function GridHeader({title}) {
         <Box sx={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginTop: 10,
+            marginTop: '1vw',
         }}>
             <Box sx={{
                 paddingLeft: '1vw',
