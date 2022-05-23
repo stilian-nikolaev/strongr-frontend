@@ -8,6 +8,7 @@ import { useWorkouts } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import WorkoutCard from './WorkoutCard';
 import AddExerciseButton from '../exercises/AddExerciseButton';
+import AddWorkoutButton from './AddWorkoutButton';
 
 export default function WorkoutsGrid() {
     const { data, status } = useWorkouts();
@@ -43,7 +44,7 @@ export default function WorkoutsGrid() {
                     <Text sx={{ fontSize: '2.4vw', }}>Your Workouts</Text>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-<AddExerciseButton/>
+<AddWorkoutButton/>
                 </Box>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '60vw', marginTop: 20 }}>
