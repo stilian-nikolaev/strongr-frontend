@@ -57,9 +57,6 @@ export default function WorkoutsGrid() {
                         <WorkoutCard key={x._id} workout={x} />
                     )}
                 </Group>
-                <ActionIcon radius={50} onClick={addWorkoutClickHandler} >
-                    <MdAdd size={30} />
-                </ActionIcon>
             </Box>
         </Box>
     )
