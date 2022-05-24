@@ -20,6 +20,7 @@ export default function WorkoutCard({ workout }) {
             sx={{
                 backgroundColor: 'pink',
                 borderRadius: '10px',
+                height: '7vw',
                 border: '2px solid #353935',
                 '&:hover': {
                     cursor: 'pointer'
