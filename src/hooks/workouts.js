@@ -21,17 +21,17 @@ export function useWorkouts() {
     return useQuery(endpoints.workouts.all.url, fetchWorkouts);
 }
 
-export function useCreateWorkout() {
+export async function useCreateWorkout() {
     const res = await apiClient.post(endpoints.workouts.all.url, data);
     return res.data;
 }
 
-export function useEditWorkout(id, data) {
-    const res = await apiClient.patch(endpoints.workouts.one(workoutId).url, data);
+export async function useEditWorkout(id, data) {
+    const res = await apiClient.patch(endpoints.workouts.one(id).url, data);
     return res.data;
 }
 
-export function useDeleteWorkout(id) {
+export async function useDeleteWorkout(id) {
     const res = await apiClient.delete(endpoints.workouts.one(id).url);
     return res.data;
 }
