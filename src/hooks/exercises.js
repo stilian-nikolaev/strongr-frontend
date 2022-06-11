@@ -1,9 +1,12 @@
-import { createExercise, deleteExercise } from "../service/restRequests";
+import { apiClient } from "../service/apiClient";
+import { endpoints } from "../service/apiEndpoints";
 
 export function useCreateExercise(workoutId, data) {
-    return createExercise(workoutId, data);
+    const res = await apiClient.post(endpoints.exercises.all(workoutId).url, data);
+    return res.data;
 }
 
 export function useDeleteExercise(workoutId, exerciseId) {
-    return deleteExercise(workoutId, exerciseId);
+    const res = await apiClient.delete(endpoints.exercises.one([workoutId, exerciseId]).url);
+    return res.data;
 }

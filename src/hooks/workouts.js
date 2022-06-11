@@ -1,25 +1,37 @@
 import { useQuery } from "react-query";
+import { apiClient } from "../service/apiClient";
 
 import { endpoints } from "../service/apiEndpoints";
-import { fetchWorkouts, fetchWorkout, createWorkout, editWorkout, deleteWorkout } from "../service/restRequests";
-
 
 export function useWorkout(id) {
-    return useQuery(endpoints.workouts.one(id).url, () => fetchWorkout(id));
+    async function fetchWorkout() {
+        const res = await apiClient.get(endpoints.workouts.one(id).url);
+        return res.data;
+    }
+
+    return useQuery(endpoints.workouts.one(id).url, fetchWorkout);
 }
 
 export function useWorkouts() {
+    async function fetchWorkouts() {
+        const res = await apiClient.get(endpoints.workouts.all.url);
+        return res.data;
+    }
+
     return useQuery(endpoints.workouts.all.url, fetchWorkouts);
 }
 
 export function useCreateWorkout() {
-    return createWorkout;
+    const res = await apiClient.post(endpoints.workouts.all.url, data);
+    return res.data;
 }
 
 export function useEditWorkout(id, data) {
-    return editWorkout(id, data);
+    const res = await apiClient.patch(endpoints.workouts.one(workoutId).url, data);
+    return res.data;
 }
 
 export function useDeleteWorkout(id) {
-    return deleteWorkout(id);
+    const res = await apiClient.delete(endpoints.workouts.one(id).url);
+    return res.data;
 }

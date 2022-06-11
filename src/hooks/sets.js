@@ -1,13 +1,14 @@
 import { apiClient } from "../service/apiClient";
 import { endpoints } from "../service/apiEndpoints";
-import { createSet, editSet } from "../service/restRequests";
 
-export function useCreateSet(workoutId, exerciseId, data) {
-    return createSet(workoutId, exerciseId, data);
+export async function useCreateSet(workoutId, exerciseId, data) {
+    const res = await apiClient.post(endpoints.sets.all([workoutId, exerciseId]).url, data);
+    return res.data;
 }
 
-export function useEditSet(workoutId, exerciseId, setId, data) {
-    return editSet(workoutId, exerciseId, setId, data);
+export async function useEditSet(workoutId, exerciseId, setId, data) {
+    const res = await apiClient.patch(endpoints.sets.one([workoutId, exerciseId, setId]).url, data);
+    return res.data;
 }
 
 export async function useDeleteSet(workoutId, exerciseId, setId) {
