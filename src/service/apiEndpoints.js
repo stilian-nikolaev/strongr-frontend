@@ -8,6 +8,7 @@ export const endpoints = {
         one: slug => ({ url: `/workouts/${slug[0]}/exercises/${slug[1]}` })
     },
     sets: {
-        all: slug => ({ url: `/workouts/${slug[0]}/exercises/${slug[1]}/sets` })
+        all: slug => ({ url: `/workouts/${slug[0]}/exercises/${slug[1]}/sets` }),
+        one: slug => ({ url: `/workouts/${slug[0]}/exercises/${slug[1]}/sets/${slug[2]}` })
     }
 }

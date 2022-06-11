@@ -5,24 +5,28 @@ import { Box, Text, UnstyledButton } from '@mantine/core'
 import GenericForm from '../common/form/GenericForm'
 import Select from '../common/form/Select'
 import TextField from '../common/form/TextField'
-import { useCreateSet } from '../../hooks/sets'
+import { useCreateSet, useEditSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useFocusTrap } from '@mantine/hooks'
 import SubmitButton from '../common/SubmitButton'
 
-export default function AddSetForm({ exerciseId, setAddingSet }) {
+export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
     const { workoutId } = WorkoutStore;
     const queryClient = useQueryClient()
     const focusTrapRef = useFocusTrap();
 
+    const mutationFn = initialValues ?
+        data => useEditSet(workoutId, exerciseId, initialValues._id, data)
+        :
+        data => useCreateSet(workoutId, exerciseId, data);
+
     const mutation = useMutation({
-        mutationFn: data => useCreateSet(workoutId, exerciseId, data),
-        onError: () => console.log('error posting set'),
+        mutationFn,
+        onError: () => console.log('error posting/editting set'),
         onSuccess: (res) => {
-            console.log(res);
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
-            setAddingSet(false)
+            onSuccess();
         }
     })
 
@@ -32,7 +36,10 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
     }
 
     return (
-        <GenericForm onSubmit={onSubmit} initialValues={{ amount: 10, unit: 'reps', weight: 100 }}>
+        <GenericForm
+            onSubmit={onSubmit}
+            initialValues={initialValues || { amount: 10, unit: 'reps', weight: 100 }}
+        >
             <Box ref={focusTrapRef} sx={{ display: 'flex', alignItems: 'stretch', marginLeft: window.innerWidth < 1600 ? -3 : 0 }}>
                 <TextField
                     data-autofocus

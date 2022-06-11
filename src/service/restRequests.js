@@ -26,6 +26,11 @@ export async function createSet(workoutId, exerciseId, data) {
     return res.data;
 }
 
+export async function editSet(workoutId, exerciseId, setId, data) {
+    const res = await apiClient.patch(endpoints.sets.one([workoutId, exerciseId, setId]).url, data);
+    return res.data;
+}
+
 export async function deleteExercise(workoutId, exerciseId) {
     const res = await apiClient.delete(endpoints.exercises.one([workoutId, exerciseId]).url);
     return res.data;

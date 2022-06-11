@@ -12,6 +12,7 @@ import SetCard from './SetCard';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
+    const [edittingExercise, setEdittingExercise] = useState(false);
     const { openModal, closeModal, setContent, setCallback } = ModalStore;
     const { workoutId } = WorkoutStore;
     const queryClient = useQueryClient();
@@ -25,12 +26,16 @@ export default function ExerciseCard({ exercise }) {
         }
     })
 
+    function onAddSetSubmit() {
+        setAddingSet(false);
+    }
+
     function onAddSetClick() {
         setAddingSet(!addingSet);
     }
 
     function onEditClick() {
-
+        setEdittingExercise(!edittingExercise)
     }
 
     function onDeleteClick() {
@@ -83,7 +88,7 @@ export default function ExerciseCard({ exercise }) {
                     <Text sx={{fontSize: '1vw'}}>{addingSet ? 'Cancel' : 'Add set'}</Text>
                     </Menu.Item>
                     <Menu.Item onClick={onEditClick}>
-                        <Text sx={{fontSize: '1vw'}}>Edit</Text>
+                        <Text sx={{fontSize: '1vw'}}>{edittingExercise ? 'Finish' : 'Edit'}</Text>
                     </Menu.Item>
                     <Menu.Item onClick={onDeleteClick}>
                     <Text sx={{fontSize: '1vw'}}>Delete</Text>
@@ -94,8 +99,8 @@ export default function ExerciseCard({ exercise }) {
                 {exercise.sets.length == 0 && !addingSet && 
                 <Text sx={{fontSize: '1.2vw', marginLeft: '0.4vw',}}>No sets yet.</Text>}
                 {exercise.sets.map(x =>
-                   <SetCard key={x._id} set={x}/>)}
-                {addingSet && <AddSetForm setAddingSet={setAddingSet} exerciseId={exercise._id} />}
+                   <SetCard key={x._id} set={x} edittingExercise={edittingExercise} exerciseId={exercise._id} />)}
+                {addingSet && <AddSetForm onSuccess={onAddSetSubmit} exerciseId={exercise._id} />}
             </Box>
         </Card>
     )
