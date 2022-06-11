@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { Box, Card, Menu, Text } from '@mantine/core'
 import { RiMoreFill } from 'react-icons/ri';
 
-import AddSetForm from './AddSetForm';
+import AddSetForm from '../sets/AddSetForm';
 import { useMutation, useQueryClient } from 'react-query';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import { useDeleteExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
 import { ModalStore } from '../../stores/ModalStore';
-import SetCard from './SetCard';
+import SetCard from '../sets/SetCard';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
