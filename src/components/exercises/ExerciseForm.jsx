@@ -1,7 +1,6 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query';
 import { ActionIcon, Box, Button, Card, Container, Text, UnstyledButton } from '@mantine/core';
-import { MdClose, MdDone } from 'react-icons/md';
 
 import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
@@ -10,6 +9,7 @@ import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import { endpoints } from '../../service/apiEndpoints';
 import { useFocusTrap } from '@mantine/hooks';
+import SubmitButton from '../common/SubmitButton';
 
 export default function ExerciseForm() {
     const { workoutId } = WorkoutStore;
@@ -66,18 +66,7 @@ export default function ExerciseForm() {
                             }
                         }}
                     />
-                    <UnstyledButton
-                        type="submit"
-                        sx={{
-                            marginLeft: '0.5vw',
-                            marginTop: '0.4vw',
-                            height: 1,
-                            '&:hover': {
-                                cursor: 'pointer'
-                            }
-                        }}>
-                        <MdDone size="1vw" type="submit" />
-                    </UnstyledButton>
+                    <SubmitButton sx={{ marginLeft: '0.5vw', marginTop: '0.4vw' }} />
                 </Box>
             </GenericForm>
             <Text sx={{ fontSize: '1.2vw', marginLeft: '0.4vw', }}>No sets yet.</Text>

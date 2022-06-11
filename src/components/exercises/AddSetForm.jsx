@@ -1,7 +1,6 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { Box, Text, UnstyledButton } from '@mantine/core'
-import { MdDone } from 'react-icons/md'
 
 import GenericForm from '../common/form/GenericForm'
 import Select from '../common/form/Select'
@@ -10,6 +9,7 @@ import { useCreateSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useFocusTrap } from '@mantine/hooks'
+import SubmitButton from '../common/SubmitButton'
 
 export default function AddSetForm({ exerciseId, setAddingSet }) {
     const { workoutId } = WorkoutStore;
@@ -35,7 +35,7 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
         <GenericForm onSubmit={onSubmit} initialValues={{ amount: 10, unit: 'reps', weight: 100 }}>
             <Box ref={focusTrapRef} sx={{ display: 'flex', alignItems: 'stretch', marginLeft: window.innerWidth < 1600 ? -3 : 0 }}>
                 <TextField
-                data-autofocus
+                    data-autofocus
                     variant="unstyled"
                     size="1.2vw"
                     aria-label="amount"
@@ -80,19 +80,7 @@ export default function AddSetForm({ exerciseId, setAddingSet }) {
                     sx={{ marginLeft: '0.2vw', marginTop: window.innerWidth <= 1600 ? 0 : '0.2vw', width: '2.4vw', borderBottom: '1px solid black', height: '1.4vw', minHeight: 24 }}
                 />
                 <Text sx={{ marginLeft: '0.1vw', fontSize: '1.2vw' }}>kg</Text>
-                <UnstyledButton
-                    type="submit"
-                    sx={{
-                        marginLeft: '0.3vw',
-                        alignSelf: 'center',
-                        height: 1,
-                        marginTop: '-1.1vw',
-                        '&:hover': {
-                            cursor: 'pointer'
-                        }
-                    }}>
-                    <MdDone size="1vw" type="submit" />
-                </UnstyledButton>
+                <SubmitButton sx={{ marginLeft: '0.3vw', marginTop: '-1.1vw', alignSelf: 'center' }} />
             </Box>
         </GenericForm>
     )
