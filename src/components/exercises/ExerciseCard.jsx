@@ -9,40 +9,24 @@ import { useDeleteExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
 import { ModalStore } from '../../stores/ModalStore';
 import SetCard from '../sets/SetCard';
+import { FiEdit2 } from 'react-icons/fi';
+import ExerciseMenu from './ExerciseMenu';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
     const [edittingExercise, setEdittingExercise] = useState(false);
-    const { openModal, closeModal, setContent, setCallback } = ModalStore;
-    const { workoutId } = WorkoutStore;
-    const queryClient = useQueryClient();
 
-    const deleteMutation = useMutation({
-        mutationFn: () => useDeleteExercise(workoutId, exercise._id),
-        onError: () => console.log('error deleting exercise'),
-        onSuccess: () => {
-            queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
-            closeModal();
-        }
-    })
+
+
+    function onEditTitleClick() {
+
+    }
 
     function onAddSetSubmit() {
         setAddingSet(false);
     }
 
-    function onAddSetClick() {
-        setAddingSet(!addingSet);
-    }
 
-    function onEditClick() {
-        setEdittingExercise(!edittingExercise)
-    }
-
-    function onDeleteClick() {
-        setContent('Are you sure you want to delete this exercise?')
-        setCallback(deleteMutation.mutate)
-        openModal();
-    }
 
     return (
         <Card
@@ -64,37 +48,31 @@ export default function ExerciseCard({ exercise }) {
                     width: '10vw',
                     paddingLeft: '0.4vw',
                     marginBottom: '5px',
-                    fontSize: '1.2vw'
+                    fontSize: '1.2vw',
+                    display: 'flex'
                 }}>
                     {exercise.title}
-                </Text>
-                <Menu
-                    control={
+                    {edittingExercise &&
                         <Box
-                            className="more"
+                            onClick={onEditTitleClick}
                             sx={{
-                                height: '1vh',
-                                display: 'none',
+                                marginLeft: '0.3vw',
+                                marginTop: '0.1vw',
+                                height: 1,
                                 '&:hover': {
                                     cursor: 'pointer'
                                 }
-                            }} >
-                            <RiMoreFill size="1.5vw" />
-                        </Box >
-                    }
-                    size="7vw"
-                    gutter={-8}
-                >
-                    <Menu.Item onClick={onAddSetClick}>
-                        <Text sx={{ fontSize: '1vw' }}>{addingSet ? 'Cancel' : 'Add set'}</Text>
-                    </Menu.Item>
-                    <Menu.Item onClick={onEditClick}>
-                        <Text sx={{ fontSize: '1vw' }}>{edittingExercise ? 'Finish' : 'Edit'}</Text>
-                    </Menu.Item>
-                    <Menu.Item onClick={onDeleteClick}>
-                        <Text sx={{ fontSize: '1vw' }}>Delete</Text>
-                    </Menu.Item>
-                </Menu>
+                            }}>
+                            <FiEdit2 size={'1.2vw'} />
+                        </Box>}
+                </Text>
+                <ExerciseMenu
+                    exerciseId={exercise._id}
+                    addingSet={addingSet}
+                    edittingExercise={edittingExercise}
+                    setAddingSet={setAddingSet}
+                    setEdittingExercise={setEdittingExercise}
+                />
             </Box>
             <Box>
                 {exercise.sets.length == 0 && !addingSet &&
