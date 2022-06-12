@@ -10,7 +10,7 @@ import { ViewStore } from '../../stores/ViewStore'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useEditWorkout } from '../../hooks/workouts'
 import { useFocusTrap } from '@mantine/hooks'
-import SubmitButton from '../common/SubmitButton'
+import SubmitButton from '../common/buttons/SubmitButton'
 
 export default function WorkoutTitleForm({ title }) {
     const { toggleEditingTitle } = ViewStore;

@@ -1,29 +1,26 @@
-import { Box, Menu, Text } from '@mantine/core'
-import { observer } from 'mobx-react'
 import React from 'react'
-import { RiMoreFill } from 'react-icons/ri'
 import { useMutation } from 'react-query'
+import { observer } from 'mobx-react'
+import { Box, Menu, Text } from '@mantine/core'
+import { RiMoreFill } from 'react-icons/ri'
+
 import { useDeleteWorkout } from '../../hooks/workouts'
 import { ModalStore } from '../../stores/ModalStore'
 import { ViewStore } from '../../stores/ViewStore'
 import { WorkoutStore } from '../../stores/WorkoutStore'
-import BackButton from '../common/BackButton'
-import ConfirmationModal from '../common/ConfirmationModal'
+import BackButton from '../common/buttons/BackButton'
 import AddExerciseButton from './AddExerciseButton'
-import EditTitleForm from './WorkoutTitleForm'
+import WorkoutTitleForm from '../workouts/WorkoutTitleForm'
 
 export default observer(function GridHeader({title}) {
     const { setView, editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
     const { workoutId } = WorkoutStore;
     const { openModal, closeModal, setContent, setCallback } = ModalStore;
 
-    
-
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteWorkout(workoutId),
         onError: () => console.log('error deleting workout'),
         onSuccess: (res) => {
-            //open comfirmation
             closeModal();
             setView('workouts')
         }
@@ -63,7 +60,7 @@ export default observer(function GridHeader({title}) {
                     }
                 }
             }}>
-                {editingTitle ? <EditTitleForm title={title} /> :
+                {editingTitle ? <WorkoutTitleForm title={title} /> :
                     <Text sx={{ fontSize: '2.4vw' }}>
                         {title}
                     </Text>}

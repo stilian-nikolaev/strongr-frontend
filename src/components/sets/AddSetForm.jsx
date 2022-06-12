@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { Box, Text, UnstyledButton } from '@mantine/core'
+import { Box, Text } from '@mantine/core'
 
 import GenericForm from '../common/form/GenericForm'
 import Select from '../common/form/Select'
@@ -9,7 +9,7 @@ import { useCreateSet, useEditSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
 import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useFocusTrap } from '@mantine/hooks'
-import SubmitButton from '../common/SubmitButton'
+import SubmitButton from '../common/buttons/SubmitButton'
 
 export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
     const { workoutId } = WorkoutStore;

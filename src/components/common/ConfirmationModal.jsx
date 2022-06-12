@@ -2,7 +2,7 @@ import { Box, Button, Center, Modal, Text, UnstyledButton } from '@mantine/core'
 import { observer } from 'mobx-react';
 import React from 'react'
 import { ModalStore } from '../../stores/ModalStore'
-import ModalButton from './ModalButton';
+import ModalButton from './buttons/ModalButton';
 
 export default observer(function ConfirmationModal() {
 const {open, content, callback, closeModal} = ModalStore;

@@ -1,13 +1,12 @@
 import React from 'react'
 import { useMutation } from 'react-query';
-import { ActionIcon, Box, Button, Container } from '@mantine/core';
-import { MdClose } from 'react-icons/md';
+import {Box, Button, Container } from '@mantine/core';
 
 import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
 import { useCreateWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
-import BackButton from '../common/BackButton';
+import BackButton from '../common/buttons/BackButton';
 
 
 export default function WorkoutsForm() {

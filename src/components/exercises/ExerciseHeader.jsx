@@ -1,8 +1,7 @@
-import { Box, Text } from '@mantine/core'
 import React, { useState } from 'react'
-import { FiEdit2 } from 'react-icons/fi'
-import CloseButton from '../common/CloseButton'
-import EditButton from '../common/EditButton'
+import { Box, Text } from '@mantine/core'
+
+import EditButton from '../common/buttons/EditButton'
 import ExerciseMenu from './ExerciseMenu'
 import ExerciseTitleForm from './ExerciseTitleForm'
 
@@ -38,11 +37,11 @@ export default function ExerciseHeader({
                     display: 'flex'
                 }}>
                     {title}
-                    {edittingExercise && 
-                    <EditButton
-                        onClick={onEditTitleClick}
-                        sx={{ marginLeft: '0.3vw', marginTop: '0.1vw' }}
-                    />}
+                    {edittingExercise &&
+                        <EditButton
+                            onClick={onEditTitleClick}
+                            sx={{ marginLeft: '0.3vw', marginTop: '0.1vw' }}
+                        />}
                 </Text>}
             <ExerciseMenu
                 edittingExercise={edittingExercise}
@@ -52,7 +51,5 @@ export default function ExerciseHeader({
                 setEdittingExercise={setEdittingExercise}
             />
         </Box>
-
-
     )
 }

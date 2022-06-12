@@ -1,12 +1,13 @@
-import { Box, Menu, Text } from '@mantine/core'
 import React from 'react'
-import { RiMoreFill } from 'react-icons/ri'
+import { Box, Menu, Text } from '@mantine/core'
 import { useMutation, useQueryClient } from 'react-query';
+import { RiMoreFill } from 'react-icons/ri'
+
 import { useDeleteExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
 import { ModalStore } from '../../stores/ModalStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
-import CloseButton from '../common/CloseButton';
+import CloseButton from '../common/buttons/CloseButton';
 
 export default function ExerciseMenu(props) {
     const { openModal, closeModal, setContent, setCallback } = ModalStore;

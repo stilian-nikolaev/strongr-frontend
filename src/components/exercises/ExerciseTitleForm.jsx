@@ -1,13 +1,14 @@
+import React from 'react'
 import { Box } from '@mantine/core';
 import { useFocusTrap } from '@mantine/hooks';
-import React from 'react'
 import { useMutation, useQueryClient } from 'react-query';
+
 import { useEditExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
-import SubmitButton from '../common/SubmitButton';
+import SubmitButton from '../common/buttons/SubmitButton';
 
 export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle}) {
     const queryClient = useQueryClient();

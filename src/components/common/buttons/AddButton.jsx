@@ -1,7 +1,6 @@
-import { Box, Text, UnstyledButton } from '@mantine/core'
 import React from 'react'
+import { Box, Text, UnstyledButton } from '@mantine/core'
 import { HiPlus } from 'react-icons/hi'
-import { ViewStore } from '../../stores/ViewStore';
 
 export default function AddButton({handler, label}) {
    

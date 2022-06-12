@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query';
-import { ActionIcon, Box, Button, Card, Container, Text, UnstyledButton } from '@mantine/core';
+import {  Box,  Card, Text } from '@mantine/core';
 
 import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
@@ -9,7 +9,7 @@ import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import { endpoints } from '../../service/apiEndpoints';
 import { useFocusTrap } from '@mantine/hooks';
-import SubmitButton from '../common/SubmitButton';
+import SubmitButton from '../common/buttons/SubmitButton';
 
 export default function ExerciseForm() {
     const { workoutId } = WorkoutStore;

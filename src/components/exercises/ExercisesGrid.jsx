@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react';
-import { ActionIcon, Box, SimpleGrid, Text, Container, Button, Menu, UnstyledButton } from '@mantine/core'
+import { Box, SimpleGrid, Text } from '@mantine/core'
 
 import ExerciseCard from './ExerciseCard';
+import ExerciseForm from './ExerciseForm';
+import GridHeader from './GridHeader';
 import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
-import { useDeleteWorkout, useWorkout } from '../../hooks/workouts';
+import {  useWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
-import BackButton from '../common/BackButton';
-import { RiMoreFill } from 'react-icons/ri';
-import EditTitleForm from './WorkoutTitleForm';
-import { useMutation } from 'react-query';
-import ExerciseForm from './ExerciseForm';
-import AddExerciseButton from './AddExerciseButton';
-import GridHeader from './GridHeader';
 import ConfirmationModal from '../common/ConfirmationModal';
 
 
@@ -42,7 +37,7 @@ export default observer(function ExercisesGrid() {
                     !addingExercise && <Text>There are currently no exercises in this workout.</Text>}
                 {addingExercise && <ExerciseForm />}
             </SimpleGrid>
-
+            {/* should cfrm modal be here? */}
             <ConfirmationModal/>
         </Box>
     )

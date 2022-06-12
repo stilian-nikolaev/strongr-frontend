@@ -1,8 +1,8 @@
-import { Box } from '@mantine/core'
 import React from 'react'
-import { FiEdit2 } from 'react-icons/fi'
+import { Box } from '@mantine/core'
+import { AiOutlineDelete } from 'react-icons/ai'
 
-export default function EditButton({ onClick, sx, size = '1.2vw' }) {
+export default function DeleteButton({ onClick, sx, size = '1.3vw' }) {
     return (
         <Box
             onClick={onClick}
@@ -13,7 +13,7 @@ export default function EditButton({ onClick, sx, size = '1.2vw' }) {
                     cursor: 'pointer'
                 }
             }}>
-            <FiEdit2 size={size} />
+            <AiOutlineDelete size={size} />
         </Box>
     )
 }
