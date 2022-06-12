@@ -26,7 +26,7 @@ export default function ExerciseMenu(props) {
     }
 
     function onEditClick() {
-        props.setEdittingExercise(!props.edittingExercise)
+        props.setEdittingExercise(true)
     }
 
     function onDeleteClick() {
@@ -57,7 +57,7 @@ export default function ExerciseMenu(props) {
                 <Text sx={{ fontSize: '1vw' }}>{props.addingSet ? 'Cancel' : 'Add set'}</Text>
             </Menu.Item>
             <Menu.Item onClick={onEditClick}>
-                <Text sx={{ fontSize: '1vw' }}>{props.edittingExercise ? 'Finish' : 'Edit'}</Text>
+                <Text sx={{ fontSize: '1vw' }}>Edit</Text>
             </Menu.Item>
             <Menu.Item onClick={onDeleteClick}>
                 <Text sx={{ fontSize: '1vw' }}>Delete</Text>

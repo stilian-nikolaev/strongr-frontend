@@ -46,7 +46,6 @@ export default function ExerciseCard({ exercise }) {
                         <ExerciseMenu
                             exerciseId={exercise._id}
                             addingSet={addingSet}
-                            edittingExercise={edittingExercise}
                             setAddingSet={setAddingSet}
                             setEdittingExercise={setEdittingExercise}
                         />
