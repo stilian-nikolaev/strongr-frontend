@@ -1,28 +1,23 @@
 import React, { useState } from 'react'
 import { Box, Card, Menu, Text } from '@mantine/core'
-import { RiMoreFill } from 'react-icons/ri';
 
 import AddSetForm from '../sets/AddSetForm';
-import { useMutation, useQueryClient } from 'react-query';
-import { WorkoutStore } from '../../stores/WorkoutStore';
-import { useDeleteExercise } from '../../hooks/exercises';
-import { endpoints } from '../../service/apiEndpoints';
-import { ModalStore } from '../../stores/ModalStore';
 import SetCard from '../sets/SetCard';
-import { FiEdit2 } from 'react-icons/fi';
 import ExerciseMenu from './ExerciseMenu';
 import ExerciseHeader from './ExerciseHeader';
+import CloseButton from '../common/CloseButton';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
     const [edittingExercise, setEdittingExercise] = useState(false);
 
-
     function onAddSetSubmit() {
         setAddingSet(false);
     }
 
-
+    function onCloseButtonClick() {
+        setEdittingExercise(false)
+    }
 
     return (
         <Card
@@ -44,13 +39,18 @@ export default function ExerciseCard({ exercise }) {
                     edittingExercise={edittingExercise}
                     exerciseId={exercise._id}
                 />
-                <ExerciseMenu
-                    exerciseId={exercise._id}
-                    addingSet={addingSet}
-                    edittingExercise={edittingExercise}
-                    setAddingSet={setAddingSet}
-                    setEdittingExercise={setEdittingExercise}
-                />
+                {
+                    edittingExercise ?
+                        <CloseButton onClick={onCloseButtonClick} />
+                        :
+                        <ExerciseMenu
+                            exerciseId={exercise._id}
+                            addingSet={addingSet}
+                            edittingExercise={edittingExercise}
+                            setAddingSet={setAddingSet}
+                            setEdittingExercise={setEdittingExercise}
+                        />
+                }
             </Box>
             <Box>
                 {exercise.sets.length == 0 && !addingSet &&
