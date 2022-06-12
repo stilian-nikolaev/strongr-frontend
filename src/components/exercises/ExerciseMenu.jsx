@@ -6,6 +6,7 @@ import { useDeleteExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
 import { ModalStore } from '../../stores/ModalStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
+import CloseButton from '../common/CloseButton';
 
 export default function ExerciseMenu(props) {
     const { openModal, closeModal, setContent, setCallback } = ModalStore;
@@ -35,33 +36,40 @@ export default function ExerciseMenu(props) {
         openModal();
     }
 
+    function onCloseButtonClick() {
+        props.setEdittingExercise(false)
+    }
+
     return (
-        <Menu
-            control={
-                <Box
-                    className="more"
-                    sx={{
-                        height: '1vh',
-                        display: 'none',
-                        '&:hover': {
-                            cursor: 'pointer'
-                        }
-                    }} >
-                    <RiMoreFill size="1.5vw" />
-                </Box >
-            }
-            size="7vw"
-            gutter={-8}
-        >
-            <Menu.Item onClick={onAddSetClick}>
-                <Text sx={{ fontSize: '1vw' }}>{props.addingSet ? 'Cancel' : 'Add set'}</Text>
-            </Menu.Item>
-            <Menu.Item onClick={onEditClick}>
-                <Text sx={{ fontSize: '1vw' }}>Edit</Text>
-            </Menu.Item>
-            <Menu.Item onClick={onDeleteClick}>
-                <Text sx={{ fontSize: '1vw' }}>Delete</Text>
-            </Menu.Item>
-        </Menu>
+        props.edittingExercise ?
+            <CloseButton onClick={onCloseButtonClick} />
+            :
+            <Menu
+                control={
+                    <Box
+                        className="more"
+                        sx={{
+                            height: '1vh',
+                            display: 'none',
+                            '&:hover': {
+                                cursor: 'pointer'
+                            }
+                        }} >
+                        <RiMoreFill size="1.5vw" />
+                    </Box >
+                }
+                size="7vw"
+                gutter={-8}
+            >
+                <Menu.Item onClick={onAddSetClick}>
+                    <Text sx={{ fontSize: '1vw' }}>{props.addingSet ? 'Cancel' : 'Add set'}</Text>
+                </Menu.Item>
+                <Menu.Item onClick={onEditClick}>
+                    <Text sx={{ fontSize: '1vw' }}>Edit</Text>
+                </Menu.Item>
+                <Menu.Item onClick={onDeleteClick}>
+                    <Text sx={{ fontSize: '1vw' }}>Delete</Text>
+                </Menu.Item>
+            </Menu>
     )
 }
