@@ -12,7 +12,7 @@ import { useEditWorkout } from '../../hooks/workouts'
 import { useFocusTrap } from '@mantine/hooks'
 import SubmitButton from '../common/SubmitButton'
 
-export default function EditTitleForm({ title }) {
+export default function WorkoutTitleForm({ title }) {
     const { toggleEditingTitle } = ViewStore;
     const { workoutId } = WorkoutStore;
     const queryClient = useQueryClient();

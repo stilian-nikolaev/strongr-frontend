@@ -10,7 +10,7 @@ import { WorkoutStore } from '../../stores/WorkoutStore'
 import BackButton from '../common/BackButton'
 import ConfirmationModal from '../common/ConfirmationModal'
 import AddExerciseButton from './AddExerciseButton'
-import EditTitleForm from './EditTitleForm'
+import EditTitleForm from './WorkoutTitleForm'
 
 export default observer(function GridHeader({title}) {
     const { setView, editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;

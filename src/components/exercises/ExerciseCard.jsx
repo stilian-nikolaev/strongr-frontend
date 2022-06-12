@@ -59,12 +59,13 @@ export default function ExerciseCard({ exercise }) {
                 }
             }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Text sx={{ 
+                <Text sx={{
                     borderBottom: '1px solid black',
-                 width: '10vw', 
-                 paddingLeft: '0.4vw',
-                 marginBottom: '5px',
-                 fontSize: '1.2vw'}}>
+                    width: '10vw',
+                    paddingLeft: '0.4vw',
+                    marginBottom: '5px',
+                    fontSize: '1.2vw'
+                }}>
                     {exercise.title}
                 </Text>
                 <Menu
@@ -85,21 +86,26 @@ export default function ExerciseCard({ exercise }) {
                     gutter={-8}
                 >
                     <Menu.Item onClick={onAddSetClick}>
-                    <Text sx={{fontSize: '1vw'}}>{addingSet ? 'Cancel' : 'Add set'}</Text>
+                        <Text sx={{ fontSize: '1vw' }}>{addingSet ? 'Cancel' : 'Add set'}</Text>
                     </Menu.Item>
                     <Menu.Item onClick={onEditClick}>
-                        <Text sx={{fontSize: '1vw'}}>{edittingExercise ? 'Finish' : 'Edit'}</Text>
+                        <Text sx={{ fontSize: '1vw' }}>{edittingExercise ? 'Finish' : 'Edit'}</Text>
                     </Menu.Item>
                     <Menu.Item onClick={onDeleteClick}>
-                    <Text sx={{fontSize: '1vw'}}>Delete</Text>
+                        <Text sx={{ fontSize: '1vw' }}>Delete</Text>
                     </Menu.Item>
                 </Menu>
             </Box>
             <Box>
-                {exercise.sets.length == 0 && !addingSet && 
-                <Text sx={{fontSize: '1.2vw', marginLeft: '0.4vw',}}>No sets yet.</Text>}
+                {exercise.sets.length == 0 && !addingSet &&
+                    <Text sx={{ fontSize: '1.2vw', marginLeft: '0.4vw', }}>No sets yet.</Text>}
                 {exercise.sets.map(x =>
-                   <SetCard key={x._id} set={x} edittingExercise={edittingExercise} exerciseId={exercise._id} />)}
+                    <SetCard
+                        key={x._id}
+                        set={x}
+                        edittingExercise={edittingExercise}
+                        exerciseId={exercise._id}
+                    />)}
                 {addingSet && <AddSetForm onSuccess={onAddSetSubmit} exerciseId={exercise._id} />}
             </Box>
         </Card>

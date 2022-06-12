@@ -10,7 +10,7 @@ import { ViewStore } from '../../stores/ViewStore';
 import { WorkoutStore } from '../../stores/WorkoutStore';
 import BackButton from '../common/BackButton';
 import { RiMoreFill } from 'react-icons/ri';
-import EditTitleForm from './EditTitleForm';
+import EditTitleForm from './WorkoutTitleForm';
 import { useMutation } from 'react-query';
 import ExerciseForm from './ExerciseForm';
 import AddExerciseButton from './AddExerciseButton';
