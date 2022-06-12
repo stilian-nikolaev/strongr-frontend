@@ -11,16 +11,12 @@ import { ModalStore } from '../../stores/ModalStore';
 import SetCard from '../sets/SetCard';
 import { FiEdit2 } from 'react-icons/fi';
 import ExerciseMenu from './ExerciseMenu';
+import ExerciseHeader from './ExerciseHeader';
 
 export default function ExerciseCard({ exercise }) {
     const [addingSet, setAddingSet] = useState(false);
     const [edittingExercise, setEdittingExercise] = useState(false);
 
-
-
-    function onEditTitleClick() {
-
-    }
 
     function onAddSetSubmit() {
         setAddingSet(false);
@@ -43,29 +39,11 @@ export default function ExerciseCard({ exercise }) {
                 }
             }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Text sx={{
-                    borderBottom: '1px solid black',
-                    width: '10vw',
-                    paddingLeft: '0.4vw',
-                    marginBottom: '5px',
-                    fontSize: '1.2vw',
-                    display: 'flex'
-                }}>
-                    {exercise.title}
-                    {edittingExercise &&
-                        <Box
-                            onClick={onEditTitleClick}
-                            sx={{
-                                marginLeft: '0.3vw',
-                                marginTop: '0.1vw',
-                                height: 1,
-                                '&:hover': {
-                                    cursor: 'pointer'
-                                }
-                            }}>
-                            <FiEdit2 size={'1.2vw'} />
-                        </Box>}
-                </Text>
+                <ExerciseHeader
+                    title={exercise.title}
+                    edittingExercise={edittingExercise}
+                    exerciseId={exercise._id}
+                />
                 <ExerciseMenu
                     exerciseId={exercise._id}
                     addingSet={addingSet}
