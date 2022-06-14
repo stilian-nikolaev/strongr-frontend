@@ -8,6 +8,7 @@ import RegisterPage from '../auth/RegisterPage'
 export default observer(function GuestPage() {
   const { view } = ViewStore
   
+  
     switch (view) {
       case 'home':
         return <Center style={{ height: '80vh' }}>
