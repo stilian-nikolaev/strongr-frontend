@@ -29,7 +29,7 @@ export default observer(function ExercisesGrid() {
     return (
         <Box>
             <GridHeader title={data.title}/>
-            <SimpleGrid spacing="1.2vw" cols={window.innerWidth>= 1600 ? 4 : 3} sx={{ marginTop: '1.8vw' }}>
+            <SimpleGrid spacing="1.2vw" cols={3} sx={{ width: '52vw', marginTop: '1.8vw' }}>
                 {data.exercises.length != 0
                     ?
                     data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)

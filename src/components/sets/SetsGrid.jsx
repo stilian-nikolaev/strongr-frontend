@@ -9,7 +9,7 @@ export default function SetsGrid({exercise, addingSet,setAddingSet, edittingExer
     }
 
     return (
-        <Box>
+        <Box sx={{marginTop: '0.5vw'}}>
             {exercise.sets.length == 0 && !addingSet &&
                 <Text sx={{ fontSize: '1.2vw', marginLeft: '0.4vw', }}>No sets yet.</Text>}
             {exercise.sets.map(x =>

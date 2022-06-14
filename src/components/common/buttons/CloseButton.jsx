@@ -8,6 +8,7 @@ export default function CloseButton({ onClick, sx, size = "1.5vw" }) {
             onClick={onClick}
             sx={{
                 ...sx,
+                height: 1,
                 '&:hover': {
                     cursor: 'pointer'
                 }

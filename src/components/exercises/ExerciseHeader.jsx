@@ -28,21 +28,25 @@ export default function ExerciseHeader({
                     setEdittingTitle={setEdittingTitle}
                 />
                 :
-                <Text sx={{
+                <Box sx={{
                     borderBottom: '1px solid black',
-                    width: '10vw',
-                    paddingLeft: '0.4vw',
-                    marginBottom: '5px',
-                    fontSize: '1.2vw',
+                    width: '11vw',
                     display: 'flex'
                 }}>
-                    {title}
+                    <Text sx={{
+                        width: '9vw',
+                        paddingLeft: '0.4vw',
+                        marginBottom: '5px',
+                        fontSize: '1.2vw',
+                    }}>
+                        {title}
+                    </Text>
                     {edittingExercise &&
                         <EditButton
                             onClick={onEditTitleClick}
-                            sx={{ marginLeft: '0.3vw', marginTop: '0.1vw' }}
+                            sx={{ marginLeft: '0.2vw', marginTop: '0.1vw' }}
                         />}
-                </Text>}
+                </Box>}
             <ExerciseMenu
                 edittingExercise={edittingExercise}
                 exerciseId={exerciseId}
