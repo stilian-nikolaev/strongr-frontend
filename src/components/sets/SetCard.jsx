@@ -40,6 +40,7 @@ export default function SetCard({ set, edittingExercise, exerciseId }) {
             <Box
                 sx={{
                     display: 'flex',
+                    justifyContent: 'space-between'
                 }}>
                 <Text sx={{ fontSize: '1.2vw' }} >
                     {set.amount} reps {set.weight > 0 ? `with ${set.weight} kg` : ''}

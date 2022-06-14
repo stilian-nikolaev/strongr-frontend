@@ -50,7 +50,7 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle}
                         display: 'flex'
                     }}
                 />
-                <SubmitButton size={'1.2vw'} sx={{ marginTop: '0.4vw' }} />
+                <SubmitButton size={'1.2vw'} />
             </Box>
         </GenericForm>
     )
