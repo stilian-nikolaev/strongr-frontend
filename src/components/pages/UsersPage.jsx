@@ -21,6 +21,5 @@ export default observer(function UsersPage() {
       return <ExerciseForm />
     default:
       return <WorkoutsGrid />
-      break;
   }
 })

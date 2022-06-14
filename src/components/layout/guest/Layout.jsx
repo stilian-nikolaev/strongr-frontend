@@ -1,7 +1,12 @@
+import { Box } from '@mantine/core'
 import React from 'react'
+import NavHeader from './NavHeader'
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
-    <div>Layout</div>
+    <Box>
+      <NavHeader />
+      {children}
+    </Box>
   )
 }
