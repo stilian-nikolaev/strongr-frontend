@@ -6,18 +6,31 @@ import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
 
-export default function LoginPage() {
-    const {setView} = ViewStore
+export default function RegisterPage() {
+    const { setView } = ViewStore
 
-    function onSignUpClick() {
-        setView('register')
+    function onLogInClick() {
+        setView('login')
     }
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
+        <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
             <GenericForm>
                 <Box sx={{ width: 320 }}>
-                    <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
+                    <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Create an account</Text>
+                    <TextField
+                        placeholder="Name*"
+                        aria-label="name"
+                        name="name"
+                        size="lg"
+                        required
+                        sx={{
+                            marginTop: '20px',
+                            '& ::placeholder': {
+                                color: '#808080 !important'
+                            }
+                        }}
+                    />
                     <TextField
                         placeholder="Email*"
                         aria-label="email"
@@ -25,7 +38,7 @@ export default function LoginPage() {
                         size="lg"
                         required
                         sx={{
-                            marginTop: '20px',
+                            marginTop: '40px',
                             '& ::placeholder': {
                                 color: '#808080 !important'
                             }
@@ -45,16 +58,30 @@ export default function LoginPage() {
                             }
                         }}
                     />
+                    <TextField
+                        placeholder="Confirm Password*"
+                        aria-label="confirmPassword"
+                        name="rePassword"
+                        size="lg"
+                        type="password"
+                        required
+                        sx={{
+                            marginTop: '40px',
+                            '& ::placeholder': {
+                                color: '#808080 !important'
+                            }
+                        }}
+                    />
                     <Box sx={{ display: 'flex', marginTop: 30 }}>
                         <AuthFormButton
                             type="submit"
                             sx={{}}>
-                            Log in
+                            Sign up
                         </AuthFormButton>
                         <Text sx={{ marginLeft: 20 }}>
-                            Don't have an account?
+                            Already have an account?
                             <Text
-                                onClick={onSignUpClick}
+                                onClick={onLogInClick}
                                 sx={{
                                     width: '100px',
                                     backgroundImage: 'linear-gradient(black, black)',
@@ -66,9 +93,7 @@ export default function LoginPage() {
                                         backgroundSize: '100% 2px',
                                         cursor: 'pointer'
                                     }
-                                }}>
-                                Sign up here
-                            </Text>
+                                }}>Log in here</Text>
                         </Text>
                     </Box>
                 </Box>

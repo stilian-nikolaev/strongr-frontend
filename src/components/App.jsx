@@ -9,7 +9,7 @@ import { ViewStore } from '../stores/ViewStore';
 function App() {
   const queryClient = new QueryClient();
   const {setView} = ViewStore;
-setView('login');
+setView('home');
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
