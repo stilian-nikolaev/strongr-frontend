@@ -72,7 +72,7 @@ export default function RegisterPage() {
                             }
                         }}
                     />
-                    <Box sx={{ display: 'flex', marginTop: 30 }}>
+                    <Box sx={{ display: 'flex', marginTop: 40 }}>
                         <AuthFormButton
                             type="submit"
                             sx={{}}>

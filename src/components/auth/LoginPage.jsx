@@ -45,7 +45,7 @@ export default function LoginPage() {
                             }
                         }}
                     />
-                    <Box sx={{ display: 'flex', marginTop: 30 }}>
+                    <Box sx={{ display: 'flex', marginTop: 40 }}>
                         <AuthFormButton
                             type="submit"
                             sx={{}}>
