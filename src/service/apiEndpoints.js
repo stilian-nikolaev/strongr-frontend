@@ -1,6 +1,6 @@
 export const endpoints = {
     workouts: {
-        all: { url: '/workouts' },
+        all: () => ({ url: '/workouts' }),
         one: slug => ({ url: `/workouts/${slug}` })
     },
     exercises: {

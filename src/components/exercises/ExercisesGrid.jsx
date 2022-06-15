@@ -37,7 +37,7 @@ export default observer(function ExercisesGrid() {
                     !addingExercise && <Text sx={{fontSize: 18}}>There are currently no exercises in this workout.</Text>}
                 {addingExercise && <ExerciseForm />}
             </SimpleGrid>
-            {/* should cfrm modal be here? */}
+            {/*TODO: should cfrm modal be here? */}
             <ConfirmationModal/>
         </Box>
     )

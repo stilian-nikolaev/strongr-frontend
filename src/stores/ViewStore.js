@@ -4,6 +4,7 @@ class ViewStoreImpl {
     view = 'workouts'
     editingTitle = false
     addingExercise = false
+    addingWorkout = false
 
     constructor() {
         makeObservable(this, {
@@ -13,6 +14,8 @@ class ViewStoreImpl {
             toggleEditingTitle: action,
             addingExercise: observable,
             toggleAddingExercise: action,
+            addingWorkout: observable,
+            toggleAddingWorkout: action,
         })
     }
 
@@ -26,6 +29,10 @@ class ViewStoreImpl {
 
     toggleAddingExercise = () => {
         this.addingExercise = !(this.addingExercise)
+    }
+
+    toggleAddingWorkout = () => {
+        this.addingWorkout = !(this.addingWorkout)
     }
 }
 

@@ -1,23 +1,29 @@
 import React from 'react'
-import { useMutation } from 'react-query';
-import {Box, Button, Container } from '@mantine/core';
+import { useMutation, useQueryClient } from 'react-query';
+import { Box, Button, Card, Container, Text } from '@mantine/core';
 
 import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
 import { useCreateWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import BackButton from '../common/buttons/BackButton';
+import { observer } from 'mobx-react';
+import SubmitButton from '../common/buttons/SubmitButton';
+import { useFocusTrap } from '@mantine/hooks';
+import { endpoints } from '../../service/apiEndpoints';
 
 
 export default function WorkoutsForm() {
-    const { setView } = ViewStore;
+    const { setView, toggleAddingWorkout } = ViewStore;
+    const focusTrapRef = useFocusTrap();
+    const queryClient = useQueryClient();
 
     const mutation = useMutation({
-        mutationFn: useCreateWorkout(),
+        mutationFn: data => useCreateWorkout(data),
         onError: () => console.log('error posting workout'),
         onSuccess: (res) => {
-            console.log(res);
-            setView('workouts')
+            queryClient.invalidateQueries(endpoints.workouts.all().url)
+                .then(() => toggleAddingWorkout())
         }
     })
 
@@ -25,29 +31,54 @@ export default function WorkoutsForm() {
         mutation.mutate(data)
     }
 
-    function onClose() {
-        setView('workouts')
-    }
-
     return (
-        <Container sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '60vw',
-            marginTop: 10,
-            padding: 0,
-        }}>
-            <Box sx={{ width: '60vw' }}>
-                <GenericForm
-                    initialValues={{
-                        title: '',
-                    }}
-                    onSubmit={onSubmit}>
-                    <TextField mt="xl" name="title" type="text" label="Workout title" required />
-                    <Button mt="lg" type="submit">Submit</Button>
-                </GenericForm>
+        <Card
+            shadow="lg"
+            sx={{
+                backgroundColor: 'pink',
+                borderRadius: '10px',
+                height: '7vw',
+                border: '2px solid #353935',
+                '&:hover': {
+                    cursor: 'pointer'
+                }
+            }}>
+            <GenericForm
+                initialValues={{
+                    title: '',
+                }}
+                onSubmit={onSubmit}>
+                <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
+                    <TextField
+                        data-autofocus
+                        required
+                        variant="unstyled"
+                        size="1.2vw"
+                        placeholder="Title"
+                        aria-label="title"
+                        name="title"
+                        sx={{
+                            paddingLeft: '0.4vw',
+                            borderBottom: '1px solid black',
+                            width: '7vw',
+                            marginBottom: '5px',
+                            fontSize: '1.2vw',
+                            height: '2vw',
+                            '& ::placeholder': {
+                                color: '#808080 !important'
+                            }
+                        }}
+                    />
+                    <SubmitButton sx={{ marginLeft: '0.5vw', marginTop: '0.4vw' }} />
+                </Box>
+            </GenericForm>
+            <Box>
+                <Text sx={{ fontSize: '1vw' }}>Exercises: 0</Text>
+                <Text sx={{ fontSize: '1vw' }}>Sets: 0</Text>
             </Box>
-            <BackButton handler={onClose} />
-        </Container>
+        </Card>
+
+
+
     )
 }

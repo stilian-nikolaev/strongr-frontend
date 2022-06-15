@@ -50,6 +50,7 @@ export default function ExerciseForm() {
                         data-autofocus
                         variant="unstyled"
                         size="1.2vw"
+                        required
                         placeholder="Exercise title"
                         aria-label="title"
                         name="title"

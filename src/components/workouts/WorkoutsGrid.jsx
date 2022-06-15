@@ -7,14 +7,14 @@ import ErrorScreen from '../common/ErrorScreen';
 import { useWorkouts } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import WorkoutCard from './WorkoutCard';
-import AddExerciseButton from '../exercises/AddExerciseButton';
-import AddWorkoutButton from './AddWorkoutButton';
 import GridHeader from './GridHeader';
 import PlanGrid from './PlanGrid';
+import WorkoutsForm from './WorkoutsForm';
+import { observer } from 'mobx-react';
 
-export default function WorkoutsGrid() {
+export default observer(function WorkoutsGrid() {
     const { data, status } = useWorkouts();
-    const { setView } = ViewStore;
+    const { addingWorkout } = ViewStore;
 
     if (status === 'loading') {
         return <LoadingScreen />
@@ -29,17 +29,21 @@ export default function WorkoutsGrid() {
             marginTop: '1vw',
         }}>
             <GridHeader />
-            <Box sx={{ width: '55vw'}}>
+            <Box sx={{ width: '55vw' }}>
                 <SimpleGrid cols={5} sx={{
                     marginTop: '1.8vw',
-                    height: '16vw'
                 }}>
-                    {data.map(x =>
-                        <WorkoutCard key={x._id} workout={x} />
-                    )}
+                    {data.length != 0
+                        ?
+                        data.map(x =>
+                            <WorkoutCard key={x._id} workout={x} />
+                        )
+                        :
+                        !addingWorkout && <Text sx={{ fontSize: 18 }}>You don't have any workouts yet.</Text>
+                    }
+                    {addingWorkout && <WorkoutsForm />}
                 </SimpleGrid>
             </Box>
-            <PlanGrid />
         </Box>
     )
-}
+})

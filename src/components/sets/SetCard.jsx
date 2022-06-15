@@ -43,7 +43,7 @@ export default function SetCard({ set, edittingExercise, exerciseId }) {
                     justifyContent: 'space-between'
                 }}>
                 <Text sx={{ fontSize: '1.2vw' }} >
-                    {set.amount} reps {set.weight > 0 ? `with ${set.weight} kg` : ''}
+                    {set.amount} {set.unit} {set.weight > 0 ? `with ${set.weight} kg` : ''}
                 </Text>
                 {edittingExercise && 
                     <SetActions onEditClick={onEditClick} onDeleteClick={onDeleteClick}/>}

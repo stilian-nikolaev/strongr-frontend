@@ -14,15 +14,15 @@ export function useWorkout(id) {
 
 export function useWorkouts() {
     async function fetchWorkouts() {
-        const res = await apiClient.get(endpoints.workouts.all.url);
+        const res = await apiClient.get(endpoints.workouts.all().url);
         return res.data;
     }
 
-    return useQuery(endpoints.workouts.all.url, fetchWorkouts);
+    return useQuery(endpoints.workouts.all().url, fetchWorkouts);
 }
 
-export async function useCreateWorkout() {
-    const res = await apiClient.post(endpoints.workouts.all.url, data);
+export async function useCreateWorkout(data) {
+    const res = await apiClient.post(endpoints.workouts.all().url, data);
     return res.data;
 }
 

@@ -81,6 +81,7 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     size="1.2vw"
                     aria-label="weight"
                     name="weight"
+                    step="0.01"
                     type="number"
                     min={0}
                     max={999}
