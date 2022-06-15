@@ -14,12 +14,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
-        {/* <GuestLayout>
+        <GuestLayout>
           <GuestPage />
-        </GuestLayout> */}
-        <UserLayout>
+        </GuestLayout>
+        {/* <UserLayout>
           <UsersPage/>
-        </UserLayout>
+        </UserLayout> */}
       </MantineProvider>
     </QueryClientProvider>
   );

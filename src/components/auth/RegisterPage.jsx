@@ -5,9 +5,25 @@ import AuthFormButton from '../common/buttons/AuthFormButton';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
+import { useMutation } from 'react-query';
+import { useRegisterUser } from '../../hooks/auth';
 
 export default function RegisterPage() {
     const { setView } = ViewStore
+
+    const mutation = useMutation({
+        mutationFn: data => useRegisterUser(data),
+        onError: () => console.log('error registering'),
+        onSuccess: (res) => {
+            console.log(res);
+            console.log('success');
+        }
+    })
+
+    function onSubmit(data) {
+        console.log(data);
+        mutation.mutate(data)
+    }
 
     function onLogInClick() {
         setView('login')
@@ -15,7 +31,7 @@ export default function RegisterPage() {
 
     return (
         <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
-            <GenericForm>
+            <GenericForm initialValues={{ email: '', password: '', repeatPassword: '', name: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Create an account</Text>
                     <TextField
@@ -61,7 +77,7 @@ export default function RegisterPage() {
                     <TextField
                         placeholder="Confirm Password*"
                         aria-label="confirmPassword"
-                        name="rePassword"
+                        name="repeatPassword"
                         size="lg"
                         type="password"
                         required

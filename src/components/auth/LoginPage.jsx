@@ -5,9 +5,26 @@ import AuthFormButton from '../common/buttons/AuthFormButton';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
+import { useLoginUser } from '../../hooks/auth';
+import { useMutation } from 'react-query';
 
 export default function LoginPage() {
     const {setView} = ViewStore
+
+    const mutation = useMutation({
+        mutationFn: data => useLoginUser(data),
+        onError: () => console.log('error logging in'),
+        onSuccess: (res) => {
+            console.log(res);
+            console.log('success');
+        }
+    })
+
+    function onSubmit(data) {
+        console.log(data);
+        mutation.mutate(data)
+    }
+
 
     function onSignUpClick() {
         setView('register')
@@ -15,7 +32,7 @@ export default function LoginPage() {
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
-            <GenericForm>
+            <GenericForm initialValues={{email: '', password: ''}} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
                     <TextField

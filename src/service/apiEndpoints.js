@@ -10,5 +10,9 @@ export const endpoints = {
     sets: {
         all: slug => ({ url: `/workouts/${slug[0]}/exercises/${slug[1]}/sets` }),
         one: slug => ({ url: `/workouts/${slug[0]}/exercises/${slug[1]}/sets/${slug[2]}` })
+    },
+    auth: {
+        login: () => ({ url: '/auth/login' }),
+        register: () => ({ url: '/auth/register' }),
     }
 }
