@@ -3,18 +3,28 @@ import { Avatar, Navbar, Text } from '@mantine/core'
 
 import Menu from './Menu'
 import logo from '../../../images/logo.jpg'
+import { ViewStore } from '../../../stores/ViewStore';
+import { observer } from 'mobx-react';
 
-export default function NavigationBar() {
+export default observer(function NavigationBar() {
+    const { setView } = ViewStore;
+
+    function onLogoClick() {
+        setView('workouts')
+    }
+
     return (
         <Navbar width={{ base: '15vw' }}>
-            <Navbar.Section sx={{
-                display: 'flex',
-                marginLeft: '1.5vw',
-                marginTop: '1.5vw',
-                '&:hover': {
-                    cursor: 'pointer'
-                }
-            }}>
+            <Navbar.Section
+                onClick={onLogoClick}
+                sx={{
+                    display: 'flex',
+                    marginLeft: '1.5vw',
+                    marginTop: '1.5vw',
+                    '&:hover': {
+                        cursor: 'pointer'
+                    }
+                }}>
                 <Avatar
                     src={logo}
                     alt="logo"
@@ -33,4 +43,4 @@ export default function NavigationBar() {
             </Navbar.Section>
         </Navbar>
     )
-}
+})
