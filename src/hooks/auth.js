@@ -10,3 +10,8 @@ export async function useRegisterUser(data) {
     const res = await apiClient.post(endpoints.auth.register().url, data);
     return res.data;
 }
+
+export function useConfigureHeaders(token) {
+    apiClient.defaults.headers = {'Authorization': `Bearer ${token}`};
+}
+

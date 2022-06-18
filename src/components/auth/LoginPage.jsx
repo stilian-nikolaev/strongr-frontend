@@ -5,7 +5,7 @@ import AuthFormButton from '../common/buttons/AuthFormButton';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
-import { useLoginUser } from '../../hooks/auth';
+import { useConfigureHeaders, useLoginUser } from '../../hooks/auth';
 import { useMutation } from 'react-query';
 import { AuthStore } from '../../stores/AuthStore';
 
@@ -17,6 +17,7 @@ export default function LoginPage() {
         mutationFn: data => useLoginUser(data),
         onError: () => console.log('error logging in'),
         onSuccess: (res) => {
+            useConfigureHeaders(res.token);
             login(res.token)
             localStorage.setItem('token', res.token)
         }
