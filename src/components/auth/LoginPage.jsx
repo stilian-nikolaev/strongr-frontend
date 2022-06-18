@@ -7,16 +7,18 @@ import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
 import { useLoginUser } from '../../hooks/auth';
 import { useMutation } from 'react-query';
+import { AuthStore } from '../../stores/AuthStore';
 
 export default function LoginPage() {
-    const {setView} = ViewStore
+    const { setView } = ViewStore
+    const { login } = AuthStore
 
     const mutation = useMutation({
         mutationFn: data => useLoginUser(data),
         onError: () => console.log('error logging in'),
         onSuccess: (res) => {
-            console.log(res);
-            console.log('success');
+            login(res.token)
+            localStorage.setItem('token', res.token)
         }
     })
 
@@ -32,7 +34,7 @@ export default function LoginPage() {
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
-            <GenericForm initialValues={{email: '', password: ''}} onSubmit={onSubmit}>
+            <GenericForm initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
                     <TextField
