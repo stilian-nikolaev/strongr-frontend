@@ -27,7 +27,7 @@ export async function useCreateWorkout(data) {
 }
 
 export async function useEditWorkout(id, data) {
-    const res = await apiClient.patch(endpoints.workouts.one(id).url, data);
+    const res = await apiClient.put(endpoints.workouts.one(id).url, data);
     return res.data;
 }
 

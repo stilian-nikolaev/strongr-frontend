@@ -7,7 +7,7 @@ export async function useCreateSet(workoutId, exerciseId, data) {
 }
 
 export async function useEditSet(workoutId, exerciseId, setId, data) {
-    const res = await apiClient.patch(endpoints.sets.one([workoutId, exerciseId, setId]).url, data);
+    const res = await apiClient.put(endpoints.sets.one([workoutId, exerciseId, setId]).url, data);
     return res.data;
 }
 
