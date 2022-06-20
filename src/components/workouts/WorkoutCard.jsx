@@ -19,6 +19,7 @@ export default function WorkoutCard({ workout }) {
             shadow="lg"
             sx={{
                 backgroundColor: 'pink',
+                height: '7.5vw',
                 borderRadius: '10px',
                 border: '2px solid #353935',
                 '&:hover': {
