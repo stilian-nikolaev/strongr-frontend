@@ -6,22 +6,24 @@ import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
 import { useMutation } from 'react-query';
-import { useRegisterUser } from '../../hooks/auth';
+import { useConfigureHeaders, useRegisterUser } from '../../hooks/auth';
+import { AuthStore } from '../../stores/AuthStore';
 
 export default function RegisterPage() {
     const { setView } = ViewStore
+    const { login } = AuthStore
 
     const mutation = useMutation({
         mutationFn: data => useRegisterUser(data),
-        onError: () => console.log('error registering'),
+        onError: err => console.log('error registering', err),
         onSuccess: (res) => {
-            console.log(res);
-            console.log('success');
+            useConfigureHeaders(res.token);
+            login(res.token)
+            localStorage.setItem('token', res.token)
         }
     })
 
     function onSubmit(data) {
-        console.log(data);
         mutation.mutate(data)
     }
 

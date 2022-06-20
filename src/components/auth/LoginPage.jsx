@@ -24,7 +24,6 @@ export default function LoginPage() {
     })
 
     function onSubmit(data) {
-        console.log(data);
         mutation.mutate(data)
     }
 
