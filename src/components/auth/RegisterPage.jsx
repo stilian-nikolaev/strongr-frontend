@@ -18,8 +18,7 @@ export default function RegisterPage() {
         onError: err => console.log('error registering', err),
         onSuccess: (res) => {
             useConfigureHeaders(res.token);
-            login(res.token)
-            localStorage.setItem('token', res.token)
+            login(res.token, res.expiresAt)
         }
     })
 

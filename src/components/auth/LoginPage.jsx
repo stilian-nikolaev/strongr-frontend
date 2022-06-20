@@ -18,8 +18,7 @@ export default function LoginPage() {
         onError: () => console.log('error logging in'),
         onSuccess: (res) => {
             useConfigureHeaders(res.token);
-            login(res.token)
-            localStorage.setItem('token', res.token)
+            login(res.token, res.expiresAt)
         }
     })
 
