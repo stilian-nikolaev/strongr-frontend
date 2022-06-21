@@ -7,26 +7,29 @@ import UsersPage from './pages/UsersPage';
 import GuestPage from './pages/GuestPage';
 import { observer } from 'mobx-react';
 import { AuthStore } from '../stores/AuthStore';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   const queryClient = new QueryClient();
   const { isAuthenticated } = AuthStore
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
-        {isAuthenticated
-          ?
-          <UserLayout >
-            <UsersPage />
-          </UserLayout>
-          :
-          <GuestLayout>
-            <GuestPage />
-          </GuestLayout>
-        }
-      </MantineProvider>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
+          {isAuthenticated
+            ?
+            <UserLayout >
+              <UsersPage />
+            </UserLayout>
+            :
+            <GuestLayout>
+              <GuestPage />
+            </GuestLayout>
+          }
+        </MantineProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 
