@@ -10,7 +10,7 @@ import { useConfigureHeaders, useRegisterUser } from '../../hooks/auth';
 import { AuthStore } from '../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
 
-export default function RegisterPage() {
+export default function RegisterForm() {
     const navigate = useNavigate();
     const { login } = AuthStore
 
@@ -33,7 +33,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '100px'}}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
             <GenericForm initialValues={{ email: '', password: '', repeatPassword: '', name: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Create an account</Text>

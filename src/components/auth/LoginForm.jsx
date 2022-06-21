@@ -1,16 +1,14 @@
 import { Box, Center, Text } from '@mantine/core';
 import React from 'react'
-import ModalButton from '../common/buttons/ModalButton';
 import AuthFormButton from '../common/buttons/AuthFormButton';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
-import { ViewStore } from '../../stores/ViewStore';
 import { useConfigureHeaders, useLoginUser } from '../../hooks/auth';
 import { useMutation } from 'react-query';
 import { AuthStore } from '../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage() {
+export default function LoginForm() {
     const { login } = AuthStore
     const navigate = useNavigate();
 
@@ -30,7 +28,7 @@ export default function LoginPage() {
 
 
     function onSignUpClick() {
-       navigate('/register')
+        navigate('/register')
     }
 
     return (
