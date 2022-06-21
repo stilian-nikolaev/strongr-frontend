@@ -38,7 +38,7 @@ export default observer(function WorkoutsGrid() {
                             <WorkoutCard key={x._id} workout={x} />
                         )
                         :
-                        !addingWorkout && <Text sx={{ fontSize: 18 }}>You don't have any workouts yet.</Text>
+                        !addingWorkout && <Text sx={{ fontSize: '1vw', width: '16vw', marginLeft: '0.5vw' }}>You don't have any workouts yet.</Text>
                     }
                     {addingWorkout && <WorkoutsForm />}
                 </SimpleGrid>

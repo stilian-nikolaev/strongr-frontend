@@ -38,11 +38,11 @@ export default function Menu() {
         <Stack>
             {items.map(x => (
                 <Box onClick={() => onItemClick(x.path)} key={x.label} sx={{ display: 'flex', marginBottom: '0.3vw' }}>
-                    {selected == x.path && <BsDot size="1.4vw" />}
+                    {selected.includes(x.path) && <BsDot size="1.4vw" />}
                     <Text sx={{
                         fontSize: '1.1vw',
-                        color: selected == x.path ? 'black' : '#5b5b5b',
-                        marginLeft: selected == x.path ? 0 : '1.4vw',
+                        color: selected.includes(x.path) ? 'black' : '#5b5b5b',
+                        marginLeft: selected.includes(x.path) ? 0 : '1.4vw',
                         paddingBottom: 5,
                         paddingLeft: 5,
                         width: '7vw',

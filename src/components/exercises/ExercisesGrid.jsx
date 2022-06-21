@@ -34,7 +34,7 @@ export default observer(function ExercisesGrid() {
                     ?
                     data.exercises.map(x => <ExerciseCard key={x._id} exercise={x} />)
                     :
-                    !addingExercise && <Text sx={{ fontSize: 18 }}>There are currently no exercises in this workout.</Text>}
+                    !addingExercise && <Text sx={{ fontSize: '1vw', width: '15vw', marginLeft: '0.5vw' }}>There are currently no exercises in this workout.</Text>}
                 {addingExercise && <ExerciseForm />}
             </SimpleGrid>
             {/*TODO: should cfrm modal be here? */}
