@@ -8,9 +8,10 @@ import { ViewStore } from '../../stores/ViewStore';
 import { useMutation } from 'react-query';
 import { useConfigureHeaders, useRegisterUser } from '../../hooks/auth';
 import { AuthStore } from '../../stores/AuthStore';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
-    const { setView } = ViewStore
+    const navigate = useNavigate();
     const { login } = AuthStore
 
     const mutation = useMutation({
@@ -19,6 +20,7 @@ export default function RegisterPage() {
         onSuccess: (res) => {
             useConfigureHeaders(res.token);
             login(res.token, res.expiresAt)
+            navigate('/workouts')
         }
     })
 
@@ -27,7 +29,7 @@ export default function RegisterPage() {
     }
 
     function onLogInClick() {
-        setView('login')
+        navigate('/login')
     }
 
     return (

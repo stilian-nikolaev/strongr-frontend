@@ -8,7 +8,6 @@ import { useWorkouts } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
 import WorkoutCard from './WorkoutCard';
 import GridHeader from './GridHeader';
-import PlanGrid from './PlanGrid';
 import WorkoutsForm from './WorkoutsForm';
 import { observer } from 'mobx-react';
 

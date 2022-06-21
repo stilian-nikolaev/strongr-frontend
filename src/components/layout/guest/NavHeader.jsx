@@ -1,18 +1,18 @@
 import React from 'react'
 import { Avatar, Button, Header, Image, Text } from '@mantine/core'
 import logo from '../../../images/logo.jpg'
-import { ViewStore } from '../../../stores/ViewStore'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function NavHeader() {
-const {setView} = ViewStore;
+    const navigate = useNavigate();
 
     function onLogInClick() {
-        setView('login')
+        navigate('/login')
     }
 
     function onLogoClick() {
-        setView('home')
+        navigate('/')
     }
 
     return (
@@ -24,7 +24,7 @@ const {setView} = ViewStore;
                     size="4.4vw"
                     radius="50%"
                     onClick={onLogoClick}
-                    sx={{ border: '2px solid black', cursor: 'pointer'}} />
+                    sx={{ border: '2px solid black', cursor: 'pointer' }} />
                 <Text sx={{ fontSize: 30, fontWeight: 'bold' }}>Strongr</Text>
                 <Button onClick={onLogInClick} color="dark" radius="lg">Log in</Button>
             </div>

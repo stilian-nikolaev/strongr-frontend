@@ -5,12 +5,13 @@ import Menu from './Menu'
 import logo from '../../../images/logo.jpg'
 import { ViewStore } from '../../../stores/ViewStore';
 import { observer } from 'mobx-react';
+import { useNavigate } from 'react-router-dom';
 
 export default observer(function NavigationBar() {
-    const { setView } = ViewStore;
+    const navigate = useNavigate()
 
     function onLogoClick() {
-        setView('workouts')
+        navigate('/workouts')
     }
 
     return (

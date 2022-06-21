@@ -14,7 +14,7 @@ import { endpoints } from '../../service/apiEndpoints';
 
 
 export default function WorkoutsForm() {
-    const { setView, toggleAddingWorkout } = ViewStore;
+    const { toggleAddingWorkout } = ViewStore;
     const focusTrapRef = useFocusTrap();
     const queryClient = useQueryClient();
 
@@ -37,7 +37,6 @@ export default function WorkoutsForm() {
             sx={{
                 backgroundColor: 'pink',
                 borderRadius: '10px',
-                height: '7.5vw',
                 border: '2px solid #353935',
                 '&:hover': {
                     cursor: 'pointer'

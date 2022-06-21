@@ -7,14 +7,14 @@ import Select from '../common/form/Select'
 import TextField from '../common/form/TextField'
 import { endpoints } from '../../service/apiEndpoints'
 import { ViewStore } from '../../stores/ViewStore'
-import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useEditWorkout } from '../../hooks/workouts'
 import { useFocusTrap } from '@mantine/hooks'
 import SubmitButton from '../common/buttons/SubmitButton'
+import { useParams } from 'react-router-dom'
 
 export default function WorkoutTitleForm({ title }) {
     const { toggleEditingTitle } = ViewStore;
-    const { workoutId } = WorkoutStore;
+    const { workoutId } = useParams();
     const queryClient = useQueryClient();
     const focusTrapRef = useFocusTrap();
 

@@ -3,12 +3,15 @@ import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
 
 import avatar from '../../../images/avatar.jpg'
 import { AuthStore } from '../../../stores/AuthStore'
+import { useNavigate } from 'react-router-dom'
 
 export default function SideBar() {
+    const navigate = useNavigate();
     const { logout } = AuthStore
 
     function onSignOutClick() {
         logout()
+        navigate('/')
     }
 
     return (

@@ -6,12 +6,12 @@ import { RiMoreFill } from 'react-icons/ri'
 import { useDeleteExercise } from '../../hooks/exercises';
 import { endpoints } from '../../service/apiEndpoints';
 import { ModalStore } from '../../stores/ModalStore';
-import { WorkoutStore } from '../../stores/WorkoutStore';
 import CloseButton from '../common/buttons/CloseButton';
+import { useParams } from 'react-router-dom';
 
 export default function ExerciseMenu(props) {
     const { openModal, closeModal, setContent, setCallback } = ModalStore;
-    const { workoutId } = WorkoutStore;
+    const { workoutId } = useParams()
     const queryClient = useQueryClient();
 
     const deleteMutation = useMutation({

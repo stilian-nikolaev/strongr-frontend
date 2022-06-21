@@ -6,13 +6,13 @@ import TextField from '../common/form/TextField';
 import GenericForm from '../common/form/GenericForm';
 import { useCreateExercise } from '../../hooks/exercises';
 import { ViewStore } from '../../stores/ViewStore';
-import { WorkoutStore } from '../../stores/WorkoutStore';
 import { endpoints } from '../../service/apiEndpoints';
 import { useFocusTrap } from '@mantine/hooks';
 import SubmitButton from '../common/buttons/SubmitButton';
+import { useParams } from 'react-router-dom';
 
 export default function ExerciseForm() {
-    const { workoutId } = WorkoutStore;
+    const { workoutId } = useParams()
     const { toggleAddingExercise } = ViewStore;
     const queryClient = useQueryClient();
     const focusTrapRef = useFocusTrap();

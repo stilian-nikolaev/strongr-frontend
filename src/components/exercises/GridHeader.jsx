@@ -7,14 +7,15 @@ import { RiMoreFill } from 'react-icons/ri'
 import { useDeleteWorkout } from '../../hooks/workouts'
 import { ModalStore } from '../../stores/ModalStore'
 import { ViewStore } from '../../stores/ViewStore'
-import { WorkoutStore } from '../../stores/WorkoutStore'
 import BackButton from '../common/buttons/BackButton'
 import AddExerciseButton from './AddExerciseButton'
 import WorkoutTitleForm from '../workouts/WorkoutTitleForm'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default observer(function GridHeader({title}) {
-    const { setView, editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
-    const { workoutId } = WorkoutStore;
+    const { editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
+    const { workoutId } = useParams();
+    const navigate = useNavigate();
     const { openModal, closeModal, setContent, setCallback } = ModalStore;
 
     const deleteMutation = useMutation({
@@ -22,7 +23,7 @@ export default observer(function GridHeader({title}) {
         onError: () => console.log('error deleting workout'),
         onSuccess: (res) => {
             closeModal();
-            setView('workouts')
+            navigate('/workouts')
         }
     })
 
@@ -38,7 +39,7 @@ export default observer(function GridHeader({title}) {
 
     function onBackClick() {
         addingExercise && toggleAddingExercise()
-        setView('workouts')
+        navigate('/workouts')
     }
 
 

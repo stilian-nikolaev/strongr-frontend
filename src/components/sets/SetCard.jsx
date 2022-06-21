@@ -4,14 +4,14 @@ import { Box, Text } from '@mantine/core'
 
 import SetActions from './SetActions';
 import AddSetForm from './AddSetForm';
-import { WorkoutStore } from '../../stores/WorkoutStore';
 import { useDeleteSet } from '../../hooks/sets';
 import { endpoints } from '../../service/apiEndpoints';
+import { useParams } from 'react-router-dom';
 
 export default function SetCard({ set, edittingExercise, exerciseId }) {
     const [edittingSet, setEdittingSet] = useState(false);
     const queryClient = useQueryClient();
-    const { workoutId } = WorkoutStore;
+    const { workoutId } = useParams();
 
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteSet(workoutId, exerciseId, set._id),

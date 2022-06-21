@@ -9,7 +9,6 @@ import ErrorScreen from '../common/ErrorScreen';
 import LoadingScreen from '../common/LoadingScreen';
 import { useWorkout } from '../../hooks/workouts';
 import { ViewStore } from '../../stores/ViewStore';
-import { WorkoutStore } from '../../stores/WorkoutStore';
 import ConfirmationModal from '../common/ConfirmationModal';
 import { useParams } from 'react-router-dom';
 

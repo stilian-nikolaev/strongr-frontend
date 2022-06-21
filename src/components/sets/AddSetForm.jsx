@@ -7,12 +7,12 @@ import Select from '../common/form/Select'
 import TextField from '../common/form/TextField'
 import { useCreateSet, useEditSet } from '../../hooks/sets'
 import { endpoints } from '../../service/apiEndpoints'
-import { WorkoutStore } from '../../stores/WorkoutStore'
 import { useFocusTrap } from '@mantine/hooks'
 import SubmitButton from '../common/buttons/SubmitButton'
+import { useParams } from 'react-router-dom'
 
 export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
-    const { workoutId } = WorkoutStore;
+    const { workoutId } = useParams();
     const queryClient = useQueryClient()
     const focusTrapRef = useFocusTrap();
 
