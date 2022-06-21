@@ -3,6 +3,7 @@ import { Box, Stack, Text } from '@mantine/core'
 import { BsDot } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 export default function Menu() {
     const navigate = useNavigate()
@@ -24,11 +25,15 @@ export default function Menu() {
 
     ]
 
+    useEffect(() => {
+        setSelected(location.pathname)
+    }, [location.pathname])
+
     function onItemClick(path) {
         setSelected(path);
         navigate(path)
     }
-
+    
     return (
         <Stack>
             {items.map(x => (
