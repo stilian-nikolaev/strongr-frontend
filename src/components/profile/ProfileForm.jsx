@@ -14,21 +14,20 @@ const autocompleteData = ['Gym lover', 'Bro lifter', 'Athlete', 'Runner', 'Netfl
 
 export default observer(function ProfileForm({ name, activity }) {
     const initialValues = { name, activity }
-    const { avatarId } = ViewStore
+    const { avatarId, avatarColor } = ViewStore
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
         mutationFn: useEditProfile,
         onError: () => console.log('error editting profile'),
         onSuccess: (res) => {
-            console.log(endpoints.profile.one().url);
             queryClient.invalidateQueries()
         }
     })
 
 
     function onSubmit(data) {
-        mutation.mutate({ ...data, avatarId });
+        mutation.mutate({ ...data, avatarId, avatarColor });
     }
 
     return (

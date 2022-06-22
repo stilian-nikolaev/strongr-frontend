@@ -20,7 +20,7 @@ export default function Profile() {
     }
 
     return (
-        <Box sx={{ width: '22vw' }}>
+        <Box sx={{ width: '25vw' }}>
             <Box sx={{ display: 'flex' }}>
                 <Box sx={{
                     marginTop: '1vw',
@@ -31,7 +31,7 @@ export default function Profile() {
                     <Text sx={{ fontSize: '2.4vw', }}>Your Profile</Text>
                 </Box>
             </Box>
-            <AvatarSection originAvatarId={data.avatarId} />
+            <AvatarSection originAvatarId={data.avatarId} originColor={data.avatarColor} />
             <ProfileForm name={data.name} activity={data.activity} />
             <AvatarModal/>
         </Box>

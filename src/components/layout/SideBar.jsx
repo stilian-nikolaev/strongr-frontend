@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
 
 import { AuthStore } from '../../stores/AuthStore'
@@ -27,6 +27,7 @@ export default function SideBar() {
                         radius="50%"
                         alt="Username"
                         sx={{
+                            backgroundColor: data?.avatarColor,
                             boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                         }} />
                 </Box>

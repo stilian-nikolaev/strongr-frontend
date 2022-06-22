@@ -2,25 +2,44 @@ import { makeObservable, observable, action } from "mobx"
 
 class ViewStoreImpl {
     avatarId = null
+    avatarColor = 'white'
     editingTitle = false
     addingExercise = false
     addingWorkout = false
+    edittingColor = false
 
     constructor() {
         makeObservable(this, {
             avatarId: observable,
             setAvatarId: action,
+            avatarColor: observable,
+            setAvatarColor: action,
             editingTitle: observable,
             toggleEditingTitle: action,
             addingExercise: observable,
             toggleAddingExercise: action,
             addingWorkout: observable,
             toggleAddingWorkout: action,
+            edittingColor: observable,
+            openEdittingColor: action,
+            closeEdittingColor: action,
         })
+    }
+
+    openEdittingColor = () => {
+        this.edittingColor = true
+    }
+
+    closeEdittingColor = () => {
+        this.edittingColor = false
     }
 
     setAvatarId = (id) => {
         this.avatarId = id
+    }
+
+    setAvatarColor = (color) => {
+        this.avatarColor = color
     }
 
     toggleEditingTitle = () => {

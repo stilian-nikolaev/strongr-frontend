@@ -1,4 +1,4 @@
-import { Avatar, Box, Stack, Text } from '@mantine/core'
+import { Avatar, Box, ColorPicker, Stack, Text } from '@mantine/core'
 import React from 'react'
 import GenericButton from '../common/buttons/GenericButton'
 import { ModalStore } from '../../stores/ModalStore'
@@ -7,20 +7,18 @@ import { useAvatar } from '../../hooks/avatar'
 import { observer } from 'mobx-react'
 import { useEffect } from 'react'
 
-export default observer(function AvatarSection({ originAvatarId }) {
+export default observer(function AvatarSection({ originAvatarId, originColor }) {
     const { openModal } = ModalStore
-    const { avatarId, setAvatarId } = ViewStore
+    const { avatarId, setAvatarId, avatarColor, setAvatarColor, openEdittingColor, closeEdittingColor, edittingColor } = ViewStore
     const src = useAvatar(avatarId || originAvatarId);
 
     useEffect(() => {
+        closeEdittingColor()
         setAvatarId(originAvatarId)
+        setAvatarColor(originColor)
     }, [])
 
     function onChangeAvatarClick() {
-        openModal()
-    }
-
-    function onChangeBackgroundClick() {
         openModal()
     }
 
@@ -33,7 +31,7 @@ export default observer(function AvatarSection({ originAvatarId }) {
                 radius="50%"
                 alt="Username"
                 sx={{
-                    backgroundColor: 'pink',
+                    backgroundColor: avatarColor,
                     boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                 }} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -41,9 +39,14 @@ export default observer(function AvatarSection({ originAvatarId }) {
                     <GenericButton onClick={onChangeAvatarClick}>
                         Change avatar
                     </GenericButton>
-                    <GenericButton onClick={onChangeBackgroundClick}>
-                        Change background
-                    </GenericButton>
+                    {edittingColor
+                        ?
+                        <ColorPicker value={avatarColor} onChange={setAvatarColor} />
+                        :
+                        <GenericButton onClick={openEdittingColor}>
+                            Change background
+                        </GenericButton>}
+
                 </Stack>
             </Box>
         </Box>
