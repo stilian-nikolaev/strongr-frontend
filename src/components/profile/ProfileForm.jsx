@@ -1,5 +1,6 @@
 import { Autocomplete, Box, Text } from '@mantine/core'
 import React from 'react'
+import { useProfile } from '../../hooks/profile'
 import GenericButton from '../common/buttons/GenericButton'
 import AutoCompleteField from '../common/form/AutoComleteField'
 import GenericForm from '../common/form/GenericForm'
@@ -8,6 +9,9 @@ import TextField from '../common/form/TextField'
 const autocompleteData = ['Gym lover', 'Bro lifter', 'Athlete', 'Runner', 'Netflix enjoyer'];
 
 export default function ProfileForm() {
+    const { data, status } = useProfile();
+    const initialValues = { name: data.name, activity: data.activity }
+
     function onSubmit(data) {
         console.log(data);
     }
@@ -15,10 +19,7 @@ export default function ProfileForm() {
     return (
         <Box sx={{ marginTop: '3vw' }}>
             <GenericForm
-                initialValues={{
-                    name: 'Stilian Nikolaev',
-                    activity: 'Gym lover'
-                }}
+                initialValues={initialValues}
                 onSubmit={onSubmit}>
                 <Text sx={{ fontSize: '0.8vw', marginLeft: '0.5vw', color: 'gray' }}>Name</Text>
                 <TextField
