@@ -1,7 +1,7 @@
 import { Avatar, Box, Stack, Text } from '@mantine/core'
 import React from 'react'
 import GenericButton from '../common/buttons/GenericButton'
-import avatar from '../../images/avatar1.png'
+import avatar from '../../assets/avatar1.png'
 
 export default function AvatarSection() {
     return (

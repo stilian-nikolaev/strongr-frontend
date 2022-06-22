@@ -2,7 +2,7 @@ import React from 'react'
 import { Avatar, Navbar, Text } from '@mantine/core'
 
 import Menu from './Menu'
-import logo from '../../images/logo.jpg'
+import logo from '../../assets/logo.jpg'
 import { observer } from 'mobx-react';
 import { useNavigate } from 'react-router-dom';
 

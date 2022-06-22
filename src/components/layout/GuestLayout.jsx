@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, Box, Button, Header, Image, Text } from '@mantine/core'
-import logo from '../../images/logo.jpg'
+import logo from '../../assets/logo.jpg'
 import { useNavigate } from 'react-router-dom';
 
 export default function GuestLayout({ children }) {

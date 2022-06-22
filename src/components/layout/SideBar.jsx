@@ -1,13 +1,14 @@
 import React from 'react'
 import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
 
-import { avatars } from '../../service/avatars';
 import { AuthStore } from '../../stores/AuthStore'
 import { useNavigate } from 'react-router-dom'
 import { useProfile } from '../../hooks/profile'
+import { useAvatar } from '../../hooks/avatar';
 
 export default function SideBar() {
     const { data } = useProfile();
+    const src = useAvatar(data?.avatarId)
     const navigate = useNavigate();
     const { logout } = AuthStore
 
@@ -21,7 +22,7 @@ export default function SideBar() {
             <Box sx={{ marginTop: '4vw' }}>
                 <Box sx={{  display: 'flex', justifyContent: 'center' }}>
                     <Avatar
-                        src={avatars[data?.avatarId || 0]}
+                        src={src}
                         size="10vw"
                         radius="50%"
                         alt="Username"
