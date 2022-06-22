@@ -1,19 +1,31 @@
 import React from 'react'
 import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
 
+import LoadingScreen from '../common/LoadingScreen';
+import ErrorScreen from '../common/ErrorScreen';
+
 import avatar from '../../images/avatar.jpg'
 import { AuthStore } from '../../stores/AuthStore'
 import { useNavigate } from 'react-router-dom'
+import { useProfile } from '../../hooks/profile'
 
 export default function SideBar() {
+    const { data, status } = useProfile();
     const navigate = useNavigate();
     const { logout } = AuthStore
+
+    if (status === 'loading') {
+        return <LoadingScreen />;
+    }
+
+    if (status === 'error') {
+        return <ErrorScreen />;
+    }
 
     function onSignOutClick() {
         logout()
         navigate('/')
     }
-
     return (
         <Aside width={{ base: '20vw' }} sx={{ alignItems: 'center' }}>
             <Box sx={{ marginTop: '4vw' }}>
@@ -33,7 +45,7 @@ export default function SideBar() {
                     fontWeight: 'bold',
                     textAlign: 'center'
                 }}>
-                    Stilian Nikolaev
+                    {data.name}
                 </Text>
                 <Text sx={{
                     marginTop: '0.1vw',
@@ -41,7 +53,7 @@ export default function SideBar() {
                     textAlign: 'center',
                     color: 'grey'
                 }}>
-                    Gym lover
+                    {data.activity}
                 </Text>
                 <Button
                     onClick={onSignOutClick}
