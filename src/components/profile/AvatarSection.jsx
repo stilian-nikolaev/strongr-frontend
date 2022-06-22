@@ -2,8 +2,15 @@ import { Avatar, Box, Stack, Text } from '@mantine/core'
 import React from 'react'
 import GenericButton from '../common/buttons/GenericButton'
 import avatar from '../../assets/avatar1.png'
+import { ModalStore } from '../../stores/ModalStore'
 
 export default function AvatarSection() {
+    const {openModal } = ModalStore
+
+    function onChangeAvatarClick() {
+        openModal()
+    }
+
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '2vw', }}>
             <Avatar
@@ -16,7 +23,7 @@ export default function AvatarSection() {
                 }} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Stack>
-                    <GenericButton>
+                    <GenericButton onClick={onChangeAvatarClick}>
                         Change avatar
                     </GenericButton>
                     <GenericButton>

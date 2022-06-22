@@ -23,3 +23,7 @@ const avatars = [
 export function useAvatar(id) {
     return avatars[id || 0]
 }
+
+export function useAvatars() {
+    return avatars.slice(1);
+}
