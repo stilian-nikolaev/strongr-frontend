@@ -1,12 +1,15 @@
 import { makeObservable, observable, action } from "mobx"
 
 class ViewStoreImpl {
+    avatarId = null
     editingTitle = false
     addingExercise = false
     addingWorkout = false
 
     constructor() {
         makeObservable(this, {
+            avatarId: observable,
+            setAvatarId: action,
             editingTitle: observable,
             toggleEditingTitle: action,
             addingExercise: observable,
@@ -14,6 +17,10 @@ class ViewStoreImpl {
             addingWorkout: observable,
             toggleAddingWorkout: action,
         })
+    }
+
+    setAvatarId = (id) => {
+        this.avatarId = id
     }
 
     toggleEditingTitle = () => {

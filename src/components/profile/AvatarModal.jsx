@@ -1,15 +1,19 @@
 import { Avatar, Box, Center, Modal, SimpleGrid, Text } from '@mantine/core';
 import { observer } from 'mobx-react';
 import React from 'react'
+import { useQueryClient } from 'react-query';
 import { useAvatars } from '../../hooks/avatar';
 import { ModalStore } from '../../stores/ModalStore';
+import { ViewStore } from '../../stores/ViewStore';
 
 export default observer(function AvatarModal() {
     const { open, closeModal } = ModalStore;
+    const { setAvatarId } = ViewStore;
     const avatars = useAvatars();
-
+    
     function onAvatarClick(avatarId) {
-        console.log(avatarId);
+        setAvatarId(avatarId);
+        closeModal()
     }
 
     return (

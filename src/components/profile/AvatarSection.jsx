@@ -3,9 +3,21 @@ import React from 'react'
 import GenericButton from '../common/buttons/GenericButton'
 import avatar from '../../assets/avatar1.png'
 import { ModalStore } from '../../stores/ModalStore'
+import { ViewStore } from '../../stores/ViewStore'
+import { useAvatar } from '../../hooks/avatar'
+import { observer } from 'mobx-react'
+import { useProfile } from '../../hooks/profile'
+import { useEffect } from 'react'
 
-export default function AvatarSection() {
-    const {openModal } = ModalStore
+export default observer(function AvatarSection() {
+    const { data } = useProfile();
+    const { openModal } = ModalStore
+    const { avatarId, setAvatarId } = ViewStore
+    const src = useAvatar(avatarId || data?.avatarId);
+
+    useEffect(() => {
+        setAvatarId(data?.avatarId)
+    }, [])
 
     function onChangeAvatarClick() {
         openModal()
@@ -14,7 +26,7 @@ export default function AvatarSection() {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '2vw', }}>
             <Avatar
-                src={avatar}
+                src={src}
                 size="10vw"
                 radius="50%"
                 alt="Username"
@@ -33,4 +45,4 @@ export default function AvatarSection() {
             </Box>
         </Box>
     )
-}
+})

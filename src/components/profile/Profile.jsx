@@ -1,5 +1,4 @@
 import { Box, Text } from '@mantine/core'
-import { observer } from 'mobx-react';
 import React from 'react'
 import AvatarModal from './AvatarModal'
 
