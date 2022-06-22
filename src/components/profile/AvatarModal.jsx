@@ -10,22 +10,22 @@ export default observer(function AvatarModal() {
     const { open, closeModal } = ModalStore;
     const { setAvatarId } = ViewStore;
     const avatars = useAvatars();
-    
+
     function onAvatarClick(avatarId) {
         setAvatarId(avatarId);
         closeModal()
     }
 
     return (
-        <Modal withCloseButton={false} centered opened={open} radius={20} onClose={closeModal}>
+        <Modal withCloseButton={false} centered opened={open} radius={20} onClose={closeModal} size="30vw">
             <Text sx={{ fontSize: '1.5vw', textAlign: 'center' }}>Pick your avatar</Text>
-            <Center sx={{marginTop: '1vw'}}>
-                <SimpleGrid cols={4}>
+            <Center sx={{ marginTop: '1vw' }} >
+                <SimpleGrid cols={4} spacing="xl" sx={{ width: '25vw' }}>
                     {avatars.map((src, i) => <Avatar
                         onClick={() => onAvatarClick(i + 1)}
                         key={src}
                         src={src}
-                        size="4vw"
+                        size="5vw"
                         radius="50%"
                         sx={{
                             '&:hover': {

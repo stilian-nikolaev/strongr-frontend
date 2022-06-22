@@ -1,4 +1,4 @@
-import { Avatar, Box, ColorPicker, Stack, Text } from '@mantine/core'
+import { Avatar, Box, ColorInput, ColorPicker, Stack, Text } from '@mantine/core'
 import React from 'react'
 import GenericButton from '../common/buttons/GenericButton'
 import { ModalStore } from '../../stores/ModalStore'
@@ -35,13 +35,13 @@ export default observer(function AvatarSection({ originAvatarId, originColor }) 
                     boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                 }} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Stack>
+                <Stack sx={{width: '12vw'}}>
                     <GenericButton onClick={onChangeAvatarClick}>
                         Change avatar
                     </GenericButton>
                     {edittingColor
                         ?
-                        <ColorPicker value={avatarColor} onChange={setAvatarColor} />
+                        <ColorInput size="md" value={avatarColor} onChange={setAvatarColor} />
                         :
                         <GenericButton onClick={openEdittingColor}>
                             Change background

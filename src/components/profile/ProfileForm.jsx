@@ -21,7 +21,7 @@ export default observer(function ProfileForm({ name, activity }) {
         mutationFn: useEditProfile,
         onError: () => console.log('error editting profile'),
         onSuccess: (res) => {
-            queryClient.invalidateQueries()
+            queryClient.invalidateQueries(endpoints.profile.one().url)
         }
     })
 
