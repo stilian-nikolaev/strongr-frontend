@@ -1,37 +1,27 @@
 import React from 'react'
 import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
 
-import LoadingScreen from '../common/LoadingScreen';
-import ErrorScreen from '../common/ErrorScreen';
-
-import avatar from '../../images/avatar.jpg'
+import { avatars } from '../../service/avatars';
 import { AuthStore } from '../../stores/AuthStore'
 import { useNavigate } from 'react-router-dom'
 import { useProfile } from '../../hooks/profile'
 
 export default function SideBar() {
-    const { data, status } = useProfile();
+    const { data } = useProfile();
     const navigate = useNavigate();
     const { logout } = AuthStore
-
-    if (status === 'loading') {
-        return <LoadingScreen />;
-    }
-
-    if (status === 'error') {
-        return <ErrorScreen />;
-    }
 
     function onSignOutClick() {
         logout()
         navigate('/')
     }
+
     return (
         <Aside width={{ base: '20vw' }} sx={{ alignItems: 'center' }}>
             <Box sx={{ marginTop: '4vw' }}>
                 <Box sx={{  display: 'flex', justifyContent: 'center' }}>
                     <Avatar
-                        src={avatar}
+                        src={avatars[data?.avatarId || 0]}
                         size="10vw"
                         radius="50%"
                         alt="Username"
@@ -45,7 +35,7 @@ export default function SideBar() {
                     fontWeight: 'bold',
                     textAlign: 'center'
                 }}>
-                    {data.name}
+                    {data?.name}
                 </Text>
                 <Text sx={{
                     marginTop: '0.1vw',
@@ -53,7 +43,7 @@ export default function SideBar() {
                     textAlign: 'center',
                     color: 'grey'
                 }}>
-                    {data.activity}
+                    {data?.activity}
                 </Text>
                 <Button
                     onClick={onSignOutClick}

@@ -10,7 +10,7 @@ const autocompleteData = ['Gym lover', 'Bro lifter', 'Athlete', 'Runner', 'Netfl
 
 export default function ProfileForm() {
     const { data, status } = useProfile();
-    const initialValues = { name: data.name, activity: data.activity }
+    const initialValues = { name: data?.name, activity: data?.activity }
 
     function onSubmit(data) {
         console.log(data);
