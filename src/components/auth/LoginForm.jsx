@@ -1,12 +1,12 @@
 import { Box, Center, Text } from '@mantine/core';
 import React from 'react'
-import AuthFormButton from '../common/buttons/AuthFormButton';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { useConfigureHeaders, useLoginUser } from '../../hooks/auth';
 import { useMutation } from 'react-query';
 import { AuthStore } from '../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
+import GenericButton from '../common/buttons/GenericButton';
 
 export default function LoginForm() {
     const { login } = AuthStore
@@ -64,11 +64,15 @@ export default function LoginForm() {
                         }}
                     />
                     <Box sx={{ display: 'flex', marginTop: 40 }}>
-                        <AuthFormButton
+                        <GenericButton
+                            px='20px'
+                            py='12px'
                             type="submit"
-                            sx={{}}>
+                            sx={{
+                                fontSize: '16px',
+                            }}>
                             Log in
-                        </AuthFormButton>
+                        </GenericButton>
                         <Text sx={{ marginLeft: 20 }}>
                             Don't have an account?
                             <Text

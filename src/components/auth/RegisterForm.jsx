@@ -1,7 +1,5 @@
 import { Box, Center, Text } from '@mantine/core';
 import React from 'react'
-import ModalButton from '../common/buttons/ModalButton';
-import AuthFormButton from '../common/buttons/AuthFormButton';
 import GenericForm from '../common/form/GenericForm';
 import TextField from '../common/form/TextField';
 import { ViewStore } from '../../stores/ViewStore';
@@ -9,6 +7,7 @@ import { useMutation } from 'react-query';
 import { useConfigureHeaders, useRegisterUser } from '../../hooks/auth';
 import { AuthStore } from '../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
+import GenericButton from '../common/buttons/GenericButton';
 
 export default function RegisterForm() {
     const navigate = useNavigate();
@@ -92,11 +91,15 @@ export default function RegisterForm() {
                         }}
                     />
                     <Box sx={{ display: 'flex', marginTop: 40 }}>
-                        <AuthFormButton
+                        <GenericButton
+                            px='20px'
+                            py='12px'
                             type="submit"
-                            sx={{}}>
+                            sx={{
+                                fontSize: '16px',
+                            }}>
                             Sign up
-                        </AuthFormButton>
+                        </GenericButton>
                         <Text sx={{ marginLeft: 20 }}>
                             Already have an account?
                             <Text

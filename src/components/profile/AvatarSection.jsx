@@ -5,7 +5,7 @@ import avatar from '../../images/avatar.jpg'
 
 export default function AvatarSection() {
     return (
-        <Box sx={{ display: 'flex', marginTop: '2vw', }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '2vw', }}>
             <Avatar
                 src={avatar}
                 size="10vw"
@@ -14,7 +14,7 @@ export default function AvatarSection() {
                 sx={{
                     boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                 }} />
-            <Box sx={{ marginLeft: '2vw', display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Stack>
                     <GenericButton>
                         Change avatar
