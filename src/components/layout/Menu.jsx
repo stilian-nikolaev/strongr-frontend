@@ -5,26 +5,26 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+const items = [
+    {
+        label: 'Workouts',
+        path: '/workouts',
+    },
+    {
+        label: 'Profile',
+        path: '/profile',
+    },
+    {
+        label: 'Settings',
+        path: '/settings',
+    },
+
+]
+
 export default function Menu() {
     const navigate = useNavigate()
     const [selected, setSelected] = useState('/workouts')
-
-    const items = [
-        {
-            label: 'Workouts',
-            path: '/workouts',
-        },
-        {
-            label: 'Profile',
-            path: '/profile',
-        },
-        {
-            label: 'Settings',
-            path: '/settings',
-        },
-
-    ]
-
+    
     useEffect(() => {
         setSelected(location.pathname)
     }, [location.pathname])

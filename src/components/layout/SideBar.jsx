@@ -16,8 +16,8 @@ export default function SideBar() {
 
     return (
         <Aside width={{ base: '20vw' }} sx={{ alignItems: 'center' }}>
-            <Container sx={{ padding: 0, marginTop: '4vw' }}>
-                <Container sx={{ padding: 0, display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ marginTop: '4vw' }}>
+                <Box sx={{  display: 'flex', justifyContent: 'center' }}>
                     <Avatar
                         src={avatar}
                         size="10vw"
@@ -26,7 +26,7 @@ export default function SideBar() {
                         sx={{
                             boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                         }} />
-                </Container>
+                </Box>
                 <Text sx={{
                     marginTop: '1vw',
                     fontSize: '1.4vw',
@@ -58,7 +58,7 @@ export default function SideBar() {
                     }}>
                     <Text sx={{ fontSize: '1vw' }}>Sign out</Text>
                 </Button>
-            </Container>
+            </Box>
         </Aside>
     )
 }
