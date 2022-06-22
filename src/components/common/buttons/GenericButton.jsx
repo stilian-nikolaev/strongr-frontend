@@ -12,6 +12,7 @@ export default function GenericButton({ children, sx, ...props }) {
                 backgroundColor: 'black',
                 fontSize: '0.8vw',
                 fontWeight: 100,
+                textAlign: 'center',
                 '&:hover': {
                     backgroundColor: '#191919'
                 },

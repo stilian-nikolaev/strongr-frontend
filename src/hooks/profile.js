@@ -10,4 +10,8 @@ export function useProfile() {
     return useQuery(endpoints.profile.one().url, fetchProfile);
 }
 
+export async function useEditProfile(data) {
+    const res = await apiClient.patch(endpoints.profile.one().url, data);
+    return res.data;
+}
 

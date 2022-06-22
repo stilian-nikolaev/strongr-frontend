@@ -1,27 +1,29 @@
 import { Avatar, Box, Stack, Text } from '@mantine/core'
 import React from 'react'
 import GenericButton from '../common/buttons/GenericButton'
-import avatar from '../../assets/avatar1.png'
 import { ModalStore } from '../../stores/ModalStore'
 import { ViewStore } from '../../stores/ViewStore'
 import { useAvatar } from '../../hooks/avatar'
 import { observer } from 'mobx-react'
-import { useProfile } from '../../hooks/profile'
 import { useEffect } from 'react'
 
-export default observer(function AvatarSection() {
-    const { data } = useProfile();
+export default observer(function AvatarSection({ originAvatarId }) {
     const { openModal } = ModalStore
     const { avatarId, setAvatarId } = ViewStore
-    const src = useAvatar(avatarId || data?.avatarId);
+    const src = useAvatar(avatarId || originAvatarId);
 
     useEffect(() => {
-        setAvatarId(data?.avatarId)
+        setAvatarId(originAvatarId)
     }, [])
 
     function onChangeAvatarClick() {
         openModal()
     }
+
+    function onChangeBackgroundClick() {
+        openModal()
+    }
+
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '2vw', }}>
@@ -31,6 +33,7 @@ export default observer(function AvatarSection() {
                 radius="50%"
                 alt="Username"
                 sx={{
+                    backgroundColor: 'pink',
                     boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                 }} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -38,8 +41,8 @@ export default observer(function AvatarSection() {
                     <GenericButton onClick={onChangeAvatarClick}>
                         Change avatar
                     </GenericButton>
-                    <GenericButton>
-                        Upload photo
+                    <GenericButton onClick={onChangeBackgroundClick}>
+                        Change background
                     </GenericButton>
                 </Stack>
             </Box>
