@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import WorkoutsPage from '../WorkoutsPage';
 import WorkoutDetailsPage from '../WorkoutDetailsPage';
 import ProfilePage from '../ProfilePage';
+import SettingsPage from '../SettingsPage';
 
 export default observer(function UsersPage() {
   return <Routes>
@@ -12,5 +13,6 @@ export default observer(function UsersPage() {
     <Route path='/workouts'element={ <WorkoutsPage />} />
     <Route path='/workouts/:workoutId' element={<WorkoutDetailsPage />} />
     <Route path='/profile' element={<ProfilePage />} />
+    <Route path='/settings' element={<SettingsPage />} />
   </Routes>
 })
