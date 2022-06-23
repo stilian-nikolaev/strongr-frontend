@@ -23,9 +23,8 @@ export default function Settings() {
         }
     })
 
-
     function onChangePassClick() {
-        
+        navigate('/settings/change-password')
     }
 
     function onDeleteProfileClick() {
@@ -46,14 +45,14 @@ export default function Settings() {
                     <Text sx={{ fontSize: '2.4vw', }}>Settings</Text>
                 </Box>
             </Box>
-            <Stack sx={{width: '12vw', marginTop: '2vw'}}>
-                <GenericButton onClick={onChangePassClick}>
-                    Change password
-                </GenericButton>
-                <GenericButton onClick={onDeleteProfileClick}>
-                    Delete this account
-                </GenericButton>
-            </Stack>
+                <Stack sx={{ width: '12vw', marginTop: '2vw' }}>
+                    <GenericButton onClick={onChangePassClick}>
+                        Change password
+                    </GenericButton>
+                    <GenericButton onClick={onDeleteProfileClick}>
+                        Delete this account
+                    </GenericButton>
+                </Stack>
             <ConfirmationModal />
         </Box>
     )

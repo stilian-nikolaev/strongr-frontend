@@ -11,6 +11,11 @@ export async function useRegisterUser(data) {
     return res.data;
 }
 
+export async function useChangePassword(data) {
+    const res = await apiClient.post(endpoints.auth.changePassword().url, data);
+    return res.data;
+}
+
 export function useConfigureHeaders(token) {
     apiClient.defaults.headers = {'Authorization': `Bearer ${token}`};
 }

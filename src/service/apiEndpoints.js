@@ -14,6 +14,7 @@ export const endpoints = {
     auth: {
         login: () => ({ url: '/auth/login' }),
         register: () => ({ url: '/auth/register' }),
+        changePassword: () => ({ url: '/auth/change-password' })
     },
     profile: {
         one: () => ({url: '/profile'})

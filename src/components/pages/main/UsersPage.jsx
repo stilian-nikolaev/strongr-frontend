@@ -6,6 +6,7 @@ import WorkoutsPage from '../WorkoutsPage';
 import WorkoutDetailsPage from '../WorkoutDetailsPage';
 import ProfilePage from '../ProfilePage';
 import SettingsPage from '../SettingsPage';
+import ChangePasswordPage from '../ChangePasswordPage';
 
 export default observer(function UsersPage() {
   return <Routes>
@@ -14,5 +15,6 @@ export default observer(function UsersPage() {
     <Route path='/workouts/:workoutId' element={<WorkoutDetailsPage />} />
     <Route path='/profile' element={<ProfilePage />} />
     <Route path='/settings' element={<SettingsPage />} />
+    <Route path='/settings/change-password' element={<ChangePasswordPage />} />
   </Routes>
 })
