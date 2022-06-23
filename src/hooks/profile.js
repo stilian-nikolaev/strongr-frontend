@@ -15,3 +15,9 @@ export async function useEditProfile(data) {
     return res.data;
 }
 
+export async function useDeleteProfile() {
+    const res = await apiClient.delete(endpoints.profile.one().url);
+    return res.data;
+}
+
+
