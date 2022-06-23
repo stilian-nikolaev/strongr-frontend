@@ -14,7 +14,7 @@ export default function ChangePasswordForm() {
         mutationFn: data => useChangePassword(data),
         onError: err => console.log('error changing pass', err),
         onSuccess: (res) => {
-            navigate('settings')
+            navigate('/settings')
         }
     })
 

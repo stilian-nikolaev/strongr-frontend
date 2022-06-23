@@ -12,7 +12,7 @@ export async function useRegisterUser(data) {
 }
 
 export async function useChangePassword(data) {
-    const res = await apiClient.post(endpoints.auth.changePassword().url, data);
+    const res = await apiClient.patch(endpoints.auth.changePassword().url, data);
     return res.data;
 }
 
