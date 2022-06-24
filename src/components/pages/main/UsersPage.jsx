@@ -2,11 +2,11 @@ import React from 'react'
 import { observer } from 'mobx-react';
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import WorkoutsPage from '../WorkoutsPage';
-import WorkoutDetailsPage from '../WorkoutDetailsPage';
-import ProfilePage from '../ProfilePage';
-import SettingsPage from '../SettingsPage';
-import ChangePasswordPage from '../ChangePasswordPage';
+import WorkoutsPage from '../workouts/WorkoutsPage';
+import WorkoutDetailsPage from '../workout-details/WorkoutDetailsPage';
+import ProfilePage from '../profile/ProfilePage';
+import SettingsPage from '../settings/SettingsPage';
+import ChangePasswordPage from '../change-password/ChangePasswordPage';
 
 export default observer(function UsersPage() {
   return <Routes>
