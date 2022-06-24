@@ -2,7 +2,7 @@ import { Autocomplete, Box, Text } from '@mantine/core'
 import { observer } from 'mobx-react'
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { useEditProfile, useProfile } from '../../hooks/profile'
+import { useEditUser} from '../../hooks/user'
 import { endpoints } from '../../service/apiEndpoints'
 import { ViewStore } from '../../stores/ViewStore'
 import GenericButton from '../common/buttons/GenericButton'
@@ -18,10 +18,10 @@ export default observer(function ProfileForm({ name, activity }) {
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
-        mutationFn: useEditProfile,
+        mutationFn: useEditUser,
         onError: () => console.log('error editting profile'),
         onSuccess: (res) => {
-            queryClient.invalidateQueries(endpoints.profile.one().url)
+            queryClient.invalidateQueries(endpoints.user.one().url)
         }
     })
 

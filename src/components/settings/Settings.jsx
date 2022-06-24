@@ -2,7 +2,7 @@ import { Box, Stack, Text } from '@mantine/core'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-import { useDeleteProfile } from '../../hooks/profile'
+import { useDeleteUser } from '../../hooks/user'
 import { AuthStore } from '../../stores/AuthStore'
 import { ModalStore } from '../../stores/ModalStore'
 import GenericButton from '../common/buttons/GenericButton'
@@ -14,7 +14,7 @@ export default function Settings() {
     const { logout } = AuthStore
 
     const deleteMutation = useMutation({
-        mutationFn: useDeleteProfile,
+        mutationFn: useDeleteUser,
         onError: () => console.log('error deleting user'),
         onSuccess: () => {
             closeModal();

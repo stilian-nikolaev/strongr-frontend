@@ -3,11 +3,11 @@ import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
 
 import { AuthStore } from '../../stores/AuthStore'
 import { useNavigate } from 'react-router-dom'
-import { useProfile } from '../../hooks/profile'
+import { useUser } from '../../hooks/user'
 import { useAvatar } from '../../hooks/avatar';
 
 export default function SideBar() {
-    const { data } = useProfile();
+    const { data } = useUser();
     const src = useAvatar(data?.avatarId)
     const navigate = useNavigate();
     const { logout } = AuthStore

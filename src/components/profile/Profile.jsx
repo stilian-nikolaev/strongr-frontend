@@ -1,6 +1,6 @@
 import { Box, Text } from '@mantine/core'
 import React from 'react'
-import { useProfile } from '../../hooks/profile'
+import { useUser } from '../../hooks/user'
 import ErrorScreen from '../common/ErrorScreen'
 import LoadingScreen from '../common/LoadingScreen'
 import AvatarModal from './AvatarModal'
@@ -9,7 +9,7 @@ import AvatarSection from './AvatarSection'
 import ProfileForm from './ProfileForm'
 
 export default function Profile() {
-    const { data, status } = useProfile();
+    const { data, status } = useUser();
 
     if (status === 'loading') {
         return <LoadingScreen />
