@@ -32,7 +32,7 @@ export default function RegisterForm() {
     }
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
+        <Center sx={{ height: '35vw', marginTop: '2vw' }}>
             <GenericForm initialValues={{ email: '', password: '', repeatPassword: '', name: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Create an account</Text>
@@ -120,6 +120,7 @@ export default function RegisterForm() {
                     </Box>
                 </Box>
             </GenericForm>
-        </Box>
+        </Center>
+
     )
 }

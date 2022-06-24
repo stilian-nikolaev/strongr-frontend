@@ -32,7 +32,7 @@ export default function LoginForm() {
     }
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
+        <Center sx={{ height: '35vw', marginTop: '2vw' }}>
             <GenericForm initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
@@ -95,6 +95,6 @@ export default function LoginForm() {
                     </Box>
                 </Box>
             </GenericForm>
-        </Box>
+        </Center >
     )
 }
