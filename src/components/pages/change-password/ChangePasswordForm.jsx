@@ -23,7 +23,7 @@ export default function ChangePasswordForm() {
     }
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '200px' }}>
+        <Center sx={{ height: '89vh' }}>
             <GenericForm initialValues={{ password: '', repeatPassword: ''}} onSubmit={onSubmit}>
                 <Text sx={{ fontSize: '22px', marginLeft: 20}}>Change password</Text>
                 <TextField
@@ -66,6 +66,6 @@ export default function ChangePasswordForm() {
                 </GenericButton>
 
             </GenericForm>
-        </Box>
+        </Center>
     )
 }
