@@ -45,14 +45,25 @@ export default function Settings() {
                     <Text sx={{ fontSize: '2.4vw', }}>Settings</Text>
                 </Box>
             </Box>
-                <Stack sx={{ width: '12vw', marginTop: '2vw' }}>
-                    <GenericButton onClick={onChangePassClick}>
-                        Change password
-                    </GenericButton>
-                    <GenericButton onClick={onDeleteProfileClick}>
-                        Delete this account
-                    </GenericButton>
+
+
+            <Box sx={{ width: '14vw', marginTop: '1vw' }}>
+                <Text sx={{
+                    marginTop: '1vw',
+                    fontSize: '1.4vw',
+                }}>
+                    Manage your profile
+                </Text>
+                <Stack sx={{ width: '11vw' }}>
+
+                <GenericButton sx={{marginTop: '1vw'}} onClick={onChangePassClick}>
+                    Change password
+                </GenericButton>
+                <GenericButton sx={{ marginTop: '0.5vw' }} onClick={onDeleteProfileClick}>
+                    Delete this account
+                </GenericButton>
                 </Stack>
+            </Box>
             <ConfirmationModal />
         </Box>
     )
