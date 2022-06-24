@@ -8,6 +8,7 @@ import { useConfigureHeaders, useRegisterUser } from '../../../hooks/auth';
 import { AuthStore } from '../../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
 import GenericButton from '../../common/buttons/GenericButton';
+import { showNotification } from '@mantine/notifications';
 
 export default function RegisterForm() {
     const navigate = useNavigate();
@@ -15,7 +16,6 @@ export default function RegisterForm() {
 
     const mutation = useMutation({
         mutationFn: data => useRegisterUser(data),
-        onError: err => console.log('error registering', err),
         onSuccess: (res) => {
             useConfigureHeaders(res.token);
             login(res.token, res.expiresAt)

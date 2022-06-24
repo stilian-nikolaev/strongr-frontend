@@ -16,7 +16,6 @@ export default function ExerciseMenu(props) {
 
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteExercise(workoutId, props.exerciseId),
-        onError: () => console.log('error deleting exercise'),
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
             closeModal();

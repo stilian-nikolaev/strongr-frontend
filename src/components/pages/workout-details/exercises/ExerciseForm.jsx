@@ -19,7 +19,6 @@ export default function ExerciseForm() {
 
     const mutation = useMutation({
         mutationFn: data => useCreateExercise(workoutId, data),
-        onError: () => console.log('error posting exercise'),
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId).url)
                 .then(() => toggleAddingExercise())

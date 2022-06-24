@@ -6,15 +6,19 @@ import { useChangePassword } from '../../../hooks/auth'
 import GenericButton from '../../common/buttons/GenericButton'
 import GenericForm from '../../common/form/GenericForm'
 import TextField from '../../common/form/TextField'
+import { showNotification } from '@mantine/notifications';
 
 export default function ChangePasswordForm() {
     const navigate = useNavigate();
 
     const mutation = useMutation({
         mutationFn: data => useChangePassword(data),
-        onError: err => console.log('error changing pass', err),
         onSuccess: (res) => {
             navigate('/settings')
+            showNotification({
+                title: 'Success',
+                message: 'Successfully changed password!'
+            })
         }
     })
 
@@ -24,8 +28,8 @@ export default function ChangePasswordForm() {
 
     return (
         <Center sx={{ height: '89vh' }}>
-            <GenericForm initialValues={{ password: '', repeatPassword: ''}} onSubmit={onSubmit}>
-                <Text sx={{ fontSize: '22px', marginLeft: 20}}>Change password</Text>
+            <GenericForm initialValues={{ password: '', repeatPassword: '' }} onSubmit={onSubmit}>
+                <Text sx={{ fontSize: '22px', marginLeft: 20 }}>Change password</Text>
                 <TextField
                     placeholder="New Password*"
                     aria-label="newPassword"

@@ -14,7 +14,7 @@ export default observer(function NavigationBar() {
     }
 
     return (
-        <Navbar width={{ base: '15vw' }}>
+        <Navbar width={{ base: '15vw' }} sx={{zIndex: 0}}>
             <Navbar.Section
                 onClick={onLogoClick}
                 sx={{

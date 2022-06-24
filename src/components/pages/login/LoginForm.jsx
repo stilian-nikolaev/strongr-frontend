@@ -14,11 +14,11 @@ export default function LoginForm() {
 
     const mutation = useMutation({
         mutationFn: data => useLoginUser(data),
-        onError: () => console.log('error logging in'),
         onSuccess: (res) => {
             useConfigureHeaders(res.token);
             login(res.token, res.expiresAt)
             navigate('/workouts')
+            
         }
     })
 

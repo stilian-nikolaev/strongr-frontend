@@ -9,6 +9,7 @@ import GenericButton from '../../common/buttons/GenericButton'
 import AutoCompleteField from '../../common/form/AutoComleteField'
 import GenericForm from '../../common/form/GenericForm'
 import TextField from '../../common/form/TextField'
+import { showNotification } from '@mantine/notifications';
 
 const autocompleteData = ['Gym lover', 'Bro lifter', 'Athlete', 'Runner', 'Netflix enjoyer'];
 
@@ -19,8 +20,11 @@ export default observer(function ProfileForm({ name, activity }) {
 
     const mutation = useMutation({
         mutationFn: useEditUser,
-        onError: () => console.log('error editting profile'),
         onSuccess: (res) => {
+            showNotification({
+                title: 'Success',
+                message: 'Successfully edited profile!'
+              })
             queryClient.invalidateQueries(endpoints.user.one().url)
         }
     })

@@ -11,6 +11,7 @@ import BackButton from '../../../common/buttons/BackButton'
 import AddExerciseButton from './AddExerciseButton'
 import WorkoutTitleForm from '../../workouts/WorkoutTitleForm'
 import { useNavigate, useParams } from 'react-router-dom'
+import { showNotification } from '@mantine/notifications';
 
 export default observer(function GridHeader({title}) {
     const { editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
@@ -20,9 +21,12 @@ export default observer(function GridHeader({title}) {
 
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteWorkout(workoutId),
-        onError: () => console.log('error deleting workout'),
         onSuccess: (res) => {
             closeModal();
+            showNotification({
+                title: 'Success',
+                message: 'Successfully deleted workout!'
+              })
             navigate('/workouts')
         }
     })

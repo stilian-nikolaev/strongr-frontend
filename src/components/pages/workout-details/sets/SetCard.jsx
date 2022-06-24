@@ -15,7 +15,6 @@ export default function SetCard({ set, edittingExercise, exerciseId }) {
 
     const deleteMutation = useMutation({
         mutationFn: () => useDeleteSet(workoutId, exerciseId, set._id),
-        onError: () => console.log('error deleting set'),
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
         }

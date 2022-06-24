@@ -23,7 +23,6 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
 
     const mutation = useMutation({
         mutationFn,
-        onError: () => console.log('error posting/editting set'),
         onSuccess: (res) => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
             onSuccess();

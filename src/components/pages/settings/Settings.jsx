@@ -7,6 +7,7 @@ import { AuthStore } from '../../../stores/AuthStore'
 import { ModalStore } from '../../../stores/ModalStore'
 import GenericButton from '../../common/buttons/GenericButton'
 import ConfirmationModal from '../../common/ConfirmationModal'
+import { showNotification } from '@mantine/notifications';
 
 export default function Settings() {
     const navigate = useNavigate();
@@ -15,9 +16,12 @@ export default function Settings() {
 
     const deleteMutation = useMutation({
         mutationFn: useDeleteUser,
-        onError: () => console.log('error deleting user'),
         onSuccess: () => {
             closeModal();
+            showNotification({
+                title: 'Success',
+                message: 'Successfully deleted profile!'
+              })
             logout();
             navigate('/')
         }
