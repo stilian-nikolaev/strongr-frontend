@@ -45,7 +45,7 @@ export default function LoginForm() {
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
                     <TextField
-                        placeholder="Email*"
+                        placeholder="Email"
                         aria-label="email"
                         name="email"
                         size="lg"
@@ -58,7 +58,7 @@ export default function LoginForm() {
                         }}
                         />
                     <TextField
-                        placeholder="Password*"
+                        placeholder="Password"
                         aria-label="password"
                         name="password"
                         size="lg"

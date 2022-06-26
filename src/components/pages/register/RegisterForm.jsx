@@ -17,9 +17,10 @@ export default function RegisterForm() {
 
     const validationSchema = yup
         .object({
-            name: yup.string().trim().min(1).max(20).required(),
             email: yup.string().email().required(),
-            password: yup.string().trim().min(1).max(20).required(),
+            name: yup.string().min(1).max(40).required(),
+            password: yup.string().trim().min(1).max(40).required(),
+            repeatPassword: yup.string().trim().min(1).max(40).required(),
         })
 
     const mutation = useMutation({
@@ -31,7 +32,7 @@ export default function RegisterForm() {
         }
     })
 
-    
+
 
     function onSubmit(data) {
         mutation.mutate(data)
@@ -43,11 +44,14 @@ export default function RegisterForm() {
 
     return (
         <Center sx={{ height: '35vw', marginTop: '2vw' }}>
-            <GenericForm initialValues={{ email: '', password: '', repeatPassword: '', name: '' }} onSubmit={onSubmit}>
+            <GenericForm
+                validationSchema={validationSchema}
+                initialValues={{ email: '', password: '', repeatPassword: '', name: '' }}
+                onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Create an account</Text>
                     <TextField
-                        placeholder="Name*"
+                        placeholder="Name"
                         aria-label="name"
                         name="name"
                         size="lg"
@@ -60,7 +64,7 @@ export default function RegisterForm() {
                         }}
                     />
                     <TextField
-                        placeholder="Email*"
+                        placeholder="Email"
                         aria-label="email"
                         name="email"
                         size="lg"
@@ -73,7 +77,7 @@ export default function RegisterForm() {
                         }}
                     />
                     <TextField
-                        placeholder="Password*"
+                        placeholder="Password"
                         aria-label="password"
                         name="password"
                         size="lg"
@@ -87,7 +91,7 @@ export default function RegisterForm() {
                         }}
                     />
                     <TextField
-                        placeholder="Confirm Password*"
+                        placeholder="Confirm Password"
                         aria-label="confirmPassword"
                         name="repeatPassword"
                         size="lg"
