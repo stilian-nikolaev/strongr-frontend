@@ -8,11 +8,19 @@ import { useConfigureHeaders, useRegisterUser } from '../../../hooks/auth';
 import { AuthStore } from '../../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
 import GenericButton from '../../common/buttons/GenericButton';
-import { showNotification } from '@mantine/notifications';
+import * as yup from 'yup'
 
 export default function RegisterForm() {
     const navigate = useNavigate();
     const { login } = AuthStore
+
+
+    const validationSchema = yup
+        .object({
+            name: yup.string().trim().min(1).max(20).required(),
+            email: yup.string().email().required(),
+            password: yup.string().trim().min(1).max(20).required(),
+        })
 
     const mutation = useMutation({
         mutationFn: data => useRegisterUser(data),
@@ -22,6 +30,8 @@ export default function RegisterForm() {
             navigate('/workouts')
         }
     })
+
+    
 
     function onSubmit(data) {
         mutation.mutate(data)

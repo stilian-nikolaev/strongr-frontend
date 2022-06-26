@@ -7,10 +7,18 @@ import { useMutation } from 'react-query';
 import { AuthStore } from '../../../stores/AuthStore';
 import { useNavigate } from 'react-router-dom';
 import GenericButton from '../../common/buttons/GenericButton';
+import * as yup from 'yup'
 
 export default function LoginForm() {
     const { login } = AuthStore
     const navigate = useNavigate();
+
+    const validationSchema = yup
+        .object({
+            email: yup.string().email().required(),
+            password: yup.string().trim().min(1).max(40).required(),
+        })
+
 
     const mutation = useMutation({
         mutationFn: data => useLoginUser(data),
@@ -33,7 +41,7 @@ export default function LoginForm() {
 
     return (
         <Center sx={{ height: '35vw', marginTop: '2vw' }}>
-            <GenericForm initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
+            <GenericForm validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
                     <TextField
@@ -48,7 +56,7 @@ export default function LoginForm() {
                                 color: '#808080 !important'
                             }
                         }}
-                    />
+                        />
                     <TextField
                         placeholder="Password*"
                         aria-label="password"
