@@ -47,7 +47,7 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     aria-label="amount"
                     name="amount"
                     type="number"
-                    min={0}
+                    min={1}
                     max={99}
                     sx={{
                         width: '1.6vw',
