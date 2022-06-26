@@ -7,9 +7,16 @@ import GenericButton from '../../common/buttons/GenericButton'
 import GenericForm from '../../common/form/GenericForm'
 import TextField from '../../common/form/TextField'
 import { showNotification } from '@mantine/notifications';
+import * as yup from 'yup'
 
 export default function ChangePasswordForm() {
     const navigate = useNavigate();
+
+    const validationSchema = yup
+        .object({
+            password: yup.string().trim().min(1).max(40).required(),
+            repeatPassword: yup.string().trim().min(1).max(40).required(),
+        })
 
     const mutation = useMutation({
         mutationFn: data => useChangePassword(data),
@@ -28,10 +35,10 @@ export default function ChangePasswordForm() {
 
     return (
         <Center sx={{ height: '89vh' }}>
-            <GenericForm initialValues={{ password: '', repeatPassword: '' }} onSubmit={onSubmit}>
+            <GenericForm validationSchema={validationSchema} initialValues={{ password: '', repeatPassword: '' }} onSubmit={onSubmit}>
                 <Text sx={{ fontSize: '22px', marginLeft: 20 }}>Change password</Text>
                 <TextField
-                    placeholder="New Password*"
+                    placeholder="New Password"
                     aria-label="newPassword"
                     name="password"
                     size="lg"
@@ -45,7 +52,7 @@ export default function ChangePasswordForm() {
                     }}
                 />
                 <TextField
-                    placeholder="Confirm Password*"
+                    placeholder="Confirm Password"
                     aria-label="confirmPassword"
                     name="repeatPassword"
                     size="lg"

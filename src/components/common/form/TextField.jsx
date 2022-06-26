@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useField } from 'formik'
-import { TextInput } from '@mantine/core';
+import { Box, TextInput } from '@mantine/core';
+import ErrorPopper from './ErrorPopper';
 
-export default function TextField({ name, ...props }) {
+export default function TextField({ name, inlineError = true, ...props }) {
   const [field, meta] = useField(name);
-  const error = meta.touched && meta.error ? `${props.placeholder} ${meta.error.split(' ').splice(1).join(' ')}` : ''
+  const [referenceElement, setReferenceElement] = useState(null); 
+  const message = meta.touched && meta.error ? `${props.placeholder} ${meta.error.split(' ').splice(1).join(' ')}` : '';
 
-  return (
-    <TextInput {...field} {...props} error={meta.error && meta.touched} description={error} />
+  return (<Box>
+    <TextInput
+      {...field}
+      {...props}
+      ref={setReferenceElement}
+      error={inlineError && meta.error && meta.touched}
+      description={inlineError && message} />
+    {!inlineError && <ErrorPopper message={message} meta={meta} referenceElement={referenceElement} />}
+  </Box>
   )
 }

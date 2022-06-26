@@ -10,12 +10,19 @@ import { endpoints } from '../../../../service/apiEndpoints';
 import { useFocusTrap } from '@mantine/hooks';
 import SubmitButton from '../../../common/buttons/SubmitButton';
 import { useParams } from 'react-router-dom';
+import * as yup from 'yup'
 
 export default function ExerciseForm() {
     const { workoutId } = useParams()
     const { toggleAddingExercise } = ViewStore;
     const queryClient = useQueryClient();
     const focusTrapRef = useFocusTrap();
+
+    const validationSchema = yup
+        .object({
+            title: yup.string().trim().min(1).max(25).required(),
+        })
+
 
     const mutation = useMutation({
         mutationFn: data => useCreateExercise(workoutId, data),
@@ -43,13 +50,12 @@ export default function ExerciseForm() {
                     }
                 }
             }}>
-            <GenericForm initialValues={{ title: '' }} onSubmit={onSubmit}>
+            <GenericForm validationSchema={validationSchema} initialValues={{ title: '' }} onSubmit={onSubmit}>
                 <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                     <TextField
-                        data-autofocus
+                        inlineError={false}
                         variant="unstyled"
                         size="1.2vw"
-                        required
                         placeholder="Exercise title"
                         aria-label="title"
                         name="title"

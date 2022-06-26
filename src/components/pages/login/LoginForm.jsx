@@ -26,7 +26,7 @@ export default function LoginForm() {
             useConfigureHeaders(res.token);
             login(res.token, res.expiresAt)
             navigate('/workouts')
-            
+
         }
     })
 
@@ -56,7 +56,7 @@ export default function LoginForm() {
                                 color: '#808080 !important'
                             }
                         }}
-                        />
+                    />
                     <TextField
                         placeholder="Password"
                         aria-label="password"

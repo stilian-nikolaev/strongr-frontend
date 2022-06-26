@@ -2,7 +2,7 @@ import { Autocomplete, Box, Text } from '@mantine/core'
 import { observer } from 'mobx-react'
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { useEditUser} from '../../../hooks/user'
+import { useEditUser } from '../../../hooks/user'
 import { endpoints } from '../../../service/apiEndpoints'
 import { ViewStore } from '../../../stores/ViewStore'
 import GenericButton from '../../common/buttons/GenericButton'
@@ -10,6 +10,7 @@ import AutoCompleteField from '../../common/form/AutoComleteField'
 import GenericForm from '../../common/form/GenericForm'
 import TextField from '../../common/form/TextField'
 import { showNotification } from '@mantine/notifications';
+import * as yup from 'yup'
 
 const autocompleteData = ['Gym lover', 'Bro lifter', 'Athlete', 'Runner', 'Netflix enjoyer'];
 
@@ -18,13 +19,18 @@ export default observer(function ProfileForm({ name, activity }) {
     const { avatarId, avatarColor } = ViewStore
     const queryClient = useQueryClient();
 
+    const validationSchema = yup.object({
+        name: yup.string().min(1).max(30).required(),
+        activity: yup.string().required(),
+    })
+
     const mutation = useMutation({
         mutationFn: useEditUser,
         onSuccess: (res) => {
             showNotification({
                 title: 'Success',
                 message: 'Successfully edited profile!'
-              })
+            })
             queryClient.invalidateQueries(endpoints.user.one().url)
         }
     })
@@ -37,15 +43,16 @@ export default observer(function ProfileForm({ name, activity }) {
     return (
         <Box sx={{ marginTop: '3vw' }}>
             <GenericForm
+                validationSchema={validationSchema}
                 initialValues={initialValues}
                 onSubmit={onSubmit}>
                 <Text sx={{ fontSize: '0.8vw', marginLeft: '0.5vw', color: 'gray' }}>Name</Text>
                 <TextField
-                    placeholder="Name*"
+                    inlineError={false}
+                    placeholder="Name"
                     aria-label="name"
                     name="name"
                     size="lg"
-                    required
                     sx={{
                         '& ::placeholder': {
                             color: '#808080 !important'
@@ -54,12 +61,12 @@ export default observer(function ProfileForm({ name, activity }) {
                 />
                 <Text sx={{ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: 'gray' }}>Activity</Text>
                 <AutoCompleteField
-                    placeholder="Activity*"
+                    required
+                    placeholder="Activity"
                     aria-label="activity"
                     name="activity"
                     data={autocompleteData}
                     size="lg"
-                    required
                     sx={{
                         '& ::placeholder': {
                             color: '#808080 !important'

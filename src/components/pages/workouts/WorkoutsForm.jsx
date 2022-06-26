@@ -9,12 +9,18 @@ import { ViewStore } from '../../../stores/ViewStore';
 import SubmitButton from '../../common/buttons/SubmitButton';
 import { useFocusTrap } from '@mantine/hooks';
 import { endpoints } from '../../../service/apiEndpoints';
+import * as yup from 'yup'
 
 
 export default function WorkoutsForm() {
     const { toggleAddingWorkout } = ViewStore;
     const focusTrapRef = useFocusTrap();
     const queryClient = useQueryClient();
+
+    const validationSchema = yup
+        .object({
+            title: yup.string().trim().min(1).max(25).required(),
+        })
 
     const mutation = useMutation({
         mutationFn: data => useCreateWorkout(data),
@@ -40,14 +46,14 @@ export default function WorkoutsForm() {
                 }
             }}>
             <GenericForm
+                validationSchema={validationSchema}
                 initialValues={{
                     title: '',
                 }}
                 onSubmit={onSubmit}>
                 <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                     <TextField
-                        data-autofocus
-                        required
+                        inlineError={false}
                         variant="unstyled"
                         size="1.2vw"
                         placeholder="Title"
