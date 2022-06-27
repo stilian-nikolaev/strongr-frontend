@@ -25,7 +25,13 @@ function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <MantineProvider theme={{ fontFamily: 'Epilogue', colorScheme: 'light' }} withGlobalStyles withNormalizeCSS>
+        <MantineProvider theme={{
+          fontFamily: 'Epilogue',
+          colorScheme: 'light',
+          colors: {
+            brand: ['#FDCEDF', '#141517', '#808080', '#ED5DB8', '#F13EAF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374'],
+          },
+        }} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>
             <Layout>
               {isAuthenticated ? <UsersPage /> : <GuestPage />}

@@ -11,8 +11,8 @@ export default function ExerciseCard({ exercise }) {
     return (
         <Card
             shadow="lg"
-            sx={{
-                backgroundColor: 'pink',
+            sx={(theme) => ({
+                backgroundColor: theme.colors.brand[0],
                 borderRadius: '10px',
                 border: '2px solid #353935',
                 '&:hover': {
@@ -21,7 +21,7 @@ export default function ExerciseCard({ exercise }) {
                         display: 'block'
                     }
                 }
-            }}>
+            })}>
             <ExerciseHeader
                 exerciseId={exercise._id}
                 title={exercise.title}

@@ -25,7 +25,7 @@ export default function GuestLayout({ children }) {
             size="4.4vw"
             radius="50%"
             onClick={onLogoClick}
-            sx={{ border: '2px solid black', cursor: 'pointer' }} />
+            sx={(theme) => ({ border: `2px solid ${theme.colors.brand[1]}`, cursor: 'pointer' })} />
           <Text sx={{ fontSize: 30, fontWeight: 'bold' }}>Strongr</Text>
           <Button onClick={onLogInClick} color="dark" radius="lg">Log in</Button>
         </Box>

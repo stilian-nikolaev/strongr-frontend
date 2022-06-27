@@ -8,11 +8,11 @@ export default function GridHeader() {
           display: 'flex',
           justifyContent: 'space-between',
       }}>
-          <Box sx={{
+          <Box sx={(theme) => ({
+              borderBottom: `2px solid ${theme.colors.brand[1]}`,
               paddingRight: '2vw',
               paddingLeft: '1vw',
-              borderBottom: '2px solid black',
-          }}>
+          })}>
               <Text sx={{ fontSize: '2.4vw', }}>Your Workouts</Text>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>

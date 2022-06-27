@@ -2,46 +2,54 @@ import { Box, Text, UnstyledButton } from '@mantine/core'
 import React from 'react'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 
-export default function BackButton({handler}) {
+export default function BackButton({ handler }) {
     return (
         <UnstyledButton
-        onClick={handler}
-        mr="md"
-        sx={{
-            backgroundColor: 'black',
-            borderRadius: '50%',
-            width: '3vw',
-            height: '3vw',
-            display: 'grid',
-            placeItems: 'center',
-            transition: 'all .15s ease-in-out',
-            '&:hover': {
-                borderRadius: 10,
-                width: '5vw',
-                '& .plus': {
-                    display: 'none',
-                },
-                '& .text': {
-                    color: 'pink',
-                    fontSize: '1vw',
-                    visibility: 'visible',
+            onClick={handler}
+            mr="md"
+            sx={(theme) => ({
+                backgroundColor: theme.colors.brand[1],
+                borderRadius: '50%',
+                width: '3vw',
+                height: '3vw',
+                display: 'grid',
+                placeItems: 'center',
+                transition: 'all .15s ease-in-out',
+                '&:hover': {
+                    borderRadius: 10,
+                    width: '5vw',
+                    '& .back': {
+                        display: 'none',
+                    },
+                    '& .text': {
+                        color: theme.colors.brand[0],
+                        fontSize: '1vw',
+                        visibility: 'visible',
+                    }
                 }
-            }
-        }}>
-        <Box sx={{ marginBottom: '-1.5vw' }}>
-            <IoMdArrowRoundBack className="plus" color="pink" size={'1.5vw'} />
-        </Box>
-        <Text
-            className="text"
-            sx={{
-                color: 'black',
-                fontSize: '0vw',
-                visibility: 'hidden',
-                marginTop: '-1.5vw',
-                transition: 'all .15s'
-            }}>
-            Back
-        </Text>
-    </UnstyledButton>
+            })}>
+            <Box
+                sx={(theme) => ({
+
+                    marginBottom: '-1.5vw',
+                    '& .back': {
+                        color: theme.colors.brand[0],
+
+                    },
+                })}>
+                <IoMdArrowRoundBack className="back" size={'1.5vw'} />
+            </Box>
+            <Text
+                className="text"
+                sx={(theme) => ({
+                    color: theme.colors.brand[1],
+                    fontSize: '0vw',
+                    visibility: 'hidden',
+                    marginTop: '-1.5vw',
+                    transition: 'all .15s'
+                })}>
+                Back
+            </Text>
+        </UnstyledButton>
     )
 }

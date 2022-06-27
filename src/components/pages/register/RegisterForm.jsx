@@ -56,12 +56,13 @@ export default function RegisterForm() {
                         name="name"
                         size="lg"
                         required
-                        sx={{
+                        sx={(theme) => ({
                             marginTop: '20px',
                             '& ::placeholder': {
-                                color: '#808080 !important'
+                                color: `${theme.colors.brand[2]} !important`
+
                             }
-                        }}
+                        })}
                     />
                     <TextField
                         placeholder="Email"
@@ -69,12 +70,14 @@ export default function RegisterForm() {
                         name="email"
                         size="lg"
                         required
-                        sx={{
+                            sx={(theme) => ({
                             marginTop: '40px',
                             '& ::placeholder': {
-                                color: '#808080 !important'
+                                color: `${theme.colors.brand[2]} !important`
+
+
                             }
-                        }}
+                        })}
                     />
                     <TextField
                         placeholder="Password"
@@ -83,12 +86,13 @@ export default function RegisterForm() {
                         size="lg"
                         type="password"
                         required
-                        sx={{
+                            sx={(theme) => ({
                             marginTop: '40px',
                             '& ::placeholder': {
-                                color: '#808080 !important'
+                                color: `${theme.colors.brand[2]} !important`
+
                             }
-                        }}
+                        })}
                     />
                     <TextField
                         placeholder="Confirm Password"
@@ -97,12 +101,13 @@ export default function RegisterForm() {
                         size="lg"
                         type="password"
                         required
-                        sx={{
+                        sx={(theme) => ({
                             marginTop: '40px',
                             '& ::placeholder': {
-                                color: '#808080 !important'
+                                color: `${theme.colors.brand[2]} !important`
+
                             }
-                        }}
+                        })}
                     />
                     <Box sx={{ display: 'flex', marginTop: 40 }}>
                         <GenericButton
@@ -118,9 +123,9 @@ export default function RegisterForm() {
                             Already have an account?
                             <Text
                                 onClick={onLogInClick}
-                                sx={{
+                                sx={(theme) => ({
+                                    backgroundImage: `linear-gradient(${theme.colors.brand[1]}, ${theme.colors.brand[1]})`,
                                     width: '100px',
-                                    backgroundImage: 'linear-gradient(black, black)',
                                     backgroundSize: '0% 2px',
                                     backgroundRepeat: 'no-repeat',
                                     transition: 'background-size 0.2s',
@@ -129,7 +134,7 @@ export default function RegisterForm() {
                                         backgroundSize: '100% 2px',
                                         cursor: 'pointer'
                                     }
-                                }}>Log in here</Text>
+                                })}>Log in here</Text>
                         </Text>
                     </Box>
                 </Box>

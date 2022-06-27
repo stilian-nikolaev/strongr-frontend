@@ -37,14 +37,14 @@ export default function WorkoutsForm() {
     return (
         <Card
             shadow="lg"
-            sx={{
-                backgroundColor: 'pink',
+            sx={(theme) => ({
+                backgroundColor: theme.colors.brand[0],
                 borderRadius: '10px',
                 border: '2px solid #353935',
                 '&:hover': {
                     cursor: 'pointer'
                 }
-            }}>
+            })}>
             <GenericForm
                 validationSchema={validationSchema}
                 initialValues={{
@@ -59,17 +59,17 @@ export default function WorkoutsForm() {
                         placeholder="Title"
                         aria-label="title"
                         name="title"
-                        sx={{
+                       sx={(theme) => ({
+                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
                             paddingLeft: '0.4vw',
-                            borderBottom: '1px solid black',
                             width: '7vw',
                             marginBottom: '5px',
                             fontSize: '1.2vw',
                             height: '2vw',
                             '& ::placeholder': {
-                                color: '#808080 !important'
+                                color: `${theme.colors.brand[2]} !important`
                             }
-                        }}
+                        })}
                     />
                     <SubmitButton sx={{ marginLeft: '0.5vw', marginTop: '0.4vw' }} />
                 </Box>

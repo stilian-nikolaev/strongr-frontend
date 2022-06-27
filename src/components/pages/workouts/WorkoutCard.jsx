@@ -13,14 +13,15 @@ export default function WorkoutCard({ workout }) {
         <Card
             onClick={workoutClickHandler}
             shadow="lg"
-            sx={{
-                backgroundColor: 'pink',
+            sx={(theme) => ({
+                backgroundColor: theme.colors.brand[0],
                 borderRadius: '10px',
                 border: '2px solid #353935',
                 '&:hover': {
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    backgroundColor: theme.fn.darken(theme.colors.brand[0], 0.03),
                 }
-            }}>
+            })}>
             <Text sx={{ fontSize: '1.4vw' }}>{workout.title}</Text>
             <Box>
                 <Text sx={{ fontSize: '1vw' }}>Exercises: {workout.exercises?.length}</Text>

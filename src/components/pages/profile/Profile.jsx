@@ -22,12 +22,12 @@ export default function Profile() {
     return (
         <Box sx={{ width: '25vw' }}>
             <Box sx={{ display: 'flex' }}>
-                <Box sx={{
+                <Box sx={(theme) => ({
+                    borderBottom: `2px solid ${theme.colors.brand[1]}`,
                     marginTop: '1vw',
                     paddingRight: '2vw',
                     paddingLeft: '1vw',
-                    borderBottom: '2px solid black',
-                }}>
+                })}>
                     <Text sx={{ fontSize: '2.4vw', }}>Your Profile</Text>
                 </Box>
             </Box>

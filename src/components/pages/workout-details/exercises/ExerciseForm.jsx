@@ -39,8 +39,8 @@ export default function ExerciseForm() {
     return (
         <Card
             shadow="lg"
-            sx={{
-                backgroundColor: 'pink',
+            sx={(theme) => ({
+                backgroundColor: theme.colors.brand[0],
                 borderRadius: '10px',
                 border: '2px solid #353935',
                 '&:hover': {
@@ -49,7 +49,7 @@ export default function ExerciseForm() {
                         display: 'block'
                     }
                 }
-            }}>
+            })}>
             <GenericForm validationSchema={validationSchema} initialValues={{ title: '' }} onSubmit={onSubmit}>
                 <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                     <TextField
@@ -59,18 +59,18 @@ export default function ExerciseForm() {
                         placeholder="Exercise title"
                         aria-label="title"
                         name="title"
-                        sx={{
+                        sx={(theme) => ({
+                            borderBottom: `1px solid ${theme.colors.brand[1]}`,
                             paddingLeft: '0.4vw',
-                            borderBottom: '1px solid black',
                             width: '10vw',
                             marginLeft: '-0.15vw',
                             marginBottom: '5px',
                             fontSize: '1.2vw',
                             height: '2vw',
                             '& ::placeholder': {
-                                color: '#808080 !important'
+                                color: `${theme.colors.brand[2]} !important`
                             }
-                        }}
+                        })}
                     />
                     <SubmitButton sx={{ marginLeft: '0.5vw', marginTop: '0.4vw' }} />
                 </Box>

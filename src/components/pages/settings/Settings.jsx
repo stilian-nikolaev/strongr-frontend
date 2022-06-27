@@ -40,12 +40,12 @@ export default function Settings() {
     return (
         <Box>
             <Box sx={{ display: 'flex' }}>
-                <Box sx={{
+                <Box sx={(theme) => ({
+                    borderBottom: `2px solid ${theme.colors.brand[1]}`,
                     marginTop: '1vw',
                     paddingRight: '2vw',
                     paddingLeft: '1vw',
-                    borderBottom: '2px solid black',
-                }}>
+                })}>
                     <Text sx={{ fontSize: '2.4vw', }}>Settings</Text>
                 </Box>
             </Box>

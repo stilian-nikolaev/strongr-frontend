@@ -57,16 +57,16 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     placeholder="Amount"
                     name="amount"
                     type="number"
-                    sx={{
+                    sx={(theme) => ({
+                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
                         width: '1.6vw',
                         marginTop: window.innerWidth <= 1600 ? '0' : '0.2vw',
-                        borderBottom: '1px solid black',
                         height: '1.4vw',
                         minHeight: 24,
                         '& ::placeholder': {
-                            color: 'pink !important'
+                            color: `${theme.colors.brand[0]} !important`
                         }
-                    }}
+                    })}
                 />
                 <Select
                     variant="unstyled"
@@ -76,14 +76,14 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     aria-label="unit"
                     name="unit"
                     data={['reps', 'sec', 'min']}
-                    sx={{
+                    sx={(theme) => ({
+                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
                         marginLeft: '0.3vw',
                         marginTop: window.innerWidth <= 1600 ? '0' : '0.2vw',
                         width: '2.9vw',
-                        borderBottom: '1px solid black',
                         height: '1.4vw',
                         minHeight: 24
-                    }}
+                    })}
                 />
                 <Text ml={4} sx={{ fontSize: '1.2vw' }}>with</Text>
                 <TextField
@@ -97,17 +97,17 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     type="number"
                     min={0}
                     max={999}
-                    sx={{
+                    sx={(theme) => ({
+                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
                         marginLeft: '0.2vw',
                         marginTop: window.innerWidth <= 1600 ? 0 : '0.2vw',
                         width: '2.4vw',
-                        borderBottom: '1px solid black',
                         height: '1.4vw',
                         minHeight: 24,
                         '& ::placeholder': {
-                            color: 'pink !important'
+                            color: `${theme.colors.brand[0]} !important`
                         }
-                    }}
+                    })}
                 />
                 <Text sx={{ marginLeft: '0.1vw', fontSize: '1.2vw' }}>kg</Text>
                 <SubmitButton sx={{ marginLeft: '0.3vw', marginTop: '-1.1vw', alignSelf: 'center' }} />

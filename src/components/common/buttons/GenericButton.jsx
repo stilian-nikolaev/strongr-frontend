@@ -6,18 +6,18 @@ export default function GenericButton({ children, sx, ...props }) {
         <UnstyledButton
             px='1.5vw'
             py='0.7vw'
-            sx={{
-                color: 'pink',
+            sx={(theme) => ({
+                color: theme.colors.brand[0],
                 borderRadius: 5,
-                backgroundColor: 'black',
+                backgroundColor: theme.colors.brand[1],
                 fontSize: '0.8vw',
                 fontWeight: 100,
                 textAlign: 'center',
                 '&:hover': {
-                    backgroundColor: '#191919'
+                    backgroundColor: theme.fn.lighten(theme.colors.brand[1], 0.04)
                 },
                 ...sx
-            }}
+            })}
             {...props}
         >
             {children}

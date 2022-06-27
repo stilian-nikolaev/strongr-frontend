@@ -24,7 +24,7 @@ const items = [
 export default function Menu() {
     const navigate = useNavigate()
     const [selected, setSelected] = useState('/workouts')
-    
+
     useEffect(() => {
         setSelected(location.pathname)
     }, [location.pathname])
@@ -33,29 +33,30 @@ export default function Menu() {
         setSelected(path);
         navigate(path)
     }
-    
+
     return (
         <Stack>
             {items.map(x => (
                 <Box onClick={() => onItemClick(x.path)} key={x.label} sx={{ display: 'flex', marginBottom: '0.3vw' }}>
                     {selected.includes(x.path) && <BsDot size="1.4vw" />}
-                    <Text sx={{
-                        fontSize: '1.1vw',
-                        color: selected.includes(x.path) ? 'black' : '#5b5b5b',
-                        marginLeft: selected.includes(x.path) ? 0 : '1.4vw',
-                        paddingBottom: 5,
-                        paddingLeft: 5,
-                        width: '7vw',
-                        backgroundImage: 'linear-gradient(black, black)',
-                        backgroundSize: '0% 2px',
-                        backgroundRepeat: 'no-repeat',
-                        transition: 'background-size 0.3s',
-                        backgroundPosition: '0 calc(100%)',
-                        '&:hover': {
-                            backgroundSize: '100% 2px',
-                            cursor: 'pointer'
-                        }
-                    }}>
+                    <Text
+                        sx={(theme) => ({
+                            fontSize: '1.1vw',
+                            color: selected.includes(x.path) ? theme.colors.brand[1] : theme.colors.brand[2],
+                            marginLeft: selected.includes(x.path) ? 0 : '1.4vw',
+                            paddingBottom: 5,
+                            paddingLeft: 5,
+                            width: '7vw',
+                            backgroundImage: `linear-gradient(${theme.colors.brand[1]}, ${theme.colors.brand[1]})`,
+                            backgroundSize: '0% 2px',
+                            backgroundRepeat: 'no-repeat',
+                            transition: 'background-size 0.3s',
+                            backgroundPosition: '0 calc(100%)',
+                            '&:hover': {
+                                backgroundSize: '100% 2px',
+                                cursor: 'pointer'
+                            }
+                        })}>
                         {x.label}
                     </Text>
                 </Box>))}

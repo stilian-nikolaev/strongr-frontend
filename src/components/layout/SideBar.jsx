@@ -39,27 +39,28 @@ export default function SideBar() {
                 }}>
                     {data?.name}
                 </Text>
-                <Text sx={{
+                <Text 
+                    sx={theme => ({
                     marginTop: '0.1vw',
                     fontSize: '1vw',
                     textAlign: 'center',
-                    color: 'grey'
-                }}>
+                        color: theme.colors.brand[2]
+                })}>
                     {data?.activity}
                 </Text>
                 <Button
                     onClick={onSignOutClick}
-                    sx={{
+                    sx={theme => ({
                         marginTop: '1vw',
-                        backgroundColor: 'pink',
-                        color: 'black',
+                        backgroundColor: theme.colors.brand[0],
+                        color: theme.colors.brand[1],
                         borderRadius: 10,
                         width: '10vw',
                         height: '3vw',
                         '&:hover': {
-                            backgroundColor: '#ffccd5',
+                            backgroundColor: theme.fn.darken(theme.colors.brand[0], 0.03),
                         }
-                    }}>
+                    })}>
                     <Text sx={{ fontSize: '1vw' }}>Sign out</Text>
                 </Button>
             </Box>

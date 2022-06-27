@@ -46,20 +46,21 @@ export default observer(function ProfileForm({ name, activity }) {
                 validationSchema={validationSchema}
                 initialValues={initialValues}
                 onSubmit={onSubmit}>
-                <Text sx={{ fontSize: '0.8vw', marginLeft: '0.5vw', color: 'gray' }}>Name</Text>
+                <Text sx={(theme) => ({ fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.brand[2] })}>Name</Text>
                 <TextField
                     inlineError={false}
                     placeholder="Name"
                     aria-label="name"
                     name="name"
                     size="lg"
-                    sx={{
+                    sx={(theme) => ({
                         '& ::placeholder': {
-                            color: '#808080 !important'
+                            color: `${theme.colors.brand[2]} !important`
+
                         }
-                    }}
+                    })}
                 />
-                <Text sx={{ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: 'gray' }}>Activity</Text>
+                <Text sx={(theme) => ({ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.brand[2] })}>Activity</Text>
                 <AutoCompleteField
                     required
                     placeholder="Activity"
@@ -67,11 +68,12 @@ export default observer(function ProfileForm({ name, activity }) {
                     name="activity"
                     data={autocompleteData}
                     size="lg"
-                    sx={{
+                    sx={(theme) => ({
                         '& ::placeholder': {
-                            color: '#808080 !important'
+                            color: `${theme.colors.brand[2]} !important`
+
                         }
-                    }}
+                    })}
                 />
                 <Box sx={{ marginTop: '2vw', display: 'flex' }}>
                     <GenericButton type="submit">Save</GenericButton>

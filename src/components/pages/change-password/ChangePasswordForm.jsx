@@ -44,12 +44,13 @@ export default function ChangePasswordForm() {
                     size="lg"
                     type="password"
                     required
-                    sx={{
+                    sx={(theme) => ({
                         marginTop: '20px',
                         '& ::placeholder': {
-                            color: '#808080 !important'
+                            color: `${theme.colors.brand[2]} !important`
+
                         }
-                    }}
+                    })}
                 />
                 <TextField
                     placeholder="Confirm Password"
@@ -58,12 +59,14 @@ export default function ChangePasswordForm() {
                     size="lg"
                     type="password"
                     required
-                    sx={{
+                    sx={(theme) => ({
+
                         marginTop: '40px',
                         '& ::placeholder': {
-                            color: '#808080 !important'
+                            color: `${theme.colors.brand[2]} !important`
+
                         }
-                    }}
+                    })}
                 />
                 <GenericButton
                     px='20px'

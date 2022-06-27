@@ -31,11 +31,11 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle}
         <GenericForm onSubmit={onSubmit} initialValues={{ title }}>
             <Box
                 ref={focusTrapRef}
-                sx={{
+                sx={(theme) => ({
+                    borderBottom: `1px solid ${theme.colors.brand[1]}`,
                     display: 'flex',
-                    borderBottom: '1px solid black',
                     width: '10vw',
-                }}>
+                })}>
                 <TextField
                     data-autofocus
                     variant="unstyled"

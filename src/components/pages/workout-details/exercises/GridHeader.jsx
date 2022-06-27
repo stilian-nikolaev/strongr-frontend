@@ -13,7 +13,7 @@ import WorkoutTitleForm from '../../workouts/WorkoutTitleForm'
 import { useNavigate, useParams } from 'react-router-dom'
 import { showNotification } from '@mantine/notifications';
 
-export default observer(function GridHeader({title}) {
+export default observer(function GridHeader({ title }) {
     const { editingTitle, addingExercise, toggleAddingExercise, toggleEditingTitle } = ViewStore;
     const { workoutId } = useParams();
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default observer(function GridHeader({title}) {
             showNotification({
                 title: 'Success',
                 message: 'Successfully deleted workout!'
-              })
+            })
             navigate('/workouts')
         }
     })
@@ -53,10 +53,10 @@ export default observer(function GridHeader({title}) {
             justifyContent: 'space-between',
             marginTop: '1vw',
         }}>
-            <Box sx={{
+            <Box sx={(theme) => ({
+                borderBottom: `2px solid ${theme.colors.brand[1]}`,
                 paddingLeft: '1vw',
                 paddingRight: editingTitle ? '1.7vw' : '4vw',
-                borderBottom: '2px solid black',
                 display: 'flex',
                 '&:hover': {
                     paddingRight: '1.7vw',
@@ -64,7 +64,7 @@ export default observer(function GridHeader({title}) {
                         display: editingTitle ? 'none' : 'block'
                     }
                 }
-            }}>
+            })}>
                 {editingTitle ? <WorkoutTitleForm title={title} /> :
                     <Text sx={{ fontSize: '2.4vw' }}>
                         {title}

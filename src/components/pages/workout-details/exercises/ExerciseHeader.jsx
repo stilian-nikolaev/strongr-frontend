@@ -28,12 +28,13 @@ export default function ExerciseHeader({
                     setEdittingTitle={setEdittingTitle}
                 />
                 :
-                <Box sx={{display: 'flex', 
+                <Box sx={(theme) => ({
+                    borderBottom: `1px solid ${theme.colors.brand[1]}`,
+                    display: 'flex', 
                 justifyContent: 'space-between',
-                    borderBottom: '1px solid black',
                     width: '11vw',
 
-                }}>
+                })}>
                     <Text sx={{
                         width: '9.5vw',
                         paddingLeft: '0.4vw',
