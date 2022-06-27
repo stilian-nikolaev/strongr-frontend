@@ -58,13 +58,13 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     name="amount"
                     type="number"
                     sx={(theme) => ({
-                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
+                        borderBottom: `1px solid ${theme.colors.main[0]}`,
                         width: '1.6vw',
                         marginTop: window.innerWidth <= 1600 ? '0' : '0.2vw',
                         height: '1.4vw',
                         minHeight: 24,
                         '& ::placeholder': {
-                            color: `${theme.colors.brand[0]} !important`
+                            color: `${theme.colors.main[0]} !important`
                         }
                     })}
                 />
@@ -77,7 +77,7 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     name="unit"
                     data={['reps', 'sec', 'min']}
                     sx={(theme) => ({
-                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
+                        borderBottom: `1px solid ${theme.colors.main[0]}`,
                         marginLeft: '0.3vw',
                         marginTop: window.innerWidth <= 1600 ? '0' : '0.2vw',
                         width: '2.9vw',
@@ -98,14 +98,14 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
                     min={0}
                     max={999}
                     sx={(theme) => ({
-                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
+                        borderBottom: `1px solid ${theme.colors.main[0]}`,
                         marginLeft: '0.2vw',
                         marginTop: window.innerWidth <= 1600 ? 0 : '0.2vw',
                         width: '2.4vw',
                         height: '1.4vw',
                         minHeight: 24,
                         '& ::placeholder': {
-                            color: `${theme.colors.brand[0]} !important`
+                            color: `${theme.colors.main[0]} !important`
                         }
                     })}
                 />

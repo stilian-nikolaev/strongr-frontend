@@ -9,7 +9,7 @@ export default function GridHeader() {
           justifyContent: 'space-between',
       }}>
           <Box sx={(theme) => ({
-              borderBottom: `2px solid ${theme.colors.brand[1]}`,
+              borderBottom: `2px solid ${theme.colors.common[0]}`,
               paddingRight: '2vw',
               paddingLeft: '1vw',
           })}>

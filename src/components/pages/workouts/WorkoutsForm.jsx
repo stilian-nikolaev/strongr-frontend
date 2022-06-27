@@ -38,9 +38,9 @@ export default function WorkoutsForm() {
         <Card
             shadow="lg"
             sx={(theme) => ({
-                backgroundColor: theme.colors.brand[0],
+                backgroundColor: theme.colors.main[0],
                 borderRadius: '10px',
-                border: `2px solid ${theme.colors.brand[3]}`,
+                border: `2px solid ${theme.colors.common[2]}`,
                 '&:hover': {
                     cursor: 'pointer'
                 }
@@ -60,14 +60,14 @@ export default function WorkoutsForm() {
                         aria-label="title"
                         name="title"
                        sx={(theme) => ({
-                        borderBottom: `1px solid ${theme.colors.brand[1]}`,
+                        borderBottom: `1px solid ${theme.colors.main[0]}`,
                             paddingLeft: '0.4vw',
                             width: '7vw',
                             marginBottom: '5px',
                             fontSize: '1.2vw',
                             height: '2vw',
                             '& ::placeholder': {
-                                color: `${theme.colors.brand[2]} !important`
+                                color: `${theme.colors.common[1]} !important`
                             }
                         })}
                     />

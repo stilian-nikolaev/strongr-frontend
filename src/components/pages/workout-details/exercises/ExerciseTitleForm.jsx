@@ -32,7 +32,7 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle}
             <Box
                 ref={focusTrapRef}
                 sx={(theme) => ({
-                    borderBottom: `1px solid ${theme.colors.brand[1]}`,
+                    borderBottom: `1px solid ${theme.colors.main[0]}`,
                     display: 'flex',
                     width: '10vw',
                 })}>

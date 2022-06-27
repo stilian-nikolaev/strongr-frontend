@@ -14,12 +14,12 @@ export default function WorkoutCard({ workout }) {
             onClick={workoutClickHandler}
             shadow="lg"
             sx={(theme) => ({
-                backgroundColor: theme.colors.brand[0],
+                backgroundColor: theme.colors.main[0],
                 borderRadius: '10px',
-                border: `2px solid ${theme.colors.brand[3]}`,
+                border: `2px solid ${theme.colors.common[2]}`,
                 '&:hover': {
                     cursor: 'pointer',
-                    backgroundColor: theme.fn.darken(theme.colors.brand[0], 0.03),
+                    backgroundColor: theme.fn.darken(theme.colors.main[0], 0.03),
                 }
             })}>
             <Text sx={{ fontSize: '1.4vw' }}>{workout.title}</Text>

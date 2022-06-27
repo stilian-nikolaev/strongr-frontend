@@ -23,7 +23,7 @@ export default function Profile() {
         <Box sx={{ width: '25vw' }}>
             <Box sx={{ display: 'flex' }}>
                 <Box sx={(theme) => ({
-                    borderBottom: `2px solid ${theme.colors.brand[1]}`,
+                    borderBottom: `2px solid ${theme.colors.common[0]}`,
                     marginTop: '1vw',
                     paddingRight: '2vw',
                     paddingLeft: '1vw',

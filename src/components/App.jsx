@@ -29,7 +29,8 @@ function App() {
           fontFamily: 'Epilogue',
           colorScheme: 'light',
           colors: {
-            brand: ['#FDCEDF', '#141517', '#808080', '#353935', '#F13EAF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374'],
+            common: ['#141517', '#808080', '#353935'],
+            main: ['#FDCEDF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374']
           },
         }} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>

@@ -53,7 +53,7 @@ export default function LoginForm() {
                         sx={(theme) => ({
                             marginTop: '20px',
                             '& ::placeholder': {
-                                color: `${theme.colors.brand[2]} !important`
+                                color: `${theme.colors.common[1]} !important`
 
                             }
                         })}
@@ -68,7 +68,7 @@ export default function LoginForm() {
                         sx={(theme) => ({
                             marginTop: '40px',
                             '& ::placeholder': {
-                                color: `${theme.colors.brand[2]} !important`
+                                color: `${theme.colors.common[1]} !important`
 
                             }
                         })}
@@ -88,7 +88,7 @@ export default function LoginForm() {
                             <Text
                                 onClick={onSignUpClick}
                                 sx={(theme) => ({
-                                    backgroundImage: `linear-gradient(${theme.colors.brand[1]}, ${theme.colors.brand[1]})`,
+                                    backgroundImage: `linear-gradient(${theme.colors.main[0]}, ${theme.colors.main[0]})`,
                                     width: '100px',
                                     backgroundSize: '0% 2px',
                                     backgroundRepeat: 'no-repeat',

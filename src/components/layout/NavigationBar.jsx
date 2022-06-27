@@ -30,7 +30,7 @@ export default observer(function NavigationBar() {
                     alt="logo"
                     size="4.4vw"
                     radius="50%"
-                    sx={(theme) => ({ border: `2px solid ${theme.colors.brand[1]}`})} />
+                    sx={(theme) => ({ border: `2px solid ${theme.colors.common[0]}`})} />
                 <Text sx={({
                     marginLeft: '1vw',
                     fontWeight: 'bold',

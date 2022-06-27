@@ -12,9 +12,9 @@ export default function ExerciseCard({ exercise }) {
         <Card
             shadow="lg"
             sx={(theme) => ({
-                backgroundColor: theme.colors.brand[0],
+                backgroundColor: theme.colors.main[0],
                 borderRadius: '10px',
-                border: `2px solid ${theme.colors.brand[3]}`,
+                border: `2px solid ${theme.colors.common[2]}`,
                 '&:hover': {
                     cursor: 'default',
                     '& .more': {

@@ -9,7 +9,7 @@ export default function AddButton({ handler, label }) {
             onClick={handler}
             mr="md"
             sx={(theme) => ({
-                backgroundColor: theme.colors.brand[1],
+                backgroundColor: theme.colors.common[0],
                 borderRadius: '50%',
                 width: '3vw',
                 height: '3vw',
@@ -23,7 +23,7 @@ export default function AddButton({ handler, label }) {
                         display: 'none',
                     },
                     '& .text': {
-                        color: theme.colors.brand[0],
+                        color: theme.colors.main[0],
                         fontSize: '1vw',
                         visibility: 'visible',
                     }
@@ -33,7 +33,7 @@ export default function AddButton({ handler, label }) {
                 sx={(theme) => ({
                     marginBottom: '-1.5vw',
                     '& .plus': {
-                        color: theme.colors.brand[0],
+                        color: theme.colors.main[0],
                     },
                 })}>
                 <HiPlus className="plus" size={'1.5vw'} />
@@ -41,7 +41,7 @@ export default function AddButton({ handler, label }) {
             <Text
                 className="text"
                 sx={(theme) => ({
-                    color: theme.colors.brand[1],
+                    color: theme.colors.main[0],
                     fontSize: '0vw',
                     visibility: 'hidden',
                     marginTop: '-1.5vw',

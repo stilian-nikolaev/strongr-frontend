@@ -11,6 +11,7 @@ export default function SideBar() {
     const src = useAvatar(data?.avatarId)
     const navigate = useNavigate();
     const { logout } = AuthStore
+    console.log(data);
 
     function onSignOutClick() {
         logout()
@@ -44,7 +45,7 @@ export default function SideBar() {
                     marginTop: '0.1vw',
                     fontSize: '1vw',
                     textAlign: 'center',
-                        color: theme.colors.brand[2]
+                        color: theme.colors.common[1]
                 })}>
                     {data?.activity}
                 </Text>
@@ -52,13 +53,13 @@ export default function SideBar() {
                     onClick={onSignOutClick}
                     sx={theme => ({
                         marginTop: '1vw',
-                        backgroundColor: theme.colors.brand[0],
-                        color: theme.colors.brand[1],
+                        backgroundColor: theme.colors.main[0],
+                        color: theme.colors.common[0],
                         borderRadius: 10,
                         width: '10vw',
                         height: '3vw',
                         '&:hover': {
-                            backgroundColor: theme.fn.darken(theme.colors.brand[0], 0.03),
+                            backgroundColor: theme.fn.darken(theme.colors.main[0], 0.03),
                         }
                     })}>
                     <Text sx={{ fontSize: '1vw' }}>Sign out</Text>

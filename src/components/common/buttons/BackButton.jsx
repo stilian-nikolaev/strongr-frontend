@@ -8,7 +8,7 @@ export default function BackButton({ handler }) {
             onClick={handler}
             mr="md"
             sx={(theme) => ({
-                backgroundColor: theme.colors.brand[1],
+                backgroundColor: theme.colors.common[0],
                 borderRadius: '50%',
                 width: '3vw',
                 height: '3vw',
@@ -22,7 +22,7 @@ export default function BackButton({ handler }) {
                         display: 'none',
                     },
                     '& .text': {
-                        color: theme.colors.brand[0],
+                        color: theme.colors.main[0],
                         fontSize: '1vw',
                         visibility: 'visible',
                     }
@@ -33,7 +33,7 @@ export default function BackButton({ handler }) {
 
                     marginBottom: '-1.5vw',
                     '& .back': {
-                        color: theme.colors.brand[0],
+                        color: theme.colors.main[0],
 
                     },
                 })}>
@@ -42,7 +42,7 @@ export default function BackButton({ handler }) {
             <Text
                 className="text"
                 sx={(theme) => ({
-                    color: theme.colors.brand[1],
+                    color: theme.colors.main[0],
                     fontSize: '0vw',
                     visibility: 'hidden',
                     marginTop: '-1.5vw',

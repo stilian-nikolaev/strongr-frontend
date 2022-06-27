@@ -46,7 +46,7 @@ export default observer(function ProfileForm({ name, activity }) {
                 validationSchema={validationSchema}
                 initialValues={initialValues}
                 onSubmit={onSubmit}>
-                <Text sx={(theme) => ({ fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.brand[2] })}>Name</Text>
+                <Text sx={(theme) => ({ fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.common[1] })}>Name</Text>
                 <TextField
                     inlineError={false}
                     placeholder="Name"
@@ -55,12 +55,12 @@ export default observer(function ProfileForm({ name, activity }) {
                     size="lg"
                     sx={(theme) => ({
                         '& ::placeholder': {
-                            color: `${theme.colors.brand[2]} !important`
+                            color: `${theme.colors.common[1]} !important`
 
                         }
                     })}
                 />
-                <Text sx={(theme) => ({ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.brand[2] })}>Activity</Text>
+                <Text sx={(theme) => ({ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.common[1] })}>Activity</Text>
                 <AutoCompleteField
                     required
                     placeholder="Activity"
@@ -70,7 +70,7 @@ export default observer(function ProfileForm({ name, activity }) {
                     size="lg"
                     sx={(theme) => ({
                         '& ::placeholder': {
-                            color: `${theme.colors.brand[2]} !important`
+                            color: `${theme.colors.common[1]} !important`
 
                         }
                     })}

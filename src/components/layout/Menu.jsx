@@ -42,12 +42,12 @@ export default function Menu() {
                     <Text
                         sx={(theme) => ({
                             fontSize: '1.1vw',
-                            color: selected.includes(x.path) ? theme.colors.brand[1] : theme.colors.brand[2],
+                            color: selected.includes(x.path) ? theme.colors.common[0] : theme.colors.common[1],
                             marginLeft: selected.includes(x.path) ? 0 : '1.4vw',
                             paddingBottom: 5,
                             paddingLeft: 5,
                             width: '7vw',
-                            backgroundImage: `linear-gradient(${theme.colors.brand[1]}, ${theme.colors.brand[1]})`,
+                            backgroundImage: `linear-gradient(${theme.colors.common[0]}, ${theme.colors.common[0]})`,
                             backgroundSize: '0% 2px',
                             backgroundRepeat: 'no-repeat',
                             transition: 'background-size 0.3s',

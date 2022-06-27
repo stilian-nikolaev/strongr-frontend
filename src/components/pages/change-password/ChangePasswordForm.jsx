@@ -47,7 +47,7 @@ export default function ChangePasswordForm() {
                     sx={(theme) => ({
                         marginTop: '20px',
                         '& ::placeholder': {
-                            color: `${theme.colors.brand[2]} !important`
+                            color: `${theme.colors.common[1]} !important`
 
                         }
                     })}
@@ -63,7 +63,7 @@ export default function ChangePasswordForm() {
 
                         marginTop: '40px',
                         '& ::placeholder': {
-                            color: `${theme.colors.brand[2]} !important`
+                            color: `${theme.colors.common[1]} !important`
 
                         }
                     })}
