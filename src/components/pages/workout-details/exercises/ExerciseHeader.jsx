@@ -29,7 +29,7 @@ export default function ExerciseHeader({
                 />
                 :
                 <Box sx={(theme) => ({
-                    borderBottom: `1px solid ${theme.colors.main[0]}`,
+                    borderBottom: `1px solid ${theme.colors.common[0]}`,
                     display: 'flex', 
                 justifyContent: 'space-between',
                     width: '11vw',

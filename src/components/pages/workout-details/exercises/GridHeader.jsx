@@ -54,7 +54,7 @@ export default observer(function GridHeader({ title }) {
             marginTop: '1vw',
         }}>
             <Box sx={(theme) => ({
-                borderBottom: `2px solid ${theme.colors.main[0]}`,
+                borderBottom: `2px solid ${theme.colors.common[0]}`,
                 paddingLeft: '1vw',
                 paddingRight: editingTitle ? '1.7vw' : '4vw',
                 display: 'flex',

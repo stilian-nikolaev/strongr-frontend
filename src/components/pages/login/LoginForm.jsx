@@ -88,7 +88,7 @@ export default function LoginForm() {
                             <Text
                                 onClick={onSignUpClick}
                                 sx={(theme) => ({
-                                    backgroundImage: `linear-gradient(${theme.colors.main[0]}, ${theme.colors.main[0]})`,
+                                    backgroundImage: `linear-gradient(${theme.colors.common[0]}, ${theme.colors.common[0]})`,
                                     width: '100px',
                                     backgroundSize: '0% 2px',
                                     backgroundRepeat: 'no-repeat',

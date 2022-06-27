@@ -7,12 +7,11 @@ import { useUser } from '../../hooks/user'
 import { useAvatar } from '../../hooks/avatar';
 
 export default function SideBar() {
+    const { logout } = AuthStore
+    const navigate = useNavigate();
     const { data } = useUser();
     const src = useAvatar(data?.avatarId)
-    const navigate = useNavigate();
-    const { logout } = AuthStore
-    console.log(data);
-
+    
     function onSignOutClick() {
         logout()
         navigate('/')
@@ -21,7 +20,7 @@ export default function SideBar() {
     return (
         <Aside width={{ base: '20vw' }} sx={{ alignItems: 'center' }}>
             <Box sx={{ marginTop: '4vw' }}>
-                <Box sx={{  display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Avatar
                         src={src}
                         size="10vw"
@@ -40,13 +39,13 @@ export default function SideBar() {
                 }}>
                     {data?.name}
                 </Text>
-                <Text 
+                <Text
                     sx={theme => ({
-                    marginTop: '0.1vw',
-                    fontSize: '1vw',
-                    textAlign: 'center',
+                        marginTop: '0.1vw',
+                        fontSize: '1vw',
+                        textAlign: 'center',
                         color: theme.colors.common[1]
-                })}>
+                    })}>
                     {data?.activity}
                 </Text>
                 <Button

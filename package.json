@@ -2,10 +2,12 @@
   "name": "gym-app-frontend",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://stilian-nikolaev.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@mantine/core": "^4.2.4",
@@ -13,6 +15,7 @@
     "@mantine/notifications": "^4.2.10",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
+    "gh-pages": "^4.0.0",
     "mobx": "^6.5.0",
     "mobx-react": "^7.4.0",
     "react": "^18.0.0",

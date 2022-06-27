@@ -7,7 +7,7 @@ import { observer } from 'mobx-react';
 import { AuthStore } from '../stores/AuthStore';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './layout/Layout';
-
+import { ReactQueryDevtools } from 'react-query/devtools'
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -25,6 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
         <MantineProvider theme={{
           fontFamily: 'Epilogue',
           colorScheme: 'light',
