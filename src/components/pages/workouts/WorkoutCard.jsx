@@ -16,7 +16,7 @@ export default function WorkoutCard({ workout }) {
             sx={(theme) => ({
                 backgroundColor: theme.colors.brand[0],
                 borderRadius: '10px',
-                border: '2px solid #353935',
+                border: `2px solid ${theme.colors.brand[3]}`,
                 '&:hover': {
                     cursor: 'pointer',
                     backgroundColor: theme.fn.darken(theme.colors.brand[0], 0.03),

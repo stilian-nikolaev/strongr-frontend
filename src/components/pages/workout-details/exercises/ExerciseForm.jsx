@@ -42,7 +42,7 @@ export default function ExerciseForm() {
             sx={(theme) => ({
                 backgroundColor: theme.colors.brand[0],
                 borderRadius: '10px',
-                border: '2px solid #353935',
+                border: `2px solid ${theme.colors.brand[3]}`,
                 '&:hover': {
                     cursor: 'default',
                     '& .more': {
