@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { observer } from 'mobx-react';
 import { Navigate, Route, Routes } from 'react-router-dom'
 
@@ -7,11 +7,24 @@ import WorkoutDetailsPage from '../workout-details/WorkoutDetailsPage';
 import ProfilePage from '../profile/ProfilePage';
 import SettingsPage from '../settings/SettingsPage';
 import ChangePasswordPage from '../change-password/ChangePasswordPage';
+import { useUser } from '../../../hooks/user';
+import { useMantineTheme } from '@mantine/core';
+
 
 export default observer(function UsersPage() {
+  const { data } = useUser();
+  const theme = useMantineTheme();
+
+  useEffect(() => {
+    if (data) {
+      theme.colors.main[0] = theme.colors.choice[data.themeColor]
+      console.log('change');
+    }
+  }, [data?.themeColor])
+
   return <Routes>
-    <Route path='/' element={<Navigate replace to='/workouts'/>}/>
-    <Route path='/workouts'element={ <WorkoutsPage />} />
+    <Route path='/' element={<Navigate replace to='/workouts' />} />
+    <Route path='/workouts' element={<WorkoutsPage />} />
     <Route path='/workouts/:workoutId' element={<WorkoutDetailsPage />} />
     <Route path='/profile' element={<ProfilePage />} />
     <Route path='/settings' element={<SettingsPage />} />

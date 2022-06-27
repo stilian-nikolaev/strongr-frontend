@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from '@mantine/core'
+import { Box, ColorSwatch, Group, Stack, Text, useMantineTheme } from '@mantine/core'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
@@ -8,11 +8,12 @@ import { ModalStore } from '../../../stores/ModalStore'
 import GenericButton from '../../common/buttons/GenericButton'
 import ConfirmationModal from '../../common/ConfirmationModal'
 import { showNotification } from '@mantine/notifications';
+import ColorSwatches from './ColorSwatches'
 
 export default function Settings() {
-    const navigate = useNavigate();
-    const { setContent, setCallback, openModal, closeModal } = ModalStore
     const { logout } = AuthStore
+    const { setContent, setCallback, openModal, closeModal } = ModalStore
+    const navigate = useNavigate();
 
     const deleteMutation = useMutation({
         mutationFn: useDeleteUser,
@@ -21,7 +22,7 @@ export default function Settings() {
             showNotification({
                 title: 'Success',
                 message: 'Successfully deleted profile!'
-              })
+            })
             logout();
             navigate('/')
         }
@@ -60,14 +61,21 @@ export default function Settings() {
                 </Text>
                 <Stack sx={{ width: '11vw' }}>
 
-                <GenericButton sx={{marginTop: '1vw'}} onClick={onChangePassClick}>
-                    Change password
-                </GenericButton>
-                <GenericButton sx={{ marginTop: '0.5vw' }} onClick={onDeleteProfileClick}>
-                    Delete this account
-                </GenericButton>
+                    <GenericButton sx={{ marginTop: '1vw' }} onClick={onChangePassClick}>
+                        Change password
+                    </GenericButton>
+                    <GenericButton sx={{ marginTop: '0.5vw' }} onClick={onDeleteProfileClick}>
+                        Delete this account
+                    </GenericButton>
                 </Stack>
             </Box>
+            <Text sx={{
+                marginTop: '2vw',
+                fontSize: '1.4vw',
+            }}>
+                Configure theme
+            </Text>
+            <ColorSwatches/>
             <ConfirmationModal />
         </Box>
     )
