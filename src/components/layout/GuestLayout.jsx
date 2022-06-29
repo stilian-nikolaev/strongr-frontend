@@ -2,9 +2,17 @@ import React from 'react'
 import { Avatar, Box, Button, Header, Image, Text } from '@mantine/core'
 import logo from '../../assets/logo.jpg'
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from 'react-query';
+import { useEffect } from 'react';
 
 export default function GuestLayout({ children }) {
   const navigate = useNavigate();
+  const queryClient = useQueryClient()
+
+  useEffect(() => {
+    queryClient.clear();
+  }, [queryClient])
+
 
   function onLogInClick() {
     navigate('/login')

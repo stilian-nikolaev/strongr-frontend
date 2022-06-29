@@ -9,13 +9,14 @@ import { BrowserRouter } from 'react-router-dom';
 import Layout from './layout/Layout';
 import { queryClient } from '../service/queryClient';
 import { theme } from '../service/theme';
-
+import { ReactQueryDevtools } from 'react-query/devtools'
 function App() {
   const { isAuthenticated } = AuthStore
 
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools/>
         <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>
             <Layout>

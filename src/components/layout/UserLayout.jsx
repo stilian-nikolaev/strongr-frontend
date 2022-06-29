@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useUser } from '../../hooks/user';
 import { ViewStore } from '../../stores/ViewStore';
+import LoadingScreen from '../common/LoadingScreen';
 import NavigationBar from './NavigationBar'
 import SideBar from './SideBar'
 
@@ -20,7 +21,7 @@ export default function UserLayout({ children }) {
         }
     }, [data?.themeColor])
 
-    if (!loaded) return
+    if (!loaded) return <LoadingScreen />
 
     return (
         <AppShell navbar={<NavigationBar />} aside={<SideBar />}>
