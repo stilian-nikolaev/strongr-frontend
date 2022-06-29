@@ -8,7 +8,7 @@ import ProfilePage from '../profile/ProfilePage';
 import SettingsPage from '../settings/SettingsPage';
 import ChangePasswordPage from '../change-password/ChangePasswordPage';
 
-export default observer(function UsersPage() {
+export default function UsersPage() {
 
   return <Routes>
     <Route path='/' element={<Navigate replace to='/workouts' />} />
@@ -18,4 +18,4 @@ export default observer(function UsersPage() {
     <Route path='/settings' element={<SettingsPage />} />
     <Route path='/settings/change-password' element={<ChangePasswordPage />} />
   </Routes>
-})
+}

@@ -79,6 +79,7 @@ export default function LoginForm() {
                             py='12px'
                             type="submit"
                             sx={{
+                                color: 'white',
                                 fontSize: '16px',
                             }}>
                             Log in

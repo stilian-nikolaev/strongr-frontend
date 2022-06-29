@@ -115,6 +115,7 @@ export default function RegisterForm() {
                             py='12px'
                             type="submit"
                             sx={{
+                                color: 'white',
                                 fontSize: '16px',
                             }}>
                             Sign up
