@@ -15,22 +15,22 @@ import RegisterPage from './pages/register/RegisterPage'
 export default function Router() {
     const { isAuthenticated } = AuthStore
 
-    return (
-        isAuthenticated
-            ?
-            <Routes>
-                <Route path='/' element={<Navigate replace to='/workouts' />} />
-                <Route path='/workouts' element={<WorkoutsPage />} />
-                <Route path='/workouts/:workoutId' element={<WorkoutDetailsPage />} />
-                <Route path='/profile' element={<ProfilePage />} />
-                <Route path='/settings' element={<SettingsPage />} />
-                <Route path='/settings/change-password' element={<ChangePasswordPage />} />
-            </Routes>
-            :
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='/login' element={<LoginPage />} />
-                <Route path='/register' element={<RegisterPage />} />
-            </Routes>
+    return (isAuthenticated ?
+        <Routes>
+            <Route path='/' element={<Navigate replace to='/workouts' />} />
+            <Route path='/workouts' element={<WorkoutsPage />} />
+            <Route path='/workouts/:workoutId' element={<WorkoutDetailsPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
+            <Route path='/settings' element={<SettingsPage />} />
+            <Route path='/settings/change-password' element={<ChangePasswordPage />} />
+            <Route path="/*" element={<Navigate replace to='/workouts' />}/>
+        </Routes>
+        :
+        <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path="/*" element={<Navigate replace to='/' />}/>
+        </Routes>
     )
 }
