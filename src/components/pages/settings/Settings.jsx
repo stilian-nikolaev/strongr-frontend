@@ -1,4 +1,4 @@
-import { Box, ColorSwatch, Group, Stack, Text, useMantineTheme } from '@mantine/core'
+import { Box, ColorSwatch, Group, Stack, Text } from '@mantine/core'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'

@@ -3,6 +3,7 @@ import { makeObservable, observable, action } from "mobx"
 class ViewStoreImpl {
     avatarId = null
     avatarColor = 'white'
+    themeColor = 0
     editingTitle = false
     addingExercise = false
     addingWorkout = false
@@ -10,6 +11,8 @@ class ViewStoreImpl {
 
     constructor() {
         makeObservable(this, {
+            themeColor: observable,
+            setThemeColor: action,
             avatarId: observable,
             setAvatarId: action,
             avatarColor: observable,
@@ -24,6 +27,10 @@ class ViewStoreImpl {
             openEdittingColor: action,
             closeEdittingColor: action,
         })
+    }
+
+    setThemeColor = (index) => {
+        this.themeColor = index
     }
 
     openEdittingColor = () => {

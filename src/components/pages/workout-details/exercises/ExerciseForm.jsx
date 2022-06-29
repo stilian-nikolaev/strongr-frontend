@@ -60,7 +60,7 @@ export default function ExerciseForm() {
                         aria-label="title"
                         name="title"
                         sx={(theme) => ({
-                            borderBottom: `1px solid ${theme.colors.main[0]}`,
+                            borderBottom: `1px solid ${theme.colors.common[0]}`,
                             paddingLeft: '0.4vw',
                             width: '10vw',
                             marginLeft: '-0.15vw',

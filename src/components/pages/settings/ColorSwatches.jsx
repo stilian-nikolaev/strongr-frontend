@@ -5,10 +5,11 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { useEditUser } from '../../../hooks/user';
 import { endpoints } from '../../../service/apiEndpoints';
+import { ViewStore } from '../../../stores/ViewStore';
 
 export default function ColorSwatches() {
+    const { themeColor, setThemeColor } = ViewStore
     const theme = useMantineTheme();
-    const [selectedColor, setSelectedColor] = useState(0)
     const navigate = useNavigate()
     const queryClient = useQueryClient();
 
@@ -28,7 +29,7 @@ export default function ColorSwatches() {
             {Object.keys(theme.colors.choice).map((color) => (
                 <ColorSwatch
                     onClick={() => {
-                        setSelectedColor(color)
+                        setThemeColor(color)
                         theme.colors.main[0] = theme.colors.choice[color]
                         mutation.mutate({ themeColor: Number(color) });
                     }}
@@ -41,7 +42,7 @@ export default function ColorSwatches() {
                     radius="50%"
                     key={color}
                     color={theme.colors.choice[color]}>
-                    {selectedColor == color && <BiCheck size={'1vw'} color={theme.colors.common[3]} />}
+                    {themeColor == color && <BiCheck size={'1vw'} color={theme.colors.common[3]} />}
                 </ColorSwatch>
             ))}
         </Group>

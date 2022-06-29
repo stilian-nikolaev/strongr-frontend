@@ -7,20 +7,8 @@ import WorkoutDetailsPage from '../workout-details/WorkoutDetailsPage';
 import ProfilePage from '../profile/ProfilePage';
 import SettingsPage from '../settings/SettingsPage';
 import ChangePasswordPage from '../change-password/ChangePasswordPage';
-import { useUser } from '../../../hooks/user';
-import { useMantineTheme } from '@mantine/core';
-
 
 export default observer(function UsersPage() {
-  const { data } = useUser();
-  const theme = useMantineTheme();
-
-  useEffect(() => {
-    if (data) {
-      theme.colors.main[0] = theme.colors.choice[data.themeColor]
-      console.log('change');
-    }
-  }, [data?.themeColor])
 
   return <Routes>
     <Route path='/' element={<Navigate replace to='/workouts' />} />
