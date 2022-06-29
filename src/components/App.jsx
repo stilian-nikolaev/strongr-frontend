@@ -1,26 +1,23 @@
-import { QueryClientProvider, QueryClient, QueryCache } from 'react-query'
+import { QueryClientProvider } from 'react-query'
 import { MantineProvider } from '@mantine/core';
-import { NotificationsProvider, showNotification } from '@mantine/notifications';
-import UsersPage from './pages/main/UsersPage';
-import GuestPage from './pages/main/GuestPage';
+import { NotificationsProvider } from '@mantine/notifications';
 import { observer } from 'mobx-react';
-import { AuthStore } from '../stores/AuthStore';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './layout/Layout';
 import { queryClient } from '../service/queryClient';
 import { theme } from '../service/theme';
 import { ReactQueryDevtools } from 'react-query/devtools'
+import Router from './Router';
 function App() {
-  const { isAuthenticated } = AuthStore
 
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools/>
+        <ReactQueryDevtools />
         <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>
             <Layout>
-              {isAuthenticated ? <UsersPage /> : <GuestPage />}
+              <Router />
             </Layout>
           </NotificationsProvider>
         </MantineProvider>
