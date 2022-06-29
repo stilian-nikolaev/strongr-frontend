@@ -12,9 +12,9 @@ export default function Layout({ children }) {
     const { isAuthenticated } = AuthStore
 
     if (isAuthenticated) {
-        const { setThemeColor } = ViewStore;
-        const theme = useMantineTheme();
         const { data, status } = useUser();
+        const theme = useMantineTheme();
+        const { setThemeColor } = ViewStore;
 
         useEffect(() => {
             if (status === 'success') {
@@ -23,9 +23,9 @@ export default function Layout({ children }) {
             }
         }, [data?.themeColor])
 
+        console.log(theme.colors.main[0]);
         if (status !== 'success') return
     }
-
     return (isAuthenticated
         ?
         <AppShell navbar={<NavigationBar />} aside={<SideBar />}>
