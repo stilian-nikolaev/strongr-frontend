@@ -43,7 +43,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <Center sx={{ height: '35vw', marginTop: '2vw' }}>
+        <Box sx={{ marginTop: '5vw', display: 'flex', placeContent: 'center' }}>
             <GenericForm
                 validationSchema={validationSchema}
                 initialValues={{ email: '', password: '', repeatPassword: '', name: '' }}
@@ -140,7 +140,7 @@ export default function RegisterPage() {
                     </Box>
                 </Box>
             </GenericForm>
-        </Center>
+        </Box>
 
     )
 }

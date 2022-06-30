@@ -1,4 +1,4 @@
-import { ColorSwatch, Group, useMantineTheme } from '@mantine/core';
+import { ColorSwatch, Group, SimpleGrid, useMantineTheme } from '@mantine/core';
 import React, { useState } from 'react'
 import { BiCheck } from 'react-icons/bi'
 import { useMutation, useQueryClient } from 'react-query';
@@ -26,25 +26,27 @@ export default function ColorSwatches() {
             marginTop: '1vw',
 
         }}>
-            {Object.keys(theme.colors.choice).map((color) => (
-                <ColorSwatch
-                    onClick={() => {
-                        setThemeColor(color)
-                        theme.colors.main[0] = theme.colors.choice[color]
-                        mutation.mutate({ themeColor: Number(color) });
-                    }}
-                    sx={{
-                        '&:hover': {
-                            cursor: 'pointer'
-                        }
-                    }}
-                    size={'2vw'}
-                    radius="50%"
-                    key={color}
-                    color={theme.colors.choice[color]}>
-                    {themeColor == color && <BiCheck size={'1vw'} color={theme.colors.common[0]} />}
-                </ColorSwatch>
-            ))}
+            <SimpleGrid cols={4} spacing="xl">
+                {Object.keys(theme.colors.choice).map((color) => (
+                    <ColorSwatch
+                        onClick={() => {
+                            setThemeColor(color)
+                            theme.colors.main[0] = theme.colors.choice[color]
+                            mutation.mutate({ themeColor: Number(color) });
+                        }}
+                        sx={{
+                            '&:hover': {
+                                cursor: 'pointer'
+                            }
+                        }}
+                        size={'2vw'}
+                        radius="50%"
+                        key={color}
+                        color={theme.colors.choice[color]}>
+                        {themeColor == color && <BiCheck size={'1vw'} color={theme.colors.common[0]} />}
+                    </ColorSwatch>
+                ))}
+            </SimpleGrid>
         </Group>
     )
 }

@@ -4,6 +4,7 @@ import logo from '../../assets/logo.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from 'react-query';
 import { useEffect } from 'react';
+import GenericButton from '../common/buttons/GenericButton';
 
 export default function GuestLayout({ children }) {
   const navigate = useNavigate();
@@ -35,7 +36,13 @@ export default function GuestLayout({ children }) {
             onClick={onLogoClick}
             sx={(theme) => ({ border: `2px solid ${theme.colors.common[0]}`, cursor: 'pointer' })} />
           <Text sx={{ fontSize: 30, fontWeight: 'bold' }}>Strongr</Text>
-          <Button onClick={onLogInClick} color="dark" radius="lg">Log in</Button>
+          <GenericButton
+            onClick={onLogInClick}
+            px={20}
+            py={10}
+            sx={{ color: 'white', borderRadius: 25, fontWeight: 600 }}>
+            Log in
+          </GenericButton>
         </Box>
       </Header>
       {children}

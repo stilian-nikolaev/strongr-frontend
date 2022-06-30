@@ -40,7 +40,7 @@ export default function LoginPage() {
     }
 
     return (
-        <Center sx={{ height: '35vw', marginTop: '2vw' }}>
+        <Box sx={{ marginTop: '5vw', display: 'flex', placeContent: 'center' }}>
             <GenericForm validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
@@ -106,6 +106,6 @@ export default function LoginPage() {
                     </Box>
                 </Box>
             </GenericForm>
-        </Center >
+        </Box >
     )
 }
