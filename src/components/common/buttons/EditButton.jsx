@@ -1,5 +1,5 @@
-import { Box } from '@mantine/core'
 import React from 'react'
+import { Box } from '@mantine/core'
 import { FiEdit2 } from 'react-icons/fi'
 
 export default function EditButton({ onClick, sx, size = '1.2vw' }) {
@@ -15,6 +15,5 @@ export default function EditButton({ onClick, sx, size = '1.2vw' }) {
             }}>
             <FiEdit2 size={size} />
         </Box>
-        
     )
 }

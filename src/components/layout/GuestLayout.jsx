@@ -1,28 +1,26 @@
-import React from 'react'
-import { Avatar, Box, Button, Header, Image, Text } from '@mantine/core'
-import logo from '../../assets/logo.jpg'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from 'react-query';
-import { useEffect } from 'react';
+import { Avatar, Box, Header, Text } from '@mantine/core'
+
 import GenericButton from '../common/buttons/GenericButton';
+import logo from '../../assets/logo.jpg'
 
 export default function GuestLayout({ children }) {
-  const navigate = useNavigate();
   const queryClient = useQueryClient()
+  const navigate = useNavigate();
 
   useEffect(() => {
     queryClient.clear();
   }, [queryClient])
 
-
-  function onLogInClick() {
+  function handleLogInClick() {
     navigate('/login')
   }
 
-  function onLogoClick() {
+  function handleLogoClick() {
     navigate('/')
   }
-
 
   return (
     <Box>
@@ -33,11 +31,11 @@ export default function GuestLayout({ children }) {
             alt="logo"
             size="4.4vw"
             radius="50%"
-            onClick={onLogoClick}
+            onClick={handleLogoClick}
             sx={(theme) => ({ border: `2px solid ${theme.colors.common[0]}`, cursor: 'pointer' })} />
           <Text sx={{ fontSize: 30, fontWeight: 'bold' }}>Strongr</Text>
           <GenericButton
-            onClick={onLogInClick}
+            onClick={handleLogInClick}
             px={20}
             py={10}
             sx={{ color: 'white', borderRadius: 25, fontWeight: 600 }}>

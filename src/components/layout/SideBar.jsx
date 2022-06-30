@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
-import { Aside, Avatar, Box, Button, Container, Text } from '@mantine/core'
-
-import { AuthStore } from '../../stores/AuthStore'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Aside, Avatar, Box, Button, Text } from '@mantine/core'
+
 import { useUser } from '../../hooks/user'
 import { useAvatar } from '../../hooks/avatar';
+import { AuthStore } from '../../stores/AuthStore'
 
 export default function SideBar() {
-    const { logout } = AuthStore
-    const navigate = useNavigate();
     const { data } = useUser();
     const src = useAvatar(data?.avatarId)
-    
-    function onSignOutClick() {
+    const navigate = useNavigate();
+    const { logout } = AuthStore
+
+    function handleSignOutClick() {
         logout()
         navigate('/')
     }
@@ -49,7 +49,7 @@ export default function SideBar() {
                     {data?.activity}
                 </Text>
                 <Button
-                    onClick={onSignOutClick}
+                    onClick={handleSignOutClick}
                     sx={theme => ({
                         marginTop: '1vw',
                         backgroundColor: theme.colors.main[0],

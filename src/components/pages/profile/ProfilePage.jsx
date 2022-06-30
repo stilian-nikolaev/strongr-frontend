@@ -1,12 +1,12 @@
-import { Box, Text } from '@mantine/core'
 import React from 'react'
+import { Box, Text } from '@mantine/core'
+
+import AvatarModal from './AvatarModal'
+import ProfileForm from './ProfileForm'
+import AvatarSection from './AvatarSection'
 import { useUser } from '../../../hooks/user'
 import ErrorScreen from '../../common/ErrorScreen'
 import LoadingScreen from '../../common/LoadingScreen'
-import AvatarModal from './AvatarModal'
-
-import AvatarSection from './AvatarSection'
-import ProfileForm from './ProfileForm'
 
 export default function ProfilePage() {
     const { data, status } = useUser();

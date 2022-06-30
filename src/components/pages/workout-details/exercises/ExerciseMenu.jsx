@@ -1,48 +1,48 @@
 import React from 'react'
-import { Box, Menu, Text } from '@mantine/core'
 import { useMutation, useQueryClient } from 'react-query';
+import { useParams } from 'react-router-dom';
+import { Box, Menu, Text } from '@mantine/core'
 import { RiMoreFill } from 'react-icons/ri'
 
+import CloseButton from '../../../common/buttons/CloseButton';
 import { useDeleteExercise } from '../../../../hooks/exercises';
 import { endpoints } from '../../../../service/apiEndpoints';
 import { ModalStore } from '../../../../stores/ModalStore';
-import CloseButton from '../../../common/buttons/CloseButton';
-import { useParams } from 'react-router-dom';
 
-export default function ExerciseMenu(props) {
+export default function ExerciseMenu({ exerciseId, setAddingSet, setEdittingExercise, edittingExercise, addingSet }) {
     const { openModal, closeModal, setContent, setCallback } = ModalStore;
     const { workoutId } = useParams()
     const queryClient = useQueryClient();
 
     const deleteMutation = useMutation({
-        mutationFn: () => useDeleteExercise(workoutId, props.exerciseId),
+        mutationFn: () => useDeleteExercise(workoutId, exerciseId),
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
             closeModal();
         }
     })
 
-    function onAddSetClick() {
-        props.setAddingSet(!props.addingSet);
+    function handleAddSetClick() {
+        setAddingSet(!addingSet);
     }
 
-    function onEditClick() {
-        props.setEdittingExercise(true)
+    function handleEditClick() {
+        setEdittingExercise(true)
     }
 
-    function onDeleteClick() {
+    function handleDeleteClick() {
         setContent('Are you sure you want to delete this exercise?')
         setCallback(deleteMutation.mutate)
         openModal();
     }
 
-    function onCloseButtonClick() {
-        props.setEdittingExercise(false)
+    function handleClose() {
+        setEdittingExercise(false)
     }
 
     return (
-        props.edittingExercise ?
-            <CloseButton onClick={onCloseButtonClick} />
+        edittingExercise ?
+            <CloseButton onClick={handleClose} />
             :
             <Menu
                 control={
@@ -61,13 +61,13 @@ export default function ExerciseMenu(props) {
                 size="7vw"
                 gutter={-8}
             >
-                <Menu.Item onClick={onAddSetClick}>
-                    <Text sx={{ fontSize: '1vw' }}>{props.addingSet ? 'Cancel' : 'Add set'}</Text>
+                <Menu.Item onClick={handleAddSetClick}>
+                    <Text sx={{ fontSize: '1vw' }}>{addingSet ? 'Cancel' : 'Add set'}</Text>
                 </Menu.Item>
-                <Menu.Item onClick={onEditClick}>
+                <Menu.Item onClick={handleEditClick}>
                     <Text sx={{ fontSize: '1vw' }}>Edit</Text>
                 </Menu.Item>
-                <Menu.Item onClick={onDeleteClick}>
+                <Menu.Item onClick={handleDeleteClick}>
                     <Text sx={{ fontSize: '1vw' }}>Delete</Text>
                 </Menu.Item>
             </Menu>

@@ -7,7 +7,6 @@ class ViewStoreImpl {
     editingTitle = false
     addingExercise = false
     addingWorkout = false
-    edittingColor = false
 
     constructor() {
         makeObservable(this, {
@@ -23,22 +22,11 @@ class ViewStoreImpl {
             toggleAddingExercise: action,
             addingWorkout: observable,
             toggleAddingWorkout: action,
-            edittingColor: observable,
-            openEdittingColor: action,
-            closeEdittingColor: action,
         })
     }
 
     setThemeColor = (index) => {
         this.themeColor = index
-    }
-
-    openEdittingColor = () => {
-        this.edittingColor = true
-    }
-
-    closeEdittingColor = () => {
-        this.edittingColor = false
     }
 
     setAvatarId = (id) => {

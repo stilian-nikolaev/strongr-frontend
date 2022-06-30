@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Box, Stack, Text } from '@mantine/core'
 import { BsDot } from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { useEffect } from 'react'
 
 const items = [
     {
@@ -18,7 +16,6 @@ const items = [
         label: 'Settings',
         path: '/settings',
     },
-
 ]
 
 export default function Menu() {
@@ -29,7 +26,7 @@ export default function Menu() {
         setSelected(location.pathname)
     }, [location.pathname])
 
-    function onItemClick(path) {
+    function handleMenuItemClick(path) {
         setSelected(path);
         navigate(path)
     }
@@ -37,7 +34,7 @@ export default function Menu() {
     return (
         <Stack>
             {items.map(x => (
-                <Box onClick={() => onItemClick(x.path)} key={x.label} sx={{ display: 'flex', marginBottom: '0.3vw' }}>
+                <Box onClick={() => handleMenuItemClick(x.path)} key={x.label} sx={{ display: 'flex', marginBottom: '0.3vw' }}>
                     {selected.includes(x.path) && <BsDot size="1.4vw" />}
                     <Text
                         sx={(theme) => ({

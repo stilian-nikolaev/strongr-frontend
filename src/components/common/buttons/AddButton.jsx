@@ -3,7 +3,6 @@ import { Box, Text, UnstyledButton } from '@mantine/core'
 import { HiPlus } from 'react-icons/hi'
 
 export default function AddButton({ handler, label }) {
-
     return (
         <UnstyledButton
             onClick={handler}

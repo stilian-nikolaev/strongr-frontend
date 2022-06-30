@@ -1,28 +1,29 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query';
-import {  Box,  Card, Text } from '@mantine/core';
+import { useParams } from 'react-router-dom';
+import { Box, Card, Text } from '@mantine/core';
+import { useFocusTrap } from '@mantine/hooks';
+import * as yup from 'yup'
 
 import TextField from '../../../common/form/TextField';
 import GenericForm from '../../../common/form/GenericForm';
+import SubmitButton from '../../../common/buttons/SubmitButton';
 import { useCreateExercise } from '../../../../hooks/exercises';
 import { ViewStore } from '../../../../stores/ViewStore';
 import { endpoints } from '../../../../service/apiEndpoints';
-import { useFocusTrap } from '@mantine/hooks';
-import SubmitButton from '../../../common/buttons/SubmitButton';
-import { useParams } from 'react-router-dom';
-import * as yup from 'yup'
+
+const validationSchema = yup
+    .object({
+        title: yup.string().trim().min(1).max(25).required(),
+    })
+
+const initialValues = { title: '' }
 
 export default function ExerciseForm() {
-    const { workoutId } = useParams()
     const { toggleAddingExercise } = ViewStore;
+    const { workoutId } = useParams()
     const queryClient = useQueryClient();
     const focusTrapRef = useFocusTrap();
-
-    const validationSchema = yup
-        .object({
-            title: yup.string().trim().min(1).max(25).required(),
-        })
-
 
     const mutation = useMutation({
         mutationFn: data => useCreateExercise(workoutId, data),
@@ -32,7 +33,7 @@ export default function ExerciseForm() {
         }
     })
 
-    function onSubmit(data) {
+    function handleSubmit(data) {
         mutation.mutate(data)
     }
 
@@ -50,7 +51,7 @@ export default function ExerciseForm() {
                     }
                 }
             })}>
-            <GenericForm validationSchema={validationSchema} initialValues={{ title: '' }} onSubmit={onSubmit}>
+            <GenericForm validationSchema={validationSchema} initialValues={initialValues} onSubmit={handleSubmit}>
                 <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                     <TextField
                         inlineError={false}

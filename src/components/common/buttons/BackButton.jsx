@@ -1,5 +1,5 @@
-import { Box, Text, UnstyledButton } from '@mantine/core'
 import React from 'react'
+import { Box, Text, UnstyledButton } from '@mantine/core'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 
 export default function BackButton({ handler }) {
@@ -30,7 +30,6 @@ export default function BackButton({ handler }) {
             })}>
             <Box
                 sx={(theme) => ({
-
                     marginBottom: '-1.5vw',
                     '& .back': {
                         color: theme.colors.main[0],

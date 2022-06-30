@@ -1,24 +1,29 @@
-import { Box, Center, Text } from '@mantine/core';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { Box, Text } from '@mantine/core';
+import * as yup from 'yup'
+
 import GenericForm from '../../common/form/GenericForm';
 import TextField from '../../common/form/TextField';
-import { useConfigureHeaders, useLoginUser } from '../../../hooks/auth';
-import { useMutation } from 'react-query';
-import { AuthStore } from '../../../stores/AuthStore';
-import { useNavigate } from 'react-router-dom';
 import GenericButton from '../../common/buttons/GenericButton';
-import * as yup from 'yup'
+import { useConfigureHeaders, useLoginUser } from '../../../hooks/auth';
+import { AuthStore } from '../../../stores/AuthStore';
+
+const validationSchema = yup
+    .object({
+        email: yup.string().email().required(),
+        password: yup.string().trim().min(1).max(40).required(),
+    })
+
+const initialValues = {
+    email: '',
+    password: ''
+}
 
 export default function LoginPage() {
     const { login } = AuthStore
     const navigate = useNavigate();
-
-    const validationSchema = yup
-        .object({
-            email: yup.string().email().required(),
-            password: yup.string().trim().min(1).max(40).required(),
-        })
-
 
     const mutation = useMutation({
         mutationFn: data => useLoginUser(data),
@@ -26,22 +31,20 @@ export default function LoginPage() {
             useConfigureHeaders(res.token);
             login(res.token, res.expiresAt)
             navigate('/workouts')
-
         }
     })
 
-    function onSubmit(data) {
+    function handleSubmit(data) {
         mutation.mutate(data)
     }
 
-
-    function onSignUpClick() {
+    function handleSignUpClick() {
         navigate('/register')
     }
 
     return (
         <Box sx={{ marginTop: '5vw', display: 'flex', placeContent: 'center' }}>
-            <GenericForm validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={onSubmit}>
+            <GenericForm validationSchema={validationSchema} initialValues={initialValues} onSubmit={handleSubmit}>
                 <Box sx={{ width: 320 }}>
                     <Text sx={{ fontSize: '22px', textAlign: 'center' }}>Log in to Strongr</Text>
                     <TextField
@@ -87,7 +90,7 @@ export default function LoginPage() {
                         <Text sx={{ marginLeft: 20 }}>
                             Don't have an account?
                             <Text
-                                onClick={onSignUpClick}
+                                onClick={handleSignUpClick}
                                 sx={(theme) => ({
                                     backgroundImage: `linear-gradient(${theme.colors.common[0]}, ${theme.colors.common[0]})`,
                                     width: '100px',

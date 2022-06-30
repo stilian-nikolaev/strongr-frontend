@@ -1,39 +1,39 @@
-import { ColorSwatch, Group, SimpleGrid, useMantineTheme } from '@mantine/core';
-import React, { useState } from 'react'
-import { BiCheck } from 'react-icons/bi'
-import { useMutation, useQueryClient } from 'react-query';
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from 'react-query';
+import { ColorSwatch, Group, SimpleGrid, useMantineTheme } from '@mantine/core';
+import { BiCheck } from 'react-icons/bi'
+
 import { useEditUser } from '../../../hooks/user';
 import { endpoints } from '../../../service/apiEndpoints';
 import { ViewStore } from '../../../stores/ViewStore';
 
 export default function ColorSwatches() {
     const { themeColor, setThemeColor } = ViewStore
-    const theme = useMantineTheme();
-    const navigate = useNavigate()
     const queryClient = useQueryClient();
+    const navigate = useNavigate()
+    const theme = useMantineTheme();
 
     const mutation = useMutation({
         mutationFn: useEditUser,
-        onSuccess: (res) => {
+        onSuccess: () => {
             queryClient.invalidateQueries(endpoints.user.one().url)
             navigate('/settings')
         }
     })
 
-    return (
-        <Group spacing="md" sx={{
-            marginTop: '1vw',
+    function handleColorSwatchClick(color) {
+        setThemeColor(color)
+        theme.colors.main[0] = theme.colors.choice[color]
+        mutation.mutate({ themeColor: Number(color) });
+    }
 
-        }}>
+    return (
+        <Group spacing="md" sx={{ marginTop: '1vw' }}>
             <SimpleGrid cols={4} spacing="xl">
                 {Object.keys(theme.colors.choice).map((color) => (
                     <ColorSwatch
-                        onClick={() => {
-                            setThemeColor(color)
-                            theme.colors.main[0] = theme.colors.choice[color]
-                            mutation.mutate({ themeColor: Number(color) });
-                        }}
+                        onClick={() => handleColorSwatchClick(color)}
                         sx={{
                             '&:hover': {
                                 cursor: 'pointer'

@@ -1,26 +1,27 @@
-import { Box, Center, Text } from '@mantine/core'
 import React from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-import { useChangePassword } from '../../../hooks/auth'
+import { Center, Text } from '@mantine/core'
+import { showNotification } from '@mantine/notifications';
+import * as yup from 'yup'
+
 import GenericButton from '../../common/buttons/GenericButton'
 import GenericForm from '../../common/form/GenericForm'
 import TextField from '../../common/form/TextField'
-import { showNotification } from '@mantine/notifications';
-import * as yup from 'yup'
+import { useChangePassword } from '../../../hooks/auth'
+
+const validationSchema = yup
+    .object({
+        password: yup.string().trim().min(1).max(40).required(),
+        repeatPassword: yup.string().trim().min(1).max(40).required(),
+    })
 
 export default function ChangePasswordPage() {
     const navigate = useNavigate();
 
-    const validationSchema = yup
-        .object({
-            password: yup.string().trim().min(1).max(40).required(),
-            repeatPassword: yup.string().trim().min(1).max(40).required(),
-        })
-
     const mutation = useMutation({
         mutationFn: data => useChangePassword(data),
-        onSuccess: (res) => {
+        onSuccess: () => {
             navigate('/settings')
             showNotification({
                 title: 'Success',
@@ -29,13 +30,13 @@ export default function ChangePasswordPage() {
         }
     })
 
-    function onSubmit(data) {
+    function handleSubmit(data) {
         mutation.mutate(data)
     }
 
     return (
         <Center sx={{ height: '89vh' }}>
-            <GenericForm validationSchema={validationSchema} initialValues={{ password: '', repeatPassword: '' }} onSubmit={onSubmit}>
+            <GenericForm validationSchema={validationSchema} initialValues={{ password: '', repeatPassword: '' }} onSubmit={handleSubmit}>
                 <Text sx={{ fontSize: '22px', marginLeft: 20 }}>Change password</Text>
                 <TextField
                     placeholder="New Password"
@@ -78,7 +79,6 @@ export default function ChangePasswordPage() {
                     }}>
                     Submit
                 </GenericButton>
-
             </GenericForm>
         </Center>
     )

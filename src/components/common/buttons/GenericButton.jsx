@@ -1,5 +1,5 @@
-import { UnstyledButton } from '@mantine/core'
 import React from 'react'
+import { UnstyledButton } from '@mantine/core'
 
 export default function GenericButton({ children, sx, ...props }) {
     return (

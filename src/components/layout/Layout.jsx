@@ -1,26 +1,22 @@
-import React, { useEffect } from 'react';
-import { AppShell, Box, useMantineTheme } from '@mantine/core';
-
-import NavigationBar from './NavigationBar';
-import SideBar from './SideBar';
-import { AuthStore } from '../../stores/AuthStore';
-import GuestLayout from './GuestLayout';
-import { useUser } from '../../hooks/user';
-import { ViewStore } from '../../stores/ViewStore';
+import React from 'react';
 import { observer } from 'mobx-react';
+
+import GuestLayout from './GuestLayout';
 import UserLayout from './UserLayout';
+import { AuthStore } from '../../stores/AuthStore';
 
 export default observer(function Layout({ children }) {
     const { isAuthenticated } = AuthStore
-    
-    return (isAuthenticated
-        ?
-        <UserLayout>
-            {children}
-        </UserLayout>
-        :
-        <GuestLayout>
-            {children}
-        </GuestLayout>
+
+    return (
+        isAuthenticated
+            ?
+            <UserLayout>
+                {children}
+            </UserLayout>
+            :
+            <GuestLayout>
+                {children}
+            </GuestLayout>
     );
 })

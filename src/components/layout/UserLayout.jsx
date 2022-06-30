@@ -1,17 +1,17 @@
+import React, { useState, useEffect } from 'react'
 import { AppShell, Box, useMantineTheme } from '@mantine/core'
-import React, { useEffect } from 'react'
-import { useState } from 'react';
-import { useUser } from '../../hooks/user';
-import { ViewStore } from '../../stores/ViewStore';
-import LoadingScreen from '../common/LoadingScreen';
+
 import NavigationBar from './NavigationBar'
 import SideBar from './SideBar'
+import LoadingScreen from '../common/LoadingScreen';
+import { useUser } from '../../hooks/user';
+import { ViewStore } from '../../stores/ViewStore';
 
 export default function UserLayout({ children }) {
-    const { data, status } = useUser();
-    const theme = useMantineTheme();
-    const { setThemeColor } = ViewStore;
+    const { data, status } = useUser()
     const [loaded, setLoaded] = useState(false)
+    const theme = useMantineTheme()
+    const { setThemeColor } = ViewStore
 
     useEffect(() => {
         if (status === 'success') {

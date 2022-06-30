@@ -1,32 +1,33 @@
-import { Autocomplete, Box, Text } from '@mantine/core'
-import { observer } from 'mobx-react'
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { useEditUser } from '../../../hooks/user'
-import { endpoints } from '../../../service/apiEndpoints'
-import { ViewStore } from '../../../stores/ViewStore'
+import { observer } from 'mobx-react'
+import { Box, Text } from '@mantine/core'
+import { showNotification } from '@mantine/notifications';
+import * as yup from 'yup'
+
 import GenericButton from '../../common/buttons/GenericButton'
 import AutoCompleteField from '../../common/form/AutoComleteField'
 import GenericForm from '../../common/form/GenericForm'
 import TextField from '../../common/form/TextField'
-import { showNotification } from '@mantine/notifications';
-import * as yup from 'yup'
+import { ViewStore } from '../../../stores/ViewStore'
+import { useEditUser } from '../../../hooks/user'
+import { endpoints } from '../../../service/apiEndpoints'
 
 const autocompleteData = ['Gym lover', 'Bro lifter', 'Athlete', 'Runner', 'Netflix enjoyer'];
+
+const validationSchema = yup.object({
+    name: yup.string().min(1).max(30).required(),
+    activity: yup.string().required(),
+})
 
 export default observer(function ProfileForm({ name, activity }) {
     const initialValues = { name, activity }
     const { avatarId, avatarColor } = ViewStore
     const queryClient = useQueryClient();
 
-    const validationSchema = yup.object({
-        name: yup.string().min(1).max(30).required(),
-        activity: yup.string().required(),
-    })
-
     const mutation = useMutation({
         mutationFn: useEditUser,
-        onSuccess: (res) => {
+        onSuccess: () => {
             showNotification({
                 title: 'Success',
                 message: 'Successfully edited profile!'
@@ -35,8 +36,7 @@ export default observer(function ProfileForm({ name, activity }) {
         }
     })
 
-
-    function onSubmit(data) {
+    function handleSubmit(data) {
         mutation.mutate({ ...data, avatarId, avatarColor });
     }
 
@@ -45,7 +45,7 @@ export default observer(function ProfileForm({ name, activity }) {
             <GenericForm
                 validationSchema={validationSchema}
                 initialValues={initialValues}
-                onSubmit={onSubmit}>
+                onSubmit={handleSubmit}>
                 <Text sx={(theme) => ({ fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.common[1] })}>Name</Text>
                 <TextField
                     inlineError={false}
@@ -60,7 +60,9 @@ export default observer(function ProfileForm({ name, activity }) {
                         }
                     })}
                 />
-                <Text sx={(theme) => ({ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.common[1] })}>Activity</Text>
+                <Text sx={(theme) => ({ marginTop: '1vw', fontSize: '0.8vw', marginLeft: '0.5vw', color: theme.colors.common[1] })}>
+                    Activity
+                </Text>
                 <AutoCompleteField
                     required
                     placeholder="Activity"

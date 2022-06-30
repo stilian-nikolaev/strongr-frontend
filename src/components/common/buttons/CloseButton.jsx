@@ -1,5 +1,5 @@
-import { UnstyledButton } from '@mantine/core'
 import React from 'react'
+import { UnstyledButton } from '@mantine/core'
 import { MdClose } from 'react-icons/md'
 
 export default function CloseButton({ onClick, sx, size = "1.5vw" }) {

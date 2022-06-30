@@ -1,18 +1,19 @@
-import { Box, ColorSwatch, Group, Stack, Text } from '@mantine/core'
 import React from 'react'
-import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
+import { useMutation } from 'react-query'
+import { Box, Stack, Text } from '@mantine/core'
+import { showNotification } from '@mantine/notifications';
+
+import ColorSwatches from './ColorSwatches'
+import ConfirmationModal from '../../common/ConfirmationModal'
+import GenericButton from '../../common/buttons/GenericButton'
 import { useDeleteUser } from '../../../hooks/user'
 import { AuthStore } from '../../../stores/AuthStore'
 import { ModalStore } from '../../../stores/ModalStore'
-import GenericButton from '../../common/buttons/GenericButton'
-import ConfirmationModal from '../../common/ConfirmationModal'
-import { showNotification } from '@mantine/notifications';
-import ColorSwatches from './ColorSwatches'
 
 export default function SettingsPage() {
-    const { logout } = AuthStore
     const { setContent, setCallback, openModal, closeModal } = ModalStore
+    const { logout } = AuthStore
     const navigate = useNavigate();
 
     const deleteMutation = useMutation({
@@ -28,11 +29,11 @@ export default function SettingsPage() {
         }
     })
 
-    function onChangePassClick() {
+    function handleChangePasswordClick() {
         navigate('/settings/change-password')
     }
 
-    function onDeleteProfileClick() {
+    function handleDeleteProfileClick() {
         setContent('Are you sure you want to delete your profile and all of its data?')
         setCallback(deleteMutation.mutate)
         openModal()
@@ -50,8 +51,6 @@ export default function SettingsPage() {
                     <Text sx={{ fontSize: '2.4vw', }}>Settings</Text>
                 </Box>
             </Box>
-
-
             <Box sx={{ width: '14vw', marginTop: '1vw' }}>
                 <Text sx={{
                     marginTop: '1vw',
@@ -60,22 +59,18 @@ export default function SettingsPage() {
                     Manage your profile
                 </Text>
                 <Stack sx={{ width: '11vw' }}>
-
-                    <GenericButton sx={{ marginTop: '1vw' }} onClick={onChangePassClick}>
+                    <GenericButton sx={{ marginTop: '1vw' }} onClick={handleChangePasswordClick}>
                         Change password
                     </GenericButton>
-                    <GenericButton sx={{ marginTop: '0.5vw' }} onClick={onDeleteProfileClick}>
+                    <GenericButton sx={{ marginTop: '0.5vw' }} onClick={handleDeleteProfileClick}>
                         Delete this account
                     </GenericButton>
                 </Stack>
             </Box>
-            <Text sx={{
-                marginTop: '2vw',
-                fontSize: '1.4vw',
-            }}>
-                Configure theme
-            </Text>
-            <ColorSwatches/>
+            <Box>
+                <Text sx={{ marginTop: '2vw', fontSize: '1.4vw' }}>Configure theme</Text>
+                <ColorSwatches />
+            </Box>
             <ConfirmationModal />
         </Box>
     )

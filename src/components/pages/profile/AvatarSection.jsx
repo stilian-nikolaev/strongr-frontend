@@ -1,16 +1,21 @@
-import { Avatar, Box, ColorInput, ColorPicker, Stack, Text } from '@mantine/core'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { observer } from 'mobx-react'
+import { Avatar, Box, ColorInput, Stack, } from '@mantine/core'
+
 import GenericButton from '../../common/buttons/GenericButton'
+import { useAvatar } from '../../../hooks/avatar'
 import { ModalStore } from '../../../stores/ModalStore'
 import { ViewStore } from '../../../stores/ViewStore'
-import { useAvatar } from '../../../hooks/avatar'
-import { observer } from 'mobx-react'
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 export default observer(function AvatarSection({ originAvatarId, originColor }) {
+    const { avatarId, setAvatarId, avatarColor, setAvatarColor } = ViewStore
     const { openModal } = ModalStore
-    const { avatarId, setAvatarId, avatarColor, setAvatarColor, openEdittingColor, closeEdittingColor, edittingColor } = ViewStore
+    const [edittingColor, setEdittingColor] = useState(false);
     const src = useAvatar(avatarId || originAvatarId);
+
+    const openEdittingColor = () => setEdittingColor(true);
+    const closeEdittingColor = () => setEdittingColor(false);
 
     useEffect(() => {
         closeEdittingColor()
@@ -18,10 +23,9 @@ export default observer(function AvatarSection({ originAvatarId, originColor }) 
         setAvatarColor(originColor)
     }, [])
 
-    function onChangeAvatarClick() {
+    function handleChangeAvatarClick() {
         openModal()
     }
-
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '2vw', }}>
@@ -35,18 +39,19 @@ export default observer(function AvatarSection({ originAvatarId, originColor }) 
                     boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px;'
                 }} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Stack sx={{width: '12vw'}}>
-                    <GenericButton onClick={onChangeAvatarClick}>
+                <Stack sx={{ width: '12vw' }}>
+                    <GenericButton onClick={handleChangeAvatarClick}>
                         Change avatar
                     </GenericButton>
-                    {edittingColor
-                        ?
-                        <ColorInput size="md" value={avatarColor} onChange={setAvatarColor} />
-                        :
-                        <GenericButton onClick={openEdittingColor}>
-                            Change background
-                        </GenericButton>}
-
+                    {
+                        edittingColor
+                            ?
+                            <ColorInput size="md" value={avatarColor} onChange={setAvatarColor} />
+                            :
+                            <GenericButton onClick={openEdittingColor}>
+                                Change background
+                            </GenericButton>
+                    }
                 </Stack>
             </Box>
         </Box>
