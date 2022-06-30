@@ -4,6 +4,6 @@ export const theme = {
     colors: {
         common: ['#141517', '#808080', '#353935', '#E3DAC9'],
         main: ['#FDCEDF'],
-        choice: ['#FDCEDF', '#F71FA7', '#FF00A1', '#E00890', '#C50E82', '#AD1374']
+        choice: ['#FBC5C5', '#ffd500', '#D4D925', '#A084CF', , '#B4ECE3', '#FDAF75', '#F1EEE9']
     },
 }

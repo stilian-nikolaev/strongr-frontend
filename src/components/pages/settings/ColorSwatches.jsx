@@ -42,7 +42,7 @@ export default function ColorSwatches() {
                     radius="50%"
                     key={color}
                     color={theme.colors.choice[color]}>
-                    {themeColor == color && <BiCheck size={'1vw'} color={theme.colors.common[3]} />}
+                    {themeColor == color && <BiCheck size={'1vw'} color={theme.colors.common[0]} />}
                 </ColorSwatch>
             ))}
         </Group>
