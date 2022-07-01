@@ -20,21 +20,21 @@ export default function SetCard({ set, edittingExercise, exerciseId }) {
         }
     })
 
-    function onDeleteClick() {
+    function handleDeleteClick() {
         deleteMutation.mutate();
     }
 
-    function onEditClick() {
+    function handleEditClick() {
         setEdittingSet(true)
     }
 
-    function onEditSubmit() {
+    function handleEditSubmit() {
         setEdittingSet(false)
     }
 
     return (
         edittingSet ?
-            <AddSetForm exerciseId={exerciseId} initialValues={set} onSuccess={onEditSubmit} />
+            <AddSetForm exerciseId={exerciseId} initialValues={set} onSuccess={handleEditSubmit} />
             :
             <Box
                 sx={{
@@ -44,8 +44,7 @@ export default function SetCard({ set, edittingExercise, exerciseId }) {
                 <Text sx={{ fontSize: '1.2vw' }} >
                     {set.amount} {set.unit} {set.weight > 0 ? `with ${set.weight} kg` : ''}
                 </Text>
-                {edittingExercise && 
-                    <SetActions onEditClick={onEditClick} onDeleteClick={onDeleteClick}/>}
+                {edittingExercise && <SetActions onEditClick={handleEditClick} onDeleteClick={handleDeleteClick} />}
             </Box>
     )
 }

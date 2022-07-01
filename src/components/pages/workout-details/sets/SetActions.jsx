@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from '@mantine/core'
+
 import EditButton from '../../../common/buttons/EditButton'
 import DeleteButton from '../../../common/buttons/DeleteButton'
 

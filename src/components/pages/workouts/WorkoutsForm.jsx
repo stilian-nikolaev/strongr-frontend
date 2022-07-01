@@ -11,26 +11,29 @@ import { useFocusTrap } from '@mantine/hooks';
 import { endpoints } from '../../../service/apiEndpoints';
 import * as yup from 'yup'
 
+const validationSchema = yup
+    .object({
+        title: yup.string().trim().min(1).max(25).required(),
+    })
+
+const initialValues = {
+    title: ''
+}
 
 export default function WorkoutsForm() {
     const { toggleAddingWorkout } = ViewStore;
     const focusTrapRef = useFocusTrap();
     const queryClient = useQueryClient();
 
-    const validationSchema = yup
-        .object({
-            title: yup.string().trim().min(1).max(25).required(),
-        })
-
     const mutation = useMutation({
         mutationFn: data => useCreateWorkout(data),
-        onSuccess: (res) => {
+        onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.all().url)
                 .then(() => toggleAddingWorkout())
         }
     })
 
-    function onSubmit(data) {
+    function handleSubmit(data) {
         mutation.mutate(data)
     }
 
@@ -47,10 +50,8 @@ export default function WorkoutsForm() {
             })}>
             <GenericForm
                 validationSchema={validationSchema}
-                initialValues={{
-                    title: '',
-                }}
-                onSubmit={onSubmit}>
+                initialValues={initialValues}
+                onSubmit={handleSubmit}>
                 <Box ref={focusTrapRef} sx={{ display: 'flex' }}>
                     <TextField
                         inlineError={false}
@@ -59,8 +60,8 @@ export default function WorkoutsForm() {
                         placeholder="Title"
                         aria-label="title"
                         name="title"
-                       sx={(theme) => ({
-                        borderBottom: `1px solid ${theme.colors.common[0]}`,
+                        sx={(theme) => ({
+                            borderBottom: `1px solid ${theme.colors.common[0]}`,
                             paddingLeft: '0.4vw',
                             width: '7vw',
                             marginBottom: '5px',

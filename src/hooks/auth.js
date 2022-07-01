@@ -19,4 +19,3 @@ export async function useChangePassword(data) {
 export function useConfigureHeaders(token) {
     apiClient.defaults.headers = {'Authorization': `Bearer ${token}`};
 }
-

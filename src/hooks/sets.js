@@ -15,4 +15,3 @@ export async function useDeleteSet(workoutId, exerciseId, setId) {
     const res = await apiClient.delete(endpoints.sets.one([workoutId, exerciseId, setId]).url);
     return res.data;
 }
-

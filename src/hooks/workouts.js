@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import { apiClient } from "../service/apiClient";
-
 import { endpoints } from "../service/apiEndpoints";
 
 export function useWorkout(id) {

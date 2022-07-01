@@ -9,6 +9,13 @@ export const queryClient = new QueryClient({
                 title: 'An error has occurred',
                 message: error.response.data.message,
             })
+        },
+        queries: {
+            onError: error => showNotification({
+                color: 'red',
+                title: 'An error has occurred',
+                message: error.response.data.message,
+            })
         }
     },
 });

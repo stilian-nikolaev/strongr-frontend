@@ -1,17 +1,17 @@
-import { Box, Card, Text } from '@mantine/core'
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Box, Card, Text } from '@mantine/core'
 
 
 export default function WorkoutCard({ workout }) {
     const navigate = useNavigate();
 
-    function workoutClickHandler() {
+    function handleWorkoutClick() {
         navigate(`/workouts/${workout._id}`)
     }
     return (
         <Card
-            onClick={workoutClickHandler}
+            onClick={handleWorkoutClick}
             shadow="lg"
             sx={(theme) => ({
                 backgroundColor: theme.colors.main[0],

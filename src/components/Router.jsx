@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+
 import { AuthStore } from '../stores/AuthStore'
 
 import WorkoutsPage from './pages/workouts/WorkoutsPage';

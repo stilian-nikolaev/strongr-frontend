@@ -3,12 +3,18 @@ import { useParams } from 'react-router-dom';
 import { useMutation, useQueryClient } from 'react-query';
 import { Box } from '@mantine/core';
 import { useFocusTrap } from '@mantine/hooks';
+import * as yup from 'yup'
 
 import GenericForm from '../../../common/form/GenericForm';
 import TextField from '../../../common/form/TextField';
 import SubmitButton from '../../../common/buttons/SubmitButton';
 import { useEditExercise } from '../../../../hooks/exercises';
 import { endpoints } from '../../../../service/apiEndpoints';
+
+const validationSchema = yup
+    .object({
+        title: yup.string().trim().min(1).max(25).required(),
+    })
 
 export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle }) {
     const queryClient = useQueryClient();
@@ -28,7 +34,7 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle 
     }
 
     return (
-        <GenericForm onSubmit={handleSubmit} initialValues={{ title }}>
+        <GenericForm onSubmit={handleSubmit} validationSchema={validationSchema} initialValues={{ title }}>
             <Box
                 ref={focusTrapRef}
                 sx={(theme) => ({
@@ -37,17 +43,22 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle 
                     width: '10vw',
                 })}>
                 <TextField
-                    data-autofocus
+                    inlineError={false}
                     variant="unstyled"
+                    placeholder="Title"
                     aria-label="title"
                     size="inherit"
                     name="title"
-                    sx={{
+                    showE
+                    sx={theme => ({
                         paddingLeft: '0.4vw',
                         marginBottom: '5px',
                         fontSize: '1.2vw',
-                        display: 'flex'
-                    }}
+                        display: 'flex',
+                        '& ::placeholder': {
+                            color: `${theme.colors.common[1]} !important`
+                        }
+                    })}
                 />
                 <SubmitButton size={'1.2vw'} />
             </Box>
