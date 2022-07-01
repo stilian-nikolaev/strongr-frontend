@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthStore } from "../stores/AuthStore";
 
-const API_URL = 'http://localhost:5000'
+const API_URL = 'https://api-strongr.herokuapp.com/'
 const { token } = AuthStore;
 
 export const apiClient = axios.create({
