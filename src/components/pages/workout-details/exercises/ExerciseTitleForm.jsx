@@ -49,7 +49,6 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle 
                     aria-label="title"
                     size="inherit"
                     name="title"
-                    showE
                     sx={theme => ({
                         paddingLeft: '0.4vw',
                         marginBottom: '5px',
