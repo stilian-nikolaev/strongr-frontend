@@ -65,10 +65,14 @@ export default observer(function GridHeader({ title }) {
                     }
                 }
             })}>
-                {editingTitle ? <WorkoutTitleForm title={title} /> :
-                    <Text sx={{ fontSize: '2.4vw' }}>
-                        {title}
-                    </Text>}
+                {
+                    editingTitle ?
+                        <WorkoutTitleForm title={title} />
+                        :
+                        <Text sx={{ fontSize: '2.4vw' }}>
+                            {title}
+                        </Text>
+                }
                 <Menu
                     control={
                         <Box
