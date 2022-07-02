@@ -9,7 +9,7 @@ export default observer(function ConfirmationModal() {
   const { open, content, callback, closeModal } = ModalStore;
 
   return (
-    <Modal opened={open} onClose={closeModal} withCloseButton={false} centered centeredradius={20}>
+    <Modal opened={open} onClose={closeModal} withCloseButton={false} centered radius={20}>
       <Text sx={{ fontSize: '1.5vw', textAlign: 'center' }}>{content}</Text>
       <Center>
         <Box sx={{ marginTop: '2vw', width: '60%', display: 'flex', justifyContent: 'space-between' }}>
