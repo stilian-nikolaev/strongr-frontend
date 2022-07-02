@@ -24,8 +24,8 @@ export default function ExerciseTitleForm({ exerciseId, title, setEdittingTitle 
     const mutation = useMutation({
         mutationFn: data => useEditExercise(workoutId, exerciseId, data),
         onSuccess: () => {
-            setEdittingTitle(false)
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId).url)
+                .then(() => setEdittingTitle(false))
         }
     })
 

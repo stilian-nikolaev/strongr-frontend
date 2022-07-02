@@ -18,7 +18,7 @@ export default function ExerciseMenu({ exerciseId, setAddingSet, setEdittingExer
         mutationFn: () => useDeleteExercise(workoutId, exerciseId),
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
-            closeModal();
+                .then(() => closeModal())
         }
     })
 

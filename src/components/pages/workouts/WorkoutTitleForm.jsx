@@ -26,8 +26,8 @@ export default function WorkoutTitleForm({ title }) {
     const mutation = useMutation({
         mutationFn: data => useEditWorkout(workoutId, data),
         onSuccess: () => {
-            toggleEditingTitle();
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId).url)
+                .then(() => toggleEditingTitle())
         }
     })
 

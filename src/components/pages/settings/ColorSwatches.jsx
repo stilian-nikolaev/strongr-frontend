@@ -18,7 +18,7 @@ export default function ColorSwatches() {
         mutationFn: useEditUser,
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.user.one().url)
-            navigate('/settings')
+                .then(() => navigate('/settings'))
         }
     })
 
