@@ -39,7 +39,7 @@ export default function AddSetForm({ exerciseId, onSuccess, initialValues }) {
         mutationFn,
         onSuccess: () => {
             queryClient.invalidateQueries(endpoints.workouts.one(workoutId))
-            onSuccess();
+                .then(() => onSuccess());
         }
     })
 
